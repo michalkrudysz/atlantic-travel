@@ -1,11 +1,35 @@
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Header from "./components/Header.tsx";
 import "./App.scss";
 
-function App() {
+const Layout = () => {
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <div className="App">
+      <Header />
+      <Outlet />
+    </div>
   );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    // children: [
+    //   {
+    //     index: true,
+    //     element: <Home />,
+    //   },
+    //   {
+    //     path: "admin",
+    //     element: <Admin />,
+    //   },
+    // ],
+  },
+]);
+
+function App() {
+  return <RouterProvider router={router} />;
 }
 
 export default App;
