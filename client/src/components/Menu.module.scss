@@ -1,14 +1,68 @@
 .menu {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  background-color: #f2c777;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(242, 199, 119, 1);
+  background-image: linear-gradient(
+    130deg,
+    rgba(242, 199, 119, 1) 0%,
+    rgba(231, 242, 148, 1) 100%
+  );
+  overflow: hidden;
   z-index: -1;
+
+  ul {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 10em;
+
+    li {
+      font-size: calc(1.4rem + 1vw);
+      letter-spacing: 0.15rem;
+      font-weight: 400;
+      cursor: pointer;
+      text-align: center;
+      opacity: 0;
+      transform: translateX(100%);
+      animation: slideIn 0.5s forwards;
+
+      &:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.7s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+
+      &:nth-child(5) {
+        animation-delay: 0.9s;
+      }
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

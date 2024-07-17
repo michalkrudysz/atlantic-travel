@@ -10,10 +10,11 @@
     width: 35vw;
     cursor: pointer;
 
-    img {
+    img,
+    svg {
       width: 100%;
       height: auto;
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.5s ease-in-out;
     }
   }
 
@@ -23,10 +24,11 @@
     width: 8vw;
     cursor: pointer;
 
-    img {
+    img,
+    svg {
       width: 100%;
       height: 100%;
-      transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+      transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
     }
   }
 }
@@ -34,11 +36,22 @@
 .open {
   background-color: #f2c777;
   z-index: 101;
+  animation: slideInFromRight 0.5s forwards;
 
   .burger-menu {
-    img {
-      filter: hue-rotate(90deg);
-      transform: scaleX(-1);
+    img,
+    svg {
+      filter: hue-rotate(180deg);
+      transform: scaleX(-1) rotate(360deg);
     }
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
