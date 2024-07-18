@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./components/Header.tsx";
+import Home from "./pages/Home.tsx";
 import "./App.scss";
 
 const Layout = () => {
@@ -15,16 +16,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <Home />,
-    //   },
-    //   {
-    //     path: "admin",
-    //     element: <Admin />,
-    //   },
-    // ],
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      // {
+      //   path: 'admin',
+      //   element: <Admin />,
+      // },
+    ],
   },
 ]);
 
