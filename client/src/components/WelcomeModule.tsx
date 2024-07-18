@@ -14,7 +14,6 @@ export default function WelcomeModule() {
           podróż życia, skrojoną dokładnie na Twoją miarę!
         </p>
       </div>
-      <div className={classes.overlay}></div>
     </div>
   );
 }

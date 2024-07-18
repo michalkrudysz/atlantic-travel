@@ -1,5 +1,5 @@
 import classes from "./Trips.module.scss";
-import Trip from "./Trip.tsx";
+import Trip from "./Trip";
 
 export default function Trips() {
   return (
