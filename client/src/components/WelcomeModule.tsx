@@ -3,7 +3,7 @@ import classes from "./WelcomeModule.module.scss";
 export default function WelcomeModule() {
   return (
     <div className={classes.container}>
-      <h1>Spełniamy Podróżnicze Marzenia!</h1>
+      <h1>Podróże Szyte na Miarę!</h1>
       <div className={classes.text}>
         <p>
           Jesteśmy ekspertami od niezapomnianych przygód! Czy marzysz o
