@@ -8,6 +8,7 @@
   -webkit-box-shadow: 1px 13px 77px -46px rgba(242, 199, 119, 1);
   -moz-box-shadow: 1px 13px 77px -46px rgba(242, 199, 119, 1);
   box-shadow: 1px 13px 77px -46px rgba(242, 199, 119, 1);
+
   .logo {
     width: 35vw;
 
@@ -39,6 +40,7 @@
   z-index: 101;
   animation: slideInFromRight 0.5s forwards;
   background-color: #f2f2f2;
+
   .burger-menu {
     img,
     svg {
@@ -85,7 +87,7 @@
   .header {
     height: 6rem;
     justify-content: space-between;
-    background-color: #f2f2f2;
+
     .logo {
       margin-left: 2rem;
       width: 12vw;
@@ -97,7 +99,6 @@
   }
 
   .open {
-    background-color: #f2f2f2;
     animation: none;
   }
 }
@@ -111,7 +112,7 @@
   }
 }
 
-@media (min-width: 1520px) {
+@media (min-width: 1400px) {
   .header {
     .logo {
       margin-left: 5rem;
@@ -124,7 +125,6 @@
   .header {
     .logo {
       margin-left: 10rem;
-      width: 10vw;
     }
   }
 }
