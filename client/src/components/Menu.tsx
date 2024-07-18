@@ -8,7 +8,6 @@ export default function Menu() {
         <li>Referencje</li>
         <li>O firmie</li>
         <li>Kontakt</li>
-        <li>RODO</li>
       </ul>
     </div>
   );

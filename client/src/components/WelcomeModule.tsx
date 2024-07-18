@@ -6,11 +6,12 @@ export default function WelcomeModule() {
       <h1>Spełniamy Podróżnicze Marzenia!</h1>
       <div className={classes.text}>
         <p>
-          Specjalizujemy się w kreowaniu niezapomnianych doświadczeń
-          podróżniczych. Od ekscytujących wycieczek po inspirujące obozy
-          młodzieżowe - tworzymy wyjątkowe przygody w kraju i za granicą. Każdą
-          propozycję starannie dopasowujemy do Twoich życzeń, gustów i
-          zainteresowań, gwarantując podróże szyte na miarę Twoich marzeń.
+          Jesteśmy ekspertami od niezapomnianych przygód! Czy marzysz o
+          ekscytującej wycieczce czy wyjątkowym obozie młodzieżowym - mamy coś
+          dla Ciebie, zarówno w Polsce, jak i za granicą. Każdą ofertę
+          dopasowujemy do Twoich upodobań i zainteresowań, bo wiemy, że
+          najlepsze podróże to te, które spełniają marzenia. Z nami przeżyjesz
+          podróż życia, skrojoną dokładnie na Twoją miarę!
         </p>
       </div>
     </div>
