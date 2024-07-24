@@ -4,7 +4,7 @@ import { Table, Column, Model, DataType } from "sequelize-typescript";
   tableName: "trips",
   timestamps: false,
 })
-export class Trip extends Model<Trip> {
+export class Trips extends Model<Trips> {
   @Column({
     type: DataType.INTEGER.UNSIGNED,
     primaryKey: true,

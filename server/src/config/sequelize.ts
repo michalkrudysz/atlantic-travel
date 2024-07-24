@@ -1,5 +1,5 @@
 import { Sequelize, SequelizeOptions } from "sequelize-typescript";
-import { Trip } from "../models/trips";
+import { Trips } from "../models/trips";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -23,6 +23,6 @@ const sequelize = new Sequelize(
   sequelizeOptions
 );
 
-sequelize.addModels([Trip]);
+sequelize.addModels([Trips]);
 
 export default sequelize;
