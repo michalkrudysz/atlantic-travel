@@ -1,5 +1,6 @@
 // Importowanie niezbędnych dekoratorów i typów danych z biblioteki sequelize-typescript
-import { Table, Column, Model, DataType } from "sequelize-typescript";
+import { Table, Column, Model, DataType, HasOne } from "sequelize-typescript";
+import { TripImages } from "./tripImages"; // Import modelu TripImages
 
 // Definicja klasy modelu Trips, która odpowiada tabeli 'trips' w bazie danych
 @Table({
@@ -49,4 +50,8 @@ export class Trips extends Model<Trips> {
     allowNull: false,
   })
   description!: string;
+
+  // Definicja relacji HasOne z modelem TripImages
+  @HasOne(() => TripImages)
+  image!: TripImages; // Relacja wskazuje, że jeden trip ma dokładnie jeden obraz
 }

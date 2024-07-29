@@ -1,4 +1,3 @@
-// routers/trips.ts
 import express from "express";
 import * as tripsController from "../controllers/tripsController";
 
