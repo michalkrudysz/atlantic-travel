@@ -2,9 +2,12 @@ import express from "express";
 import "reflect-metadata";
 import { dbConnectionCheck } from "./middleware/dbConnectionCheck";
 import tripsRouter from "./routes/trips";
+import { corsMiddleware } from "./middleware/corsMiddleware";
 
 const app = express();
 const port = 3000;
+
+app.use(corsMiddleware);
 
 app.use(express.json());
 // Serwowanie plików statycznych z folderu 'public'
