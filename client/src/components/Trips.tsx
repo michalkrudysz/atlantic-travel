@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import classes from "./Trips.module.scss";
 import Trip from "./Trip";
-import data from "../components/testData";
 import { useTrips } from "../hooks/useTrips";
 
 export default function Trips() {
@@ -29,7 +28,7 @@ export default function Trips() {
     <div className={classes.trips}>
       <h1>Nasza aktualna oferta</h1>
       <div className={classes.trip}>
-        {data.map((trip) => (
+        {backendData?.map((trip) => (
           <Trip key={trip.trip_id} trip={trip} />
         ))}
       </div>

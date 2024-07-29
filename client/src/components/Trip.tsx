@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import classes from "./Trip.module.scss";
-import tolo from "../assets/images/zimowisko.png";
 
 export default function Trip({ trip }) {
   return (
     <div className={classes.trip}>
       <div className={classes.image}>
-        <img src={tolo} alt="business card" />
+        <img src={trip.image.image_url} alt={trip.image.description} />
       </div>
       <Link
         to={`/${encodeURIComponent(trip.title)}`}
