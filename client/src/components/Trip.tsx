@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import classes from "./Trip.module.scss";
 import { Trip } from "../hooks/useTrips";
+import { formatTripDates } from "../utils/formatTripDates.ts";
 
 export default function TripComponent({ trip }: { trip: Trip }) {
+  const dates = formatTripDates(trip.start_date, trip.end_date);
+
   return (
     <div className={classes.trip}>
       <div className={classes.image}>
@@ -16,9 +19,7 @@ export default function TripComponent({ trip }: { trip: Trip }) {
       </div>
       <div className={classes["trip-title"]}>
         <h2>{trip.title}</h2>
-        <p>
-          Termin: {trip.start_date} – {trip.end_date}
-        </p>
+        <p>Termin: {dates}</p>
       </div>
     </div>
   );
