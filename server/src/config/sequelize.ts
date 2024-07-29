@@ -2,6 +2,7 @@
 import { Sequelize, SequelizeOptions } from "sequelize-typescript";
 // Import modelu Trips, który zostanie zdefiniowany w innych plikach
 import { Trips } from "../models/trips";
+import { TripImages } from "../models/tripImages";
 // Import modułu dotenv do zarządzania zmiennymi środowiskowymi
 import dotenv from "dotenv";
 
@@ -31,7 +32,7 @@ const sequelize = new Sequelize(
 );
 
 // Dodanie modeli do instancji Sequelize
-sequelize.addModels([Trips]);
+sequelize.addModels([Trips, TripImages]);
 
 // Eksportowanie instancji Sequelize
 export default sequelize;

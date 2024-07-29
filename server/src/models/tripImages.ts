@@ -11,7 +11,7 @@ import { Trips } from "./trips";
   tableName: "tripimages", // Nazwa tabeli w bazie danych
   timestamps: false, // Wyłączenie domyślnego dodawania kolumn timestamp (created_at, updated_at)
 })
-export class TripsImages extends Model<TripsImages> {
+export class TripImages extends Model<TripImages> {
   @Column({
     type: DataType.INTEGER.UNSIGNED,
     primaryKey: true, // Ustawienie tej kolumny jako klucz główny
