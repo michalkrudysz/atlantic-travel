@@ -7,7 +7,9 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-
+// Serwowanie plików statycznych z folderu 'public'
+app.use(express.static("public"));
+// Middleware sprawdzający połączenie z bazą danych
 app.use(dbConnectionCheck);
 
 app.use("/trips", tripsRouter);
