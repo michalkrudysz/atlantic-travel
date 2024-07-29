@@ -99,7 +99,7 @@
     .text {
       padding: 4rem 2.5rem;
       p {
-        font-size: calc(0.9rem + 0.5vw);
+        font-size: calc(0.95rem + 0.5vw);
         padding-bottom: 2rem;
 
         span {
@@ -114,7 +114,7 @@
 
 @media (min-width: 1400px) {
   .container {
-    padding: 4rem 11rem;
+    padding: 3rem 11rem;
 
     .text {
       padding: 0.5em 4rem;
@@ -132,13 +132,13 @@
 
 @media (min-width: 1600px) {
   .container {
-    padding: 6.5rem 16rem;
+    padding: 3rem 16rem;
 
     .text {
-      padding: 0.3rem 5rem;
+      padding: 1.5rem 5rem;
 
       p {
-        font-size: 1.45em;
+        font-size: 1.5em;
 
         span {
           width: 95%;
