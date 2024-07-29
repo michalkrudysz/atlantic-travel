@@ -2,12 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import apiClient from "../api/client";
 import endpoints from "../api/endpoints";
 
-interface TripImage {
+export interface TripImage {
   image_url: string;
   description: string;
 }
 
-interface Trip {
+export interface Trip {
   trip_id: number;
   title: string;
   start_date: string;

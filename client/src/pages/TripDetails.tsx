@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import trips from "../components/testData"; // Upewnij się, że ten import odnosi się do odpowiedniego pliku
 
 export default function TripDetails() {
   const { tripTitleDetails } = useParams();
