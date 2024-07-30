@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+
+  .title {
+    width: 90vw;
+    border-radius: 1rem;
+    margin-bottom: 0.2rem;
+    background-color: rgba(231, 242, 148, 1);
+    background-image: linear-gradient(
+      174deg,
+      rgba(231, 242, 148, 1) 42%,
+      rgba(242, 232, 92, 1) 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+
+    h1 {
+      font-weight: 500;
+
+      span {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .days {
+    width: 90vw;
+
+    .day-container {
+      margin-top: 0.4rem;
+      border-radius: 1rem;
+      height: auto;
+      padding: 1rem 0rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      -webkit-box-shadow: 0px 1px 19px -11px rgba(66, 68, 90, 1);
+      -moz-box-shadow: 0px 1px 19px -11px rgba(66, 68, 90, 1);
+      box-shadow: 0px 1px 19px -11px rgba(66, 68, 90, 1);
+
+      .day {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .description {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 0rem 0.9rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  .container {
+    .title {
+      height: 3.5rem;
+      font-size: 1.1rem;
+
+      h1 span {
+        font-size: 1.4rem;
+      }
+    }
+
+    .days .day-container {
+      padding: 1.5rem 0rem;
+
+      .day {
+        font-size: 1.1rem;
+      }
+
+      .description {
+        font-size: 1rem;
+        padding: 0rem 0.6rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    margin-top: 0.8rem;
+
+    .title {
+      width: 95vw;
+      height: 3.9rem;
+      font-size: 1.3rem;
+
+      h1 span {
+        font-size: 1.6rem;
+      }
+    }
+
+    .days .day-container {
+      .day {
+        font-size: 1.3rem;
+      }
+
+      .description {
+        font-size: 1.1rem;
+        padding: 0rem 0.2rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .container .title {
+    width: 90vw;
+    height: 4.2rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    .title {
+      width: 80vw;
+    }
+    .days {
+      width: 80vw;
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    .title {
+      width: 70vw;
+    }
+    .days {
+      width: 70vw;
+    }
+  }
+}
