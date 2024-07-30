@@ -51,6 +51,13 @@ export class Trips extends Model<Trips> {
   })
   description!: string;
 
+  @Column({
+    type: DataType.INTEGER.UNSIGNED, // Typ danych kolumny
+    allowNull: false,
+    defaultValue: 0, // Domyślna wartość kolumny
+  })
+  image_id!: number;
+
   // Definicja relacji HasOne z modelem TripImages
   @HasOne(() => TripImages)
   image!: TripImages; // Relacja wskazuje, że jeden trip ma dokładnie jeden obraz

@@ -7,7 +7,7 @@ export const getAllTrips = async () => {
   try {
     // Pobieranie wszystkich wycieczek z bazy danych
     const trips = await Trips.findAll({
-      attributes: ["trip_id", "title", "start_date", "end_date"], // Ograniczenie atrybutów do niezbędnych
+      attributes: ["trip_id", "title", "start_date", "end_date", "priority"], // Ograniczenie atrybutów do niezbędnych
       include: [
         {
           model: TripImages,
