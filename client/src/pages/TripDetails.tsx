@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
+import classes from "./TripDetails.module.scss";
+import Title from "../components/TripDetails/Title";
 
 export default function TripDetails() {
   const { tripTitleDetails } = useParams();
   const decodedTitle = decodeURIComponent(tripTitleDetails);
 
   return (
-    <div>
-      <h1>{tripTitleDetails}</h1>
-      <h1>{`Zdekodowany: ${decodedTitle}`}</h1>
-    </div>
+    <>
+      <div className={classes.main}>
+        <Title />
+      </div>
+    </>
   );
 }
