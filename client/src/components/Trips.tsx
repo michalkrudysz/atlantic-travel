@@ -24,11 +24,15 @@ export default function Trips() {
     }
   }, [error]);
 
+  const sortedTrips = backendData
+    ? [...backendData].sort((a, b) => a.priority - b.priority)
+    : [];
+
   return (
     <div className={classes.trips}>
       <h1>Nasza aktualna oferta</h1>
       <div className={classes.trip}>
-        {backendData?.map((trip) => (
+        {sortedTrips.map((trip) => (
           <Trip key={trip.trip_id} trip={trip} />
         ))}
       </div>

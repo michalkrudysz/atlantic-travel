@@ -13,6 +13,7 @@ export interface Trip {
   start_date: string;
   end_date: string;
   image: TripImage;
+  priority: number;
 }
 
 const fetchTrips = async (): Promise<Trip[]> => {
