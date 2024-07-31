@@ -11,7 +11,10 @@ export default function Title() {
         </h3>
       </div>
       <div className={classes.image}>
-        <img src="https://via.placeholder.com/150" alt="Paryż" />
+        <img
+          src="https://fly.pl/wp-content/uploads/2014/06/Wenecja.jpg"
+          alt="Paryż"
+        />
       </div>
     </div>
   );
