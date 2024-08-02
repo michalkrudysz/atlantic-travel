@@ -28,35 +28,6 @@
       }
     }
   }
-
-  .days {
-    width: 90vw;
-
-    .day-container {
-      margin-top: 0.4rem;
-      border-radius: 1rem;
-      height: auto;
-      padding: 1rem 0rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      -webkit-box-shadow: 0px 1px 19px -11px rgba(66, 68, 90, 1);
-      -moz-box-shadow: 0px 1px 19px -11px rgba(66, 68, 90, 1);
-      box-shadow: 0px 1px 19px -11px rgba(66, 68, 90, 1);
-
-      .day {
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-      }
-
-      .description {
-        font-size: 0.9rem;
-        text-align: center;
-        padding: 0rem 0.9rem;
-      }
-    }
-  }
 }
 
 @media (min-width: 400px) {
@@ -67,19 +38,6 @@
 
       h1 span {
         font-size: 1.4rem;
-      }
-    }
-
-    .days .day-container {
-      padding: 1.5rem 0rem;
-
-      .day {
-        font-size: 1.1rem;
-      }
-
-      .description {
-        font-size: 1rem;
-        padding: 0rem 0.6rem;
       }
     }
   }
@@ -99,19 +57,6 @@
         letter-spacing: 0.03rem;
       }
     }
-
-    .days .day-container {
-      .day {
-        font-size: 1.1rem;
-      }
-
-      .description {
-        font-size: 1.05rem;
-        font-weight: 300;
-        letter-spacing: 0.03rem;
-        padding: 0rem 0.2rem;
-      }
-    }
   }
 }
 
@@ -127,18 +72,12 @@
     .title {
       width: 80vw;
     }
-    .days {
-      width: 80vw;
-    }
   }
 }
 
 @media (min-width: 1600px) {
   .container {
     .title {
-      width: 70vw;
-    }
-    .days {
       width: 70vw;
     }
   }
