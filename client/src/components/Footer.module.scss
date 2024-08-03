@@ -1,0 +1,57 @@
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: auto;
+  padding: 1rem 0;
+  margin-top: 1.2rem;
+  gap: 0.2rem;
+  overflow: hidden;
+  background-image: linear-gradient(
+    to bottom,
+    #f0d822,
+    #ebc91f,
+    #e6ba1c,
+    #e1ab19,
+    #dc9c16
+  );
+  background-size: 100% 100%;
+  box-shadow: 0px -5px 20px -10px rgba(66, 68, 90, 0.6);
+  font-size: calc(0.8rem + 0.2vw);
+  letter-spacing: 0.03rem;
+
+  .company {
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .author {
+    padding-top: 0.1rem;
+    cursor: pointer;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  .footer {
+    font-size: calc(0.9rem + 0.2vw);
+  }
+}
+
+@media (min-width: 992px) {
+  .footer {
+    flex-direction: row;
+    gap: 0.8rem;
+    box-shadow: 0px -5px 30px -20px rgba(66, 68, 90, 0.6);
+    font-size: calc(0.75rem + 0.1vw);
+  }
+}
