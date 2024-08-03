@@ -3,6 +3,7 @@ import classes from "./TripDetails.module.scss";
 import Title from "../components/TripDetails/Title";
 import TripDays from "../components/TripDetails/TripDays";
 import Services from "../components/Services";
+import Footer from "../components/Footer";
 
 export default function TripDetails() {
   const { tripTitleDetails } = useParams();
@@ -14,6 +15,7 @@ export default function TripDetails() {
         <Title />
         <TripDays />
         <Services />
+        <Footer />
       </div>
     </>
   );

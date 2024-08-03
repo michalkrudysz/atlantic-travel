@@ -14,15 +14,15 @@
   overflow: hidden;
   background-image: linear-gradient(
     to bottom,
-    #f0d822,
-    #ebc91f,
-    #e6ba1c,
-    #e1ab19,
-    #dc9c16
+    #f0a822,
+    #ed9f1f,
+    #ea961c,
+    #e78d19,
+    #e48416
   );
   background-size: 100% 100%;
-  box-shadow: 0px -5px 20px -10px rgba(66, 68, 90, 0.6);
-  font-size: calc(0.8rem + 0.2vw);
+  box-shadow: 0px -2px 10px -5px rgba(66, 68, 90, 0.3);
+  font-size: calc(0.7rem + 0.2vw);
   letter-spacing: 0.03rem;
 
   .company {
@@ -43,7 +43,7 @@
 
 @media (min-width: 400px) {
   .footer {
-    font-size: calc(0.9rem + 0.2vw);
+    font-size: calc(0.8rem + 0.2vw);
   }
 }
 
@@ -51,7 +51,7 @@
   .footer {
     flex-direction: row;
     gap: 0.8rem;
-    box-shadow: 0px -5px 30px -20px rgba(66, 68, 90, 0.6);
-    font-size: calc(0.75rem + 0.1vw);
+    box-shadow: 0px -2px 15px -10px rgba(66, 68, 90, 0.3);
+    font-size: calc(0.65rem + 0.1vw);
   }
 }
