@@ -28,6 +28,23 @@
       }
     }
   }
+
+  .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    ol {
+      margin-top: 0.3rem;
+      li {
+        margin-top: 0.3rem;
+        text-align: center;
+        font-weight: 300;
+        padding: 0 0.4rem;
+      }
+    }
+  }
 }
 
 @media (min-width: 400px) {
@@ -40,10 +57,18 @@
         font-size: 1.4rem;
       }
     }
+    .services {
+      ol {
+        li {
+          font-size: 1.1rem;
+          padding: 0 0.7rem;
+        }
+      }
+    }
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 992px) {
   .container {
     margin-top: 0.8rem;
 
@@ -53,17 +78,35 @@
       font-size: 1.3rem;
 
       h1 span {
-        font-size: 1.4rem;
         letter-spacing: 0.03rem;
+      }
+    }
+    .services {
+      ol {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.1rem;
+        width: 90vw;
+        li {
+          width: 40%;
+        }
       }
     }
   }
 }
 
 @media (min-width: 1200px) {
-  .container .title {
-    width: 90vw;
-    height: 4.2rem;
+  .container {
+    .title {
+      width: 90vw;
+      height: 4.2rem;
+    }
+  }
+  .services {
+    ol {
+      gap: 0.4rem;
+    }
   }
 }
 
@@ -72,6 +115,15 @@
     .title {
       width: 80vw;
     }
+    .services {
+      ol {
+        gap: 0.2rem;
+        width: 80vw;
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    }
   }
 }
 
@@ -79,6 +131,11 @@
   .container {
     .title {
       width: 70vw;
+    }
+    .services {
+      ol {
+        width: 75vw;
+      }
     }
   }
 }

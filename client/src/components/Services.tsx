@@ -8,6 +8,16 @@ export default function Services() {
           <span>Ś</span>wiadczenia
         </h1>
       </div>
+      <div className={classes.services}>
+        <ol>
+          <li>- Przejazd autokarem klasy LUX</li>
+          <li>- Opłaty drogowe i autostrady</li>
+          <li>- Wyżywienie wg programu: śniadania i obiadokolacje</li>
+          <li>- Przejazd autokarem klasy LUX</li>
+          <li>- Opłaty drogowe i autostrady</li>
+          <li>- Wyżywienie wg programu: śniadania i obiadokolacje</li>
+        </ol>
+      </div>
     </div>
   );
 }
