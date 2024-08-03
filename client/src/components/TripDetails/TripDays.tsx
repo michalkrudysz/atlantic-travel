@@ -33,6 +33,14 @@ export default function TripDays() {
             <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
           </div>
         </div>
+        <div className={classes["day-container"]}>
+          <div className={classes.day}>Wycieczki wliczone w koszty wyjazdu</div>
+          <div className={classes.included}>
+            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
+            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
+            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
+          </div>
+        </div>
       </div>
     </div>
   );

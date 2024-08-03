@@ -55,6 +55,20 @@
         text-align: center;
         padding: 0rem 0.9rem;
       }
+      .included {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        p {
+          margin-top: 0.3rem;
+          font-weight: 400;
+          padding: 0rem 0.8rem;
+          font-size: 0.9rem;
+          letter-spacing: 0.01rem;
+        }
+      }
     }
   }
 }
@@ -80,6 +94,12 @@
       .description {
         font-size: 1rem;
         padding: 0rem 0.6rem;
+      }
+      .included {
+        p {
+          padding: 0rem 0.8rem;
+          font-size: 1.05rem;
+        }
       }
     }
   }
@@ -110,6 +130,14 @@
         font-weight: 300;
         letter-spacing: 0.03rem;
         padding: 0rem 0.2rem;
+      }
+      .included {
+        p {
+          margin-top: 0.4rem;
+          font-weight: 400;
+          padding: 0rem 0.4rem;
+          font-size: 0.98rem;
+        }
       }
     }
   }
