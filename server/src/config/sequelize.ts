@@ -7,6 +7,7 @@ import { TripDays } from "../models/tripDays";
 import { IncludedExcursions } from "../models/includedExcursions";
 import { OptionalExcursions } from "../models/optionalExcursions";
 import { Services } from "../models/services";
+import { TripContacts } from "../models/tripContacts";
 // Import modułu dotenv do zarządzania zmiennymi środowiskowymi
 import dotenv from "dotenv";
 
@@ -43,6 +44,7 @@ sequelize.addModels([
   IncludedExcursions,
   OptionalExcursions,
   Services,
+  TripContacts,
 ]);
 
 // Eksportowanie instancji Sequelize
