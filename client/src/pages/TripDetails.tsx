@@ -4,6 +4,7 @@ import Title from "../components/TripDetails/Title";
 import TripDays from "../components/TripDetails/TripDays";
 import Services from "../components/TripDetails/Services";
 import OptionalExcursions from "../components/TripDetails/OptionalExcursions";
+import TripContacts from "../components/TripDetails/TripContacts";
 import Footer from "../components/Footer";
 
 export default function TripDetails() {
@@ -17,6 +18,7 @@ export default function TripDetails() {
         <TripDays />
         <Services />
         <OptionalExcursions />
+        <TripContacts />
         <Footer />
       </div>
     </>

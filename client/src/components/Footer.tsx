@@ -12,7 +12,7 @@ export default function Footer() {
       </div>
       <div className={classes.author}>
         <p>
-          Autor:{" "}
+          Realizacja:{" "}
           <a href="https://krudysz.pl/">
             <span>Michał Krudysz</span>
           </a>
