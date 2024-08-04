@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import classes from "./TripDetails.module.scss";
 import Title from "../components/TripDetails/Title";
 import TripDays from "../components/TripDetails/TripDays";
@@ -7,9 +7,16 @@ import OptionalExcursions from "../components/TripDetails/OptionalExcursions";
 import TripContacts from "../components/TripDetails/TripContacts";
 import Footer from "../components/Footer";
 
+interface LocationState {
+  tripId: number;
+}
+
 export default function TripDetails() {
-  const { tripTitleDetails } = useParams();
-  const decodedTitle = decodeURIComponent(tripTitleDetails);
+  const location = useLocation();
+  const state = location.state as LocationState;
+  const tripId = state?.tripId;
+
+  console.log("Trip ID:", tripId);
 
   return (
     <>
