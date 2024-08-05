@@ -1,6 +1,11 @@
 import classes from "./Title.module.scss";
 
-export default function Title() {
+interface TitleProps {
+  imageUrl: string;
+  imageDescription: string;
+}
+
+export default function Title({ imageUrl, imageDescription }: TitleProps) {
   return (
     <div className={classes.container}>
       <div className={classes["title-container"]}>
@@ -11,10 +16,7 @@ export default function Title() {
         </h3>
       </div>
       <div className={classes.image}>
-        <img
-          src="https://fly.pl/wp-content/uploads/2014/06/Wenecja.jpg"
-          alt="Paryż"
-        />
+        <img src={imageUrl} alt={imageDescription} />{" "}
       </div>
     </div>
   );

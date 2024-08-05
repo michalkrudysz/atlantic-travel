@@ -12,7 +12,11 @@ export default function TripComponent({ trip }: { trip: Trip }) {
         <img src={trip.image.image_url} alt={trip.image.description} />
         <Link
           to={`/${encodeURIComponent(trip.title)}`}
-          state={{ tripId: trip.trip_id }}
+          state={{
+            tripId: trip.trip_id,
+            imageUrl: trip.image.image_url,
+            imageDescription: trip.image.description,
+          }}
           className={classes.overlay}
         >
           <span className={classes["overlay-text"]}>ZOBACZ WIĘCEJ</span>
