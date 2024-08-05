@@ -1,6 +1,10 @@
 import classes from "./Services.module.scss";
 
-export default function Services() {
+interface ServicesProps {
+  services?: { description: string }[];
+}
+
+export default function Services({ services }: ServicesProps) {
   return (
     <div className={classes.container}>
       <div className={classes.title}>
@@ -9,14 +13,17 @@ export default function Services() {
         </h1>
       </div>
       <div className={classes.services}>
-        <ol>
-          <li>- Przejazd autokarem klasy LUX</li>
-          <li>- Opłaty drogowe i autostrady</li>
-          <li>- Wyżywienie wg programu: śniadania i obiadokolacje</li>
-          <li>- Przejazd autokarem klasy LUX</li>
-          <li>- Opłaty drogowe i autostrady</li>
-          <li>- Wyżywienie wg programu: śniadania i obiadokolacje</li>
-        </ol>
+        {services && services.length > 0 ? (
+          <ol>
+            {services.map((service, index) => (
+              <li key={index}>{`- ${service.description}`}</li>
+            ))}
+          </ol>
+        ) : (
+          <div className={classes["no-data"]}>
+            Brak danych o świadczeniach do wyświetlenia.
+          </div>
+        )}
       </div>
     </div>
   );

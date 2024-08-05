@@ -10,10 +10,10 @@ export interface TripDetails {
   description: string;
   trip_id: number;
   tripDays: { day_number: string; description: string }[];
-  IncludedExcursions: { description: string }[];
-  OptionalExcursions: { description: string }[];
-  Services: { description: string }[];
-  TripContacts: {
+  includedExcursions: { description: string }[];
+  optionalExcursions: { description: string }[];
+  services: { description: string }[];
+  tripContacts: {
     phone1: string;
     phone2: string;
     phone3: string;

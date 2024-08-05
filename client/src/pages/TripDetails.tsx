@@ -13,11 +13,6 @@ interface LocationState {
   imageUrl: string;
   imageDescription: string;
   tripTitle: string;
-  price: number;
-  additionalCosts: number;
-  description: string;
-  days: { day_number: string; description: string }[];
-  included: { description: string }[];
 }
 
 export default function TripDetails() {
@@ -28,8 +23,6 @@ export default function TripDetails() {
   const imageDescription = state?.imageDescription;
   const tripTitle = state?.tripTitle;
 
-  console.log("Trip ID from location state:", tripId);
-
   const { data: tripDetails, isLoading, error } = useTripDetails(tripId!);
 
   if (isLoading) {
@@ -39,8 +32,6 @@ export default function TripDetails() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
-  console.log("Trip Details:", tripDetails);
 
   return (
     <>
@@ -59,7 +50,7 @@ export default function TripDetails() {
           days={tripDetails!.tripDays}
           included={tripDetails!.includedExcursions}
         />
-        <Services />
+        <Services services={tripDetails!.services} />
         <OptionalExcursions />
         <TripContacts />
         <Footer />
