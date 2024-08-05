@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../api/client";
+import endpoints from "../api/endpoints";
 
 export interface TripDetails {
   start_date: string;
@@ -25,7 +26,9 @@ export interface TripDetails {
 }
 
 const fetchTripDetails = async (tripId: number): Promise<TripDetails> => {
-  const response = await apiClient.get(`/trips/${tripId}`);
+  const response = await apiClient.get(
+    endpoints.trips.getTripDetails.replace(":tripId", tripId.toString())
+  );
   return response.data;
 };
 

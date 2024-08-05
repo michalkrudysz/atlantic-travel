@@ -75,7 +75,7 @@
     margin-top: 0.8rem;
     font-size: 1rem;
     letter-spacing: 0.03rem;
-    width: 80%;
+    width: 65%;
 
     .title {
       h1 {
@@ -107,14 +107,14 @@
 
 @media (min-width: 1200px) {
   .container {
-    width: 73%;
+    width: 55%;
   }
 }
 
 @media (min-width: 1400px) {
   .container {
     font-size: 0.98rem;
-    width: 65%;
+    width: 45%;
 
     .payment-reference {
       margin-top: 0.5rem;
@@ -125,6 +125,6 @@
 @media (min-width: 1600px) {
   .container {
     margin-top: 1rem;
-    width: 50%;
+    width: 35%;
   }
 }

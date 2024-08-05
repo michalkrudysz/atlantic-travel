@@ -3,13 +3,18 @@ import classes from "./Title.module.scss";
 interface TitleProps {
   imageUrl: string;
   imageDescription: string;
+  tripTitle: string;
 }
 
-export default function Title({ imageUrl, imageDescription }: TitleProps) {
+export default function Title({
+  imageUrl,
+  imageDescription,
+  tripTitle,
+}: TitleProps) {
   return (
     <div className={classes.container}>
       <div className={classes["title-container"]}>
-        <h1>Paryż</h1>
+        <h1>{tripTitle}</h1>
         <h2>Termin: 23.06. - 4.07.2024</h2>
         <h3>
           <span>3895 zł</span>/osoba (wiek 15 -18 lat)

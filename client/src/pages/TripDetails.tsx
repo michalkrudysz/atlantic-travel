@@ -10,16 +10,18 @@ import { useTripDetails } from "../hooks/useTripDetails";
 
 interface LocationState {
   tripId: number;
-  imageUrl: string; // Dodane
-  imageDescription: string; // Dodane
+  imageUrl: string;
+  imageDescription: string;
+  tripTitle: string; // Add tripTitle to LocationState
 }
 
 export default function TripDetails() {
   const location = useLocation();
   const state = location.state as LocationState;
   const tripId = state?.tripId;
-  const imageUrl = state?.imageUrl; // Dodane
-  const imageDescription = state?.imageDescription; // Dodane
+  const imageUrl = state?.imageUrl;
+  const imageDescription = state?.imageDescription;
+  const tripTitle = state?.tripTitle; // Access tripTitle from state
 
   console.log("Trip ID from location state:", tripId);
 
@@ -38,7 +40,11 @@ export default function TripDetails() {
   return (
     <>
       <div className={classes.main}>
-        <Title imageUrl={imageUrl} imageDescription={imageDescription} />{" "}
+        <Title
+          imageUrl={imageUrl}
+          imageDescription={imageDescription}
+          tripTitle={tripTitle}
+        />
         <TripDays />
         <Services />
         <OptionalExcursions />

@@ -16,6 +16,7 @@ export default function TripComponent({ trip }: { trip: Trip }) {
             tripId: trip.trip_id,
             imageUrl: trip.image.image_url,
             imageDescription: trip.image.description,
+            tripTitle: trip.title,
           }}
           className={classes.overlay}
         >
