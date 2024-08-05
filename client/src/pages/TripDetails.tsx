@@ -51,7 +51,9 @@ export default function TripDetails() {
           included={tripDetails!.includedExcursions}
         />
         <Services services={tripDetails!.services} />
-        <OptionalExcursions />
+        <OptionalExcursions
+          optionalExcursions={tripDetails!.optionalExcursions}
+        />
         <TripContacts />
         <Footer />
       </div>

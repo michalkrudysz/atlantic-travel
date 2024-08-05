@@ -1,6 +1,12 @@
 import classes from "./OptionalExcursions.module.scss";
 
-export default function OptionalExcursions() {
+interface OptionalExcursionsProps {
+  optionalExcursions?: { description: string }[];
+}
+
+export default function OptionalExcursions({
+  optionalExcursions,
+}: OptionalExcursionsProps) {
   return (
     <div className={classes.container}>
       <div className={classes.title}>
@@ -9,26 +15,19 @@ export default function OptionalExcursions() {
         </h1>
       </div>
       <div className={classes.days}>
-        <div className={classes["day-container"]}>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
+        {optionalExcursions && optionalExcursions.length > 0 ? (
+          optionalExcursions.map((excursion, index) => (
+            <div key={index} className={classes["day-container"]}>
+              <div className={classes.description}>
+                <p>{excursion.description}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className={classes["no-data"]}>
+            Brak danych o wycieczkach fakultatywnych do wyświetlenia.
           </div>
-        </div>
-        <div className={classes["day-container"]}>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-          </div>
-        </div>
-        <div className={classes["day-container"]}>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-          </div>
-        </div>
-        <div className={classes["day-container"]}>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
