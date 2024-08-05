@@ -4,37 +4,41 @@ import {
   Model,
   DataType,
   ForeignKey,
+  BelongsTo,
 } from "sequelize-typescript";
 import { Trips } from "./trips";
 
 @Table({
-  tableName: "tripimages", // Nazwa tabeli w bazie danych
-  timestamps: false, // Wyłączenie domyślnego dodawania kolumn timestamp (created_at, updated_at)
+  tableName: "tripimages",
+  timestamps: false,
 })
 export class TripImages extends Model<TripImages> {
   @Column({
     type: DataType.INTEGER.UNSIGNED,
-    primaryKey: true, // Ustawienie tej kolumny jako klucz główny
-    autoIncrement: true, // Wartość kolumny będzie automatycznie inkrementowana
+    primaryKey: true,
+    autoIncrement: true,
   })
-  image_id!: number; // Identyfikator obrazu
+  image_id!: number;
 
   @ForeignKey(() => Trips)
   @Column({
     type: DataType.INTEGER,
-    allowNull: true, // Kolumna może przyjąć wartość NULL
+    allowNull: true,
   })
-  trip_id!: number; // Klucz obcy odnoszący się do tabeli Trips
+  trip_id!: number;
 
   @Column({
     type: DataType.STRING(255),
-    allowNull: true, // Kolumna może przyjąć wartość NULL
+    allowNull: true,
   })
-  image_url!: string; // URL obrazu
+  image_url!: string;
 
   @Column({
     type: DataType.TEXT,
-    allowNull: true, // Kolumna może przyjąć wartość NULL
+    allowNull: true,
   })
-  description!: string; // Opis obrazu
+  description!: string;
+
+  @BelongsTo(() => Trips)
+  trip!: Trips;
 }

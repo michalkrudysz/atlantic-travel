@@ -1,64 +1,88 @@
-// Importowanie niezbędnych dekoratorów i typów danych z biblioteki sequelize-typescript
-import { Table, Column, Model, DataType, HasOne } from "sequelize-typescript";
-import { TripImages } from "./tripImages"; // Import modelu TripImages
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  HasOne,
+  HasMany,
+} from "sequelize-typescript";
+import { TripImages } from "./tripImages";
+import { TripDays } from "./tripDays";
+import { IncludedExcursions } from "./includedExcursions";
+import { OptionalExcursions } from "./optionalExcursions";
+import { Services } from "./services";
+import { TripContacts } from "./tripContacts";
 
-// Definicja klasy modelu Trips, która odpowiada tabeli 'trips' w bazie danych
 @Table({
-  tableName: "trips", // Nazwa tabeli w bazie danych
-  timestamps: false, // Brak automatycznych znaczników czasu (createdAt, updatedAt)
+  tableName: "trips",
+  timestamps: false,
 })
 export class Trips extends Model<Trips> {
   @Column({
-    type: DataType.INTEGER.UNSIGNED, // Typ danych kolumny
-    primaryKey: true, // Oznaczenie kolumny jako klucza głównego
-    autoIncrement: true, // Autoinkrementacja wartości
+    type: DataType.INTEGER.UNSIGNED,
+    primaryKey: true,
+    autoIncrement: true,
   })
   trip_id!: number;
 
   @Column({
-    type: DataType.STRING(255), // Typ danych kolumny - string o maksymalnej długości 255 znaków
-    allowNull: false, // Kolumna nie może przyjmować wartości NULL
+    type: DataType.STRING(255),
+    allowNull: false,
   })
   title!: string;
 
   @Column({
-    type: DataType.DATE, // Typ danych kolumny - data
+    type: DataType.DATE,
     allowNull: false,
   })
   start_date!: Date;
 
   @Column({
-    type: DataType.DATE, // Typ danych kolumny - data
+    type: DataType.DATE,
     allowNull: false,
   })
   end_date!: Date;
 
   @Column({
-    type: DataType.DECIMAL(10, 2), // Typ danych kolumny - liczba dziesiętna
+    type: DataType.DECIMAL(10, 2),
     allowNull: false,
   })
   price_per_person!: number;
 
   @Column({
-    type: DataType.DECIMAL(10, 2), // Typ danych kolumny - liczba dziesiętna
+    type: DataType.DECIMAL(10, 2),
     allowNull: false,
   })
   additional_costs!: number;
 
   @Column({
-    type: DataType.TEXT, // Typ danych kolumny - tekst
+    type: DataType.TEXT,
     allowNull: false,
   })
   description!: string;
 
   @Column({
-    type: DataType.INTEGER.UNSIGNED, // Typ danych kolumny
+    type: DataType.INTEGER.UNSIGNED,
     allowNull: false,
-    defaultValue: 0, // Domyślna wartość kolumny
+    defaultValue: 0,
   })
   image_id!: number;
 
-  // Definicja relacji HasOne z modelem TripImages
   @HasOne(() => TripImages)
-  image!: TripImages; // Relacja wskazuje, że jeden trip ma dokładnie jeden obraz
+  image!: TripImages;
+
+  @HasMany(() => TripDays)
+  tripDays!: TripDays[];
+
+  @HasMany(() => IncludedExcursions)
+  includedExcursions!: IncludedExcursions[];
+
+  @HasMany(() => OptionalExcursions)
+  optionalExcursions!: OptionalExcursions[];
+
+  @HasMany(() => Services)
+  services!: Services[];
+
+  @HasMany(() => TripContacts)
+  tripContacts!: TripContacts[];
 }

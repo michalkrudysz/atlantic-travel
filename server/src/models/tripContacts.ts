@@ -4,6 +4,7 @@ import {
   Model,
   DataType,
   ForeignKey,
+  BelongsTo,
 } from "sequelize-typescript";
 import { Trips } from "./trips";
 
@@ -73,4 +74,7 @@ export class TripContacts extends Model<TripContacts> {
     allowNull: true,
   })
   payment_reference!: string;
+
+  @BelongsTo(() => Trips)
+  trip!: Trips;
 }

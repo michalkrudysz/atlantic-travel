@@ -4,6 +4,7 @@ import {
   Model,
   DataType,
   ForeignKey,
+  BelongsTo,
 } from "sequelize-typescript";
 import { Trips } from "./trips";
 
@@ -31,4 +32,7 @@ export class OptionalExcursions extends Model<OptionalExcursions> {
     allowNull: true,
   })
   description!: string;
+
+  @BelongsTo(() => Trips)
+  trip!: Trips;
 }
