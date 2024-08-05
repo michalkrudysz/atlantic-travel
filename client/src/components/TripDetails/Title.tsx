@@ -29,9 +29,6 @@ export default function Title({
   additionalCosts,
   description,
 }: TitleProps) {
-  console.log(startDate);
-  console.log(endDate);
-
   const dates = formatTripDates(startDate, endDate);
 
   return (

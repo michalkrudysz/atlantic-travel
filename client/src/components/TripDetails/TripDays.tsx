@@ -1,6 +1,11 @@
 import classes from "./TripDays.module.scss";
 
-export default function TripDays() {
+interface DaysProps {
+  days?: { day_number: string; description: string }[];
+  included?: { description: string }[];
+}
+
+export default function TripDays({ days, included }: DaysProps) {
   return (
     <div className={classes.container}>
       <div className={classes.title}>
@@ -9,38 +14,32 @@ export default function TripDays() {
         </h1>
       </div>
       <div className={classes.days}>
-        <div className={classes["day-container"]}>
-          <div className={classes.day}>Dzień 1</div>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
+        {days && days.length > 0 ? (
+          days.map((day, index) => (
+            <div key={index} className={classes["day-container"]}>
+              <div className={classes.day}>Dzień {day.day_number}</div>
+              <div className={classes.description}>
+                <p>{day.description}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className={classes["no-data"]}>
+            Brak danych z dni do wyświetlenia.
           </div>
-        </div>
-        <div className={classes["day-container"]}>
-          <div className={classes.day}>Dzień 1</div>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
+        )}
+        {included && included.length > 0 && (
+          <div className={classes["day-container"]}>
+            <div className={classes.day}>
+              Wycieczki wliczone w koszty wyjazdu
+            </div>
+            <div className={classes.included}>
+              {included.map((item, index) => (
+                <p key={index}>{item.description}</p>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className={classes["day-container"]}>
-          <div className={classes.day}>Dzień 1</div>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-          </div>
-        </div>
-        <div className={classes["day-container"]}>
-          <div className={classes.day}>Dzień 1</div>
-          <div className={classes.description}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-          </div>
-        </div>
-        <div className={classes["day-container"]}>
-          <div className={classes.day}>Wycieczki wliczone w koszty wyjazdu</div>
-          <div className={classes.included}>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-            <p>Przylot do Paryża, zakwaterowanie, obiadokolacja</p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

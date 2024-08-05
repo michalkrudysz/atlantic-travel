@@ -9,7 +9,7 @@ export interface TripDetails {
   additional_costs: number;
   description: string;
   trip_id: number;
-  TripDays: { day_number: string; description: string }[];
+  tripDays: { day_number: string; description: string }[];
   IncludedExcursions: { description: string }[];
   OptionalExcursions: { description: string }[];
   Services: { description: string }[];

@@ -16,6 +16,8 @@ interface LocationState {
   price: number;
   additionalCosts: number;
   description: string;
+  days: { day_number: string; description: string }[];
+  included: { description: string }[];
 }
 
 export default function TripDetails() {
@@ -53,7 +55,10 @@ export default function TripDetails() {
           additionalCosts={tripDetails!.additional_costs}
           description={tripDetails!.description}
         />
-        <TripDays />
+        <TripDays
+          days={tripDetails!.tripDays}
+          included={tripDetails!.includedExcursions}
+        />
         <Services />
         <OptionalExcursions />
         <TripContacts />
