@@ -12,7 +12,10 @@ interface LocationState {
   tripId: number;
   imageUrl: string;
   imageDescription: string;
-  tripTitle: string; // Add tripTitle to LocationState
+  tripTitle: string;
+  price: number;
+  additionalCosts: number;
+  description: string;
 }
 
 export default function TripDetails() {
@@ -21,7 +24,7 @@ export default function TripDetails() {
   const tripId = state?.tripId;
   const imageUrl = state?.imageUrl;
   const imageDescription = state?.imageDescription;
-  const tripTitle = state?.tripTitle; // Access tripTitle from state
+  const tripTitle = state?.tripTitle;
 
   console.log("Trip ID from location state:", tripId);
 
@@ -44,6 +47,11 @@ export default function TripDetails() {
           imageUrl={imageUrl}
           imageDescription={imageDescription}
           tripTitle={tripTitle}
+          startDate={tripDetails!.start_date}
+          endDate={tripDetails!.end_date}
+          price={tripDetails!.price_per_person}
+          additionalCosts={tripDetails!.additional_costs}
+          description={tripDetails!.description}
         />
         <TripDays />
         <Services />
