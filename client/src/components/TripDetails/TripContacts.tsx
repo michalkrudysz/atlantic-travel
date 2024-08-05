@@ -1,35 +1,98 @@
 import classes from "./TripContacts.module.scss";
 
-export default function TripContacts() {
+interface TripContactsProps {
+  tripContacts:
+    | {
+        phone1: string;
+        phone2: string;
+        phone3: string;
+        email1: string;
+        email2: string;
+        payment_instructions: string;
+        additional_description: string;
+        payment_reference: string;
+      }
+    | {
+        phone1: string;
+        phone2: string;
+        phone3: string;
+        email1: string;
+        email2: string;
+        payment_instructions: string;
+        additional_description: string;
+        payment_reference: string;
+      }[];
+}
+
+export default function TripContacts({ tripContacts }: TripContactsProps) {
   return (
     <div className={classes.container}>
       <div className={classes.title}>
         <h1>Zgłoszenia prosimy kierować na:</h1>
       </div>
-      <div className={classes.contacts}>
-        <h2>Telefon:</h2>
-        <p>17 852 66 76</p>
-        <p>510 991 590</p>
-        <p>602 551 743</p>
-        <h2>Email:</h2>
-        <p>info@atlantictravel.pl</p>
-        <p>info@atlantictravel.pl</p>
-      </div>
-      <div className={classes["additional-description"]}>
-        <p>
-          Miejsca w autokarze są przydzielane zgodnie z kolejnością zgłoszeń.
-          Warunkiem potwierdzenia udziału w imprezie jest wpłata wymaganej
-          zaliczki (wpisowe). Wpłata zaliczki w kwocie 500 zł do dnia
-          15.01.2024r. gwarantuje niezmienność ceny.
-        </p>
-      </div>
-      <div className={classes["payment-instructions"]}>
-        Zaliczki prosimy wpłacać na konto BUT” ATLANTIC” PKO BP Inteligo 50 1020
-        5558 1111 1275 4430 0087
-      </div>
-      <div className={classes["payment-reference"]}>
-        <p>Z dopiskiem wycieczka do Grecji w terminie 15 - 24.06.2024r.</p>
-      </div>
+      {Array.isArray(tripContacts) ? (
+        tripContacts.length > 0 ? (
+          tripContacts.map((contact, index) => (
+            <div key={index}>
+              <div className={classes.contacts}>
+                <h2>Telefon:</h2>
+                {contact.phone1 && <p>{contact.phone1}</p>}
+                {contact.phone2 && <p>{contact.phone2}</p>}
+                {contact.phone3 && <p>{contact.phone3}</p>}
+                <h2>Email:</h2>
+                {contact.email1 && <p>{contact.email1}</p>}
+                {contact.email2 && <p>{contact.email2}</p>}
+              </div>
+              {contact.additional_description && (
+                <div className={classes["additional-description"]}>
+                  <p>{contact.additional_description}</p>
+                </div>
+              )}
+              {contact.payment_instructions && (
+                <div className={classes["payment-instructions"]}>
+                  {contact.payment_instructions}
+                </div>
+              )}
+              {contact.payment_reference && (
+                <div className={classes["payment-reference"]}>
+                  <p>{contact.payment_reference}</p>
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <div className={classes["no-data"]}>
+            Brak danych kontaktowych do wyświetlenia.
+          </div>
+        )
+      ) : (
+        <div>
+          <div className={classes.contacts}>
+            <h2>Telefon:</h2>
+            {tripContacts.phone1 && <p>{tripContacts.phone1}</p>}
+            {tripContacts.phone2 && <p>{tripContacts.phone2}</p>}
+            {tripContacts.phone3 && <p>{tripContacts.phone3}</p>}
+            <h2>Email:</h2>
+            {tripContacts.email1 && <p>{tripContacts.email1}</p>}
+            {tripContacts.email2 && <p>{tripContacts.email2}</p>}
+          </div>
+          {tripContacts.additional_description && (
+            <div className={classes["additional-description"]}>
+              <p>{tripContacts.additional_description}</p>
+            </div>
+          )}
+          {tripContacts.payment_instructions && (
+            <div className={classes["payment-instructions"]}>
+              {tripContacts.payment_instructions}
+            </div>
+          )}
+          {tripContacts.payment_reference && (
+            <div className={classes["payment-reference"]}>
+              <p>{tripContacts.payment_reference}</p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

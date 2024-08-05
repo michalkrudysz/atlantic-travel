@@ -7,12 +7,6 @@ export default function Trips() {
   const { data: backendData, isLoading, error } = useTrips();
 
   useEffect(() => {
-    if (backendData) {
-      console.log("Dane otrzymane z backendu:", backendData);
-    }
-  }, [backendData]);
-
-  useEffect(() => {
     if (isLoading) {
       console.log("Ładowanie danych z backendu...");
     }

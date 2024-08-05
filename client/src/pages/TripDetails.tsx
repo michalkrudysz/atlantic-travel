@@ -32,7 +32,6 @@ export default function TripDetails() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
   return (
     <>
       <div className={classes.main}>
@@ -54,7 +53,7 @@ export default function TripDetails() {
         <OptionalExcursions
           optionalExcursions={tripDetails!.optionalExcursions}
         />
-        <TripContacts />
+        <TripContacts tripContacts={tripDetails!.tripContacts} />
         <Footer />
       </div>
     </>
