@@ -26,7 +26,7 @@ export default function TripDetails() {
   const { data: tripDetails, isLoading, error } = useTripDetails(tripId!);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   if (error) {

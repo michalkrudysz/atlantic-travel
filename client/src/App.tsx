@@ -5,12 +5,21 @@ import TripDetails from "./pages/TripDetails";
 import SchoolTripDetails from "./pages/SchoolTripDetails";
 import LoadingPage from "./pages/LoadingPage";
 import "./App.scss";
+import { useState } from "react";
 
 const Layout = () => {
+  const [loading, setLoading] = useState(true);
+
   return (
     <div className="App">
-      <Header />
-      <Outlet />
+      {loading ? (
+        <LoadingPage />
+      ) : (
+        <>
+          <Header />
+          <Outlet />
+        </>
+      )}
     </div>
   );
 };
@@ -18,7 +27,7 @@ const Layout = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LoadingPage />,
+    element: <Layout />,
     children: [
       {
         index: true,
