@@ -1,0 +1,164 @@
+.school-trips {
+  margin-top: 0.7rem;
+
+  h1 {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #f2c777;
+      border-radius: 50%;
+    }
+
+    &::before {
+      left: -20px;
+    }
+
+    &::after {
+      right: -20px;
+    }
+  }
+
+  .trip-days {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+
+    .trip-day {
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+      width: 90vw;
+      border-radius: 10px;
+      height: 20vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      background-image: linear-gradient(to right top, #e6b040, #edc653);
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  .school-trips h1 {
+    font-size: 1.2rem;
+  }
+  .trip-days .trip-day {
+    width: 95vw;
+    font-size: 1.08rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .school-trips {
+    width: 95vw;
+
+    h1 {
+      font-size: 1.15rem;
+      margin-top: 0.5rem;
+
+      &::before,
+      &::after {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    .trip-days {
+      flex-direction: row;
+      gap: 0.8rem;
+      width: 100%;
+
+      .trip-day {
+        width: 30%;
+        font-size: 1.08rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .school-trips {
+    margin-top: 1.3rem;
+
+    h1 {
+      margin-top: 0.2rem;
+    }
+
+    .trip-days .trip-day {
+      width: 31%;
+      height: 23vh;
+      font-size: 1.05rem;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .school-trips {
+    width: 90vw;
+
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    .trip-days {
+      gap: 1.5rem;
+
+      .trip-day {
+        width: 28%;
+        height: 25vh;
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .school-trips {
+    width: 85vw;
+
+    h1 {
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      &::before,
+      &::after {
+        width: 11px;
+        height: 11px;
+      }
+    }
+
+    .trip-days {
+      gap: 1.5rem;
+
+      .trip-day {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
