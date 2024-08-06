@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import TripDetails from "./pages/TripDetails";
 import SchoolTripDetails from "./pages/SchoolTripDetails";
+import LoadingPage from "./pages/LoadingPage";
 import "./App.scss";
 
 const Layout = () => {
@@ -17,7 +18,7 @@ const Layout = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <LoadingPage />,
     children: [
       {
         index: true,
