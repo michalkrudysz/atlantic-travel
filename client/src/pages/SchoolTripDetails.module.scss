@@ -1,3 +1,207 @@
 .school-trip-details {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.2rem;
+  overflow: hidden;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 7vh;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    border-radius: 10px;
+    background-image: linear-gradient(to right top, #e6b040, #edc653);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .trip-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 90vw;
+      padding: 1.2rem 0.8rem;
+      text-align: center;
+      border-radius: 5px;
+      border-top: 4px solid #f2c777;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: scale(1.2);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        animation: wave 2s ease-in-out infinite;
+      }
+
+      h1 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.1rem;
+        margin-bottom: 0.2rem;
+
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+@media (min-width: 400px) {
+  .school-trip-details {
+    .title {
+      font-size: 1.1rem;
+    }
+
+    .container {
+      .trip-details {
+        padding: 1.2rem 1rem;
+
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        h2 {
+          font-size: 1.1rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .school-trip-details {
+    margin-top: 0.1rem;
+
+    .title {
+      align-self: start;
+      margin-left: 4.5vw;
+      width: 30vw;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+
+      .trip-details {
+        width: 45%;
+        padding: 2.5rem 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .school-trip-details {
+    .title {
+      margin-left: 6vw;
+      width: 20vw;
+    }
+
+    .container {
+      .trip-details {
+        width: 40%;
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .school-trip-details {
+    .title {
+      margin-left: 8vw;
+      width: 18vw;
+    }
+
+    .container {
+      .trip-details {
+        padding: 3.5rem 2rem;
+
+        h1 {
+          font-size: 1.15rem;
+        }
+
+        h2 {
+          font-size: 1.05rem;
+        }
+
+        p {
+          font-size: 1rem;
+          width: 90%;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1400px) {
+  .school-trip-details {
+    .title {
+      margin-left: 8vw;
+      width: 16vw;
+    }
+
+    .container {
+      .trip-details {
+        padding: 4.5rem 2rem;
+
+        h1 {
+          font-size: 1.25rem;
+        }
+
+        h2 {
+          font-size: 1.1rem;
+        }
+
+        p {
+          font-size: 1rem;
+          width: 80%;
+        }
+      }
+    }
+  }
 }
