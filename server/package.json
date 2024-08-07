@@ -20,6 +20,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.51.21",
     "@types/node": "^20.14.12",
     "@types/sequelize": "^4.28.20",
     "class-validator": "^0.14.1",

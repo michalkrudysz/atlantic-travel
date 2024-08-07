@@ -3,23 +3,13 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import TripDetails from "./pages/TripDetails";
 import SchoolTripDetails from "./pages/SchoolTripDetails";
-import LoadingPage from "./pages/LoadingPage";
 import "./App.scss";
-import { useState } from "react";
 
 const Layout = () => {
-  const [loading, setLoading] = useState(true);
-
   return (
     <div className="App">
-      {loading ? (
-        <LoadingPage />
-      ) : (
-        <>
-          <Header />
-          <Outlet />
-        </>
-      )}
+      <Header />
+      <Outlet />
     </div>
   );
 };

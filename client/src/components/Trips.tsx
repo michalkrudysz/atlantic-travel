@@ -1,22 +1,9 @@
-import { useEffect } from "react";
 import classes from "./Trips.module.scss";
 import Trip from "./Trip";
 import { useTrips } from "../hooks/useTrips";
 
 export default function Trips() {
-  const { data: backendData, isLoading, error } = useTrips();
-
-  useEffect(() => {
-    if (isLoading) {
-      console.log("Ładowanie danych z backendu...");
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (error) {
-      console.error("Błąd podczas pobierania danych z backendu:", error);
-    }
-  }, [error]);
+  const { data: backendData } = useTrips();
 
   const sortedTrips = backendData
     ? [...backendData].sort((a, b) => a.priority - b.priority)
