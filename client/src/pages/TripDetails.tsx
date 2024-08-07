@@ -23,15 +23,12 @@ export default function TripDetails() {
   const imageDescription = state?.imageDescription;
   const tripTitle = state?.tripTitle;
 
-  const { data: tripDetails, isLoading, error } = useTripDetails(tripId!);
+  const { data: tripDetails, isLoading } = useTripDetails(tripId);
 
   if (isLoading) {
     return null;
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
   return (
     <>
       <div className={classes.main}>

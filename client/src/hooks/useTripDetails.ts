@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../api/client";
 import endpoints from "../api/endpoints";
+import { useEffect } from "react";
+import { activateLoading, deactivateLoading } from "../pages/LoadingPage";
 
 export interface TripDetails {
   start_date: string;
@@ -33,9 +35,19 @@ const fetchTripDetails = async (tripId: number): Promise<TripDetails> => {
 };
 
 export const useTripDetails = (tripId: number) => {
-  return useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: ["tripDetails", tripId],
     queryFn: () => fetchTripDetails(tripId),
     enabled: !!tripId,
   });
+
+  useEffect(() => {
+    if (isLoading) {
+      activateLoading();
+    } else {
+      deactivateLoading();
+    }
+  }, [isLoading]);
+
+  return { isLoading, error, data };
 };

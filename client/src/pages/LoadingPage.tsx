@@ -1,5 +1,4 @@
 import classes from "./LoadingPage.module.scss";
-import logo from "../../public/logo.svg";
 import ReactDOM from "react-dom/client";
 
 let loadingRoot: ReactDOM.Root | null = null;
@@ -19,16 +18,26 @@ export function deactivateLoading() {
     setTimeout(() => {
       if (loadingRoot) {
         loadingRoot.unmount();
+        loadingRoot = null;
       }
-    }, 0);
+    }, 700);
   }
 }
 
 export default function LoadingPage() {
+  const logoSVG = localStorage.getItem("logoSVG");
   return (
     <div className={classes.container}>
       <div className={classes.loader}>
-        <img src={logo} alt="logo" />
+        {logoSVG && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `<img src="data:image/svg+xml;base64,${btoa(
+                logoSVG
+              )}" alt="logo" />`,
+            }}
+          />
+        )}
         <div className={classes.text}>Ładowanie treści...</div>
       </div>
     </div>
