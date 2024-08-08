@@ -6,6 +6,8 @@ import { IncludedExcursions } from "../models/includedExcursions";
 import { OptionalExcursions } from "../models/optionalExcursions";
 import { Services } from "../models/services";
 import { TripContacts } from "../models/tripContacts";
+import { SchoolTrips } from "../models/schoolTrips";
+
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -37,6 +39,7 @@ sequelize.addModels([
   OptionalExcursions,
   Services,
   TripContacts,
+  SchoolTrips,
 ]);
 
 export default sequelize;
