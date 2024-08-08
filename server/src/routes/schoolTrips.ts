@@ -1,8 +1,8 @@
-// import express from "express";
-// import * as schoolTripsController from "../controllers/schoolTripsController";
+import express from "express";
+import * as schoolTripsController from "../controllers/schoolTripsController";
 
-// const schoolTripsRouter = express.Router();
+const schoolTripsRouter = express.Router();
 
-// schoolTripsRouter.get("/:schoolTrips", schoolTripsController.getAllSchoolTrips);
+schoolTripsRouter.get("/:schoolTrips", schoolTripsController.getSchoolTrips);
 
-// export default schoolTripsRouter;
+export default schoolTripsRouter;

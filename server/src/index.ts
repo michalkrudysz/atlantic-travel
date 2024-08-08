@@ -2,7 +2,7 @@ import express from "express";
 import "reflect-metadata";
 import { dbConnectionCheck } from "./middleware/dbConnectionCheck";
 import tripsRouter from "./routes/trips";
-// import schoolTripsRouter from "./routes/schoolTrips";
+import schoolTripsRouter from "./routes/schoolTrips";
 import { corsMiddleware } from "./middleware/corsMiddleware";
 
 const app = express();
@@ -17,7 +17,7 @@ app.use(express.static("public"));
 app.use(dbConnectionCheck);
 
 app.use("/trips", tripsRouter);
-// app.use("/school", schoolTripsRouter);
+app.use("/school", schoolTripsRouter);
 
 app.listen(port, () => {
   console.log(`Serwer uruchomiony na porcie: ${port}`);
