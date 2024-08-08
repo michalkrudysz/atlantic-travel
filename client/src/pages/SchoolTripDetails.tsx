@@ -1,106 +1,61 @@
 import classes from "./SchoolTripDetails.module.scss";
 import { useParams } from "react-router-dom";
+import { useSchoolTripsDetails } from "../hooks/useSchoolTripsDetails";
 import Footer from "../components/Footer";
 
 export default function SchoolTripDetails() {
-  const { schoolTrips } = useParams();
+  const { schoolTrips } = useParams<{ schoolTrips?: string }>();
+  let tripId;
+  switch (schoolTrips) {
+    case "jednodniowe":
+      tripId = 1;
+      break;
+    case "dwudniowe":
+      tripId = 2;
+      break;
+    case "trzydniowe":
+      tripId = 3;
+      break;
+    default:
+      tripId = 0;
+      break;
+  }
 
+  const { data: schoolTripsDetails, isLoading } = useSchoolTripsDetails(tripId);
+
+  if (isLoading) {
+    return null;
+  }
+
+  if (!schoolTripsDetails) {
+    return <div>Brak danych</div>;
+  }
+
+  console.log(schoolTripsDetails);
   return (
     <div className={classes["school-trip-details"]}>
       <div className={classes.title}>
-        <h1>{schoolTrips!.charAt(0).toUpperCase() + schoolTrips!.slice(1)}</h1>
+        <h1>
+          {schoolTrips
+            ? schoolTrips.charAt(0).toUpperCase() + schoolTrips.slice(1)
+            : "Trip"}
+        </h1>
       </div>
       <div className={classes.container}>
-        <div className={classes["trip-details"]}>
-          <h1>Bałtów</h1>
-          <h2>Pogram zwiedzania</h2>
-          <p>
-            „Park Jurajski” w Bałtowie (wędrówka ścieżką edukacyjną wraz z
-            przewodnikiem prowadzącą przez poszczególne epoki geologiczne.
-            Rekonstrukcje dinozaurów naturalnej wielkości, Muzeum jurajskie,
-            plac zabaw. Dodatkowo możliwość organizacji zajęć edukacyjnych np.
-            płukanie złota).
-          </p>
-          <p>
-            <span>Świadczenia: </span>
-            autokar, parkingi, pilot - przewodnik, bilet wstępu.
-          </p>
-        </div>
-        <div className={classes["trip-details"]}>
-          <h1>Bałtów</h1>
-          <h2>Pogram zwiedzania</h2>
-          <p>
-            „Park Jurajski” w Bałtowie (wędrówka ścieżką edukacyjną wraz z
-            przewodnikiem prowadzącą przez poszczególne epoki geologiczne.
-            Rekonstrukcje dinozaurów naturalnej wielkości, Muzeum jurajskie,
-            plac zabaw. Dodatkowo możliwość organizacji zajęć edukacyjnych np.
-            płukanie złota).
-          </p>
-          <p>
-            <span>Świadczenia: </span>
-            autokar, parkingi, pilot - przewodnik, bilet wstępu.
-          </p>
-        </div>
-        <div className={classes["trip-details"]}>
-          <h1>Bałtów</h1>
-          <h2>Pogram zwiedzania</h2>
-          <p>
-            „Park Jurajski” w Bałtowie (wędrówka ścieżką edukacyjną wraz z
-            przewodnikiem prowadzącą przez poszczególne epoki geologiczne.
-            Rekonstrukcje dinozaurów naturalnej wielkości, Muzeum jurajskie,
-            plac zabaw. Dodatkowo możliwość organizacji zajęć edukacyjnych np.
-            płukanie złota).
-          </p>
-          <p>
-            <span>Świadczenia: </span>
-            autokar, parkingi, pilot - przewodnik, bilet wstępu.
-          </p>
-        </div>
-        <div className={classes["trip-details"]}>
-          <h1>Bałtów</h1>
-          <h2>Pogram zwiedzania</h2>
-          <p>
-            „Park Jurajski” w Bałtowie (wędrówka ścieżką edukacyjną wraz z
-            przewodnikiem prowadzącą przez poszczególne epoki geologiczne.
-            Rekonstrukcje dinozaurów naturalnej wielkości, Muzeum jurajskie,
-            plac zabaw. Dodatkowo możliwość organizacji zajęć edukacyjnych np.
-            płukanie złota).
-          </p>
-          <p>
-            <span>Świadczenia: </span>
-            autokar, parkingi, pilot - przewodnik, bilet wstępu.
-          </p>
-        </div>
-        <div className={classes["trip-details"]}>
-          <h1>Bałtów</h1>
-          <h2>Pogram zwiedzania</h2>
-          <p>
-            „Park Jurajski” w Bałtowie (wędrówka ścieżką edukacyjną wraz z
-            przewodnikiem prowadzącą przez poszczególne epoki geologiczne.
-            Rekonstrukcje dinozaurów naturalnej wielkości, Muzeum jurajskie,
-            plac zabaw. Dodatkowo możliwość organizacji zajęć edukacyjnych np.
-            płukanie złota).
-          </p>
-          <p>
-            <span>Świadczenia: </span>
-            autokar, parkingi, pilot - przewodnik, bilet wstępu.
-          </p>
-        </div>
-        <div className={classes["trip-details"]}>
-          <h1>Bałtów</h1>
-          <h2>Pogram zwiedzania</h2>
-          <p>
-            „Park Jurajski” w Bałtowie (wędrówka ścieżką edukacyjną wraz z
-            przewodnikiem prowadzącą przez poszczególne epoki geologiczne.
-            Rekonstrukcje dinozaurów naturalnej wielkości, Muzeum jurajskie,
-            plac zabaw. Dodatkowo możliwość organizacji zajęć edukacyjnych np.
-            płukanie złota).
-          </p>
-          <p>
-            <span>Świadczenia: </span>
-            autokar, parkingi, pilot - przewodnik, bilet wstępu.
-          </p>
-        </div>
+        {schoolTripsDetails.map((schoolTrip) => (
+          <div
+            key={schoolTrip.school_trip_id}
+            className={classes["trip-details"]}
+          >
+            <h1>{schoolTrip.name}</h1>
+            <h2>Program zwiedzania</h2>
+            <p>{schoolTrip.description}</p>
+            <p>
+              <span>Świadczenia: </span>
+              {schoolTrip.services}
+            </p>
+          </div>
+        ))}
       </div>
       <Footer />
     </div>
