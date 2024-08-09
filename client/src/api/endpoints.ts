@@ -6,6 +6,9 @@ export const endpoints = {
   schoolTrips: {
     getSchoolTripsDetails: "/school/:schoolTrips",
   },
+  testimonials: {
+    getTestimonials: "/testimonials",
+  },
 };
 
 export default endpoints;
