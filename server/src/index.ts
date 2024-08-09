@@ -3,6 +3,7 @@ import "reflect-metadata";
 import { dbConnectionCheck } from "./middleware/dbConnectionCheck";
 import tripsRouter from "./routes/trips";
 import schoolTripsRouter from "./routes/schoolTrips";
+import testimonialsRouter from "./routes/testimonials";
 import { corsMiddleware } from "./middleware/corsMiddleware";
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(dbConnectionCheck);
 
 app.use("/trips", tripsRouter);
 app.use("/school", schoolTripsRouter);
+app.use("/testimonials", testimonialsRouter);
 
 app.listen(port, () => {
   console.log(`Serwer uruchomiony na porcie: ${port}`);
