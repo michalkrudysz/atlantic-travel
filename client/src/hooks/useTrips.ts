@@ -4,19 +4,19 @@ import endpoints from "../api/endpoints";
 import { useEffect } from "react";
 import { activateLoading, deactivateLoading } from "../pages/LoadingPage";
 
-export interface TripImage {
+type TripImage = {
   image_url: string;
   description: string;
-}
+};
 
-export interface Trip {
+export type Trip = {
   trip_id: number;
   title: string;
   start_date: string;
   end_date: string;
   image: TripImage;
   priority: number;
-}
+};
 
 const fetchTrips = async (): Promise<Trip[]> => {
   const response = await apiClient.get(endpoints.trips.getTrips);
@@ -36,5 +36,6 @@ export const useTrips = () => {
       deactivateLoading();
     }
   }, [isLoading]);
+
   return { isLoading, error, data };
 };
