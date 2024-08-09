@@ -1,11 +1,20 @@
 import classes from "./TripDays.module.scss";
 
-interface DaysProps {
-  days?: { day_number: string; description: string }[];
-  included?: { description: string }[];
-}
+type Day = {
+  day_number: string;
+  description: string;
+};
 
-export default function TripDays({ days, included }: DaysProps) {
+type IncludedExcursion = {
+  description: string;
+};
+
+type TripDaysProps = {
+  days?: Day[];
+  included?: IncludedExcursion[];
+};
+
+export default function TripDays({ days = [], included = [] }: TripDaysProps) {
   return (
     <div className={classes.container}>
       <div className={classes.title}>
@@ -14,7 +23,7 @@ export default function TripDays({ days, included }: DaysProps) {
         </h1>
       </div>
       <div className={classes.days}>
-        {days && days.length > 0 ? (
+        {days.length > 0 ? (
           days.map((day, index) => (
             <div key={index} className={classes["day-container"]}>
               <div className={classes.day}>Dzień {day.day_number}</div>
@@ -28,7 +37,7 @@ export default function TripDays({ days, included }: DaysProps) {
             Brak danych z dni do wyświetlenia.
           </div>
         )}
-        {included && included.length > 0 && (
+        {included.length > 0 && (
           <div className={classes["day-container"]}>
             <div className={classes.day}>
               Wycieczki wliczone w koszty wyjazdu

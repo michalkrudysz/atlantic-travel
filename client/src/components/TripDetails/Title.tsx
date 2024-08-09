@@ -1,7 +1,7 @@
 import classes from "./Title.module.scss";
 import { formatTripDates } from "../../utils/formatTripDates";
 
-interface TitleProps {
+type TitleProps = {
   imageUrl: string;
   imageDescription: string;
   tripTitle: string;
@@ -10,14 +10,14 @@ interface TitleProps {
   price: number;
   additionalCosts: number;
   description: string;
-}
+};
 
-function formatPrice(price: number): string {
+const formatPrice = (price: number): string => {
   return new Intl.NumberFormat("pl-PL", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   }).format(price);
-}
+};
 
 export default function Title({
   imageUrl,
@@ -38,14 +38,13 @@ export default function Title({
         <h2>{`Termin: ${dates}r.`}</h2>
         <h3>
           <span>{formatPrice(price)} zł</span>
-          /osoba {additionalCosts
-            ? `+ ${formatPrice(additionalCosts)} zł`
-            : ""}{" "}
-          {description ? `${description}` : ""}
+          /osoba
+          {additionalCosts ? ` + ${formatPrice(additionalCosts)} zł` : ""}
+          {description && ` ${description}`}
         </h3>
       </div>
       <div className={classes.image}>
-        <img src={imageUrl} alt={imageDescription} />{" "}
+        <img src={imageUrl} alt={imageDescription} />
       </div>
     </div>
   );

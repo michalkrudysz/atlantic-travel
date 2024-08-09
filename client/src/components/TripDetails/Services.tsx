@@ -1,10 +1,14 @@
 import classes from "./Services.module.scss";
 
-interface ServicesProps {
-  services?: { description: string }[];
-}
+type Service = {
+  description: string;
+};
 
-export default function Services({ services }: ServicesProps) {
+type ServicesProps = {
+  services?: Service[];
+};
+
+export default function Services({ services = [] }: ServicesProps) {
   return (
     <div className={classes.container}>
       <div className={classes.title}>
@@ -13,7 +17,7 @@ export default function Services({ services }: ServicesProps) {
         </h1>
       </div>
       <div className={classes.services}>
-        {services && services.length > 0 ? (
+        {services.length > 0 ? (
           <ol>
             {services.map((service, index) => (
               <li key={index}>{`- ${service.description}`}</li>

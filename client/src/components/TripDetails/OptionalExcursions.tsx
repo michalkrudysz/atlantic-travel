@@ -1,11 +1,15 @@
 import classes from "./OptionalExcursions.module.scss";
 
-interface OptionalExcursionsProps {
-  optionalExcursions?: { description: string }[];
-}
+type Excursion = {
+  description: string;
+};
+
+type OptionalExcursionsProps = {
+  optionalExcursions?: Excursion[];
+};
 
 export default function OptionalExcursions({
-  optionalExcursions,
+  optionalExcursions = [],
 }: OptionalExcursionsProps) {
   return (
     <div className={classes.container}>
@@ -15,7 +19,7 @@ export default function OptionalExcursions({
         </h1>
       </div>
       <div className={classes.days}>
-        {optionalExcursions && optionalExcursions.length > 0 ? (
+        {optionalExcursions.length > 0 ? (
           optionalExcursions.map((excursion, index) => (
             <div key={index} className={classes["day-container"]}>
               <div className={classes.description}>
