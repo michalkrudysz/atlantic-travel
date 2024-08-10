@@ -4,6 +4,7 @@ import Trips from "../components/Trips";
 import Footer from "../components/Footer";
 import SchoolTrips from "../components/SchoolTrips";
 import Testimonials from "../components/Testimonials";
+import About from "../components/About";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Trips />
       <SchoolTrips />
       <Testimonials />
+      <About />
       <Footer />
     </div>
   );
