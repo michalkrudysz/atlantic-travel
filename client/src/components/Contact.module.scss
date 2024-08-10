@@ -1,0 +1,94 @@
+.contact {
+  margin-top: 0rem;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 0.2rem;
+    padding: 0rem;
+
+    h2 {
+      font-weight: 600;
+      font-size: 1.02rem;
+      margin-top: 0.8rem;
+    }
+
+    p {
+      margin-top: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .bank-accounts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      padding: 0 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .files-download {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  .contact {
+    .container {
+      h2 {
+        font-size: 1.08rem;
+      }
+
+      p {
+        font-size: 1.05rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .contact {
+    margin-top: 0.3rem;
+
+    .container {
+      flex-direction: row;
+      justify-content: center;
+      position: relative;
+
+      h2 {
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-info {
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .bank-accounts {
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 0.2rem;
+        width: 40%;
+      }
+
+      .files-download {
+        justify-content: flex-start;
+        align-items: center;
+
+        p {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
