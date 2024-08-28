@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./Footer.module.scss";
 
 export default function Footer() {
@@ -7,7 +8,10 @@ export default function Footer() {
     <footer className={classes.footer}>
       <div className={classes.company}>
         <p>
-          &copy; 1999 - {currentYear} <span>AtlanticTravel.pl</span>
+          &copy; 1999 - {currentYear}{" "}
+          <Link to="/login">
+            <span>AtlanticTravel.pl</span>
+          </Link>
         </p>
       </div>
       <div className={classes.author}>
