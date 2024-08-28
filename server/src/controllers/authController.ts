@@ -10,15 +10,13 @@ export const login = (req: Request, res: Response) => {
     const secret = process.env.JWT_SECRET;
 
     if (!secret) {
-      return res
-        .status(500)
-        .json({
-          message: "Błąd konfiguracji serwera: brakujący klucz sekretny JWT",
-        });
+      return res.status(500).json({
+        message: "Błąd konfiguracji serwera: brakujący klucz sekretny JWT",
+      });
     }
 
     if (password === process.env.ADMIN_PASSWORD) {
-      const token = jwt.sign({ admin: true }, secret, { expiresIn: "1h" });
+      const token = jwt.sign({ admin: true }, secret, { expiresIn: "8h" });
       return res.status(200).json({ token });
     } else {
       return res.status(401).json({ message: "Niepoprawne hasło" });

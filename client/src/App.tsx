@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import TripDetails from "./pages/TripDetails";
 import SchoolTripDetails from "./pages/SchoolTripDetails";
+import Login from "./pages/Login";
+
 import "./App.scss";
 
 const saveLogoToLocalStorage = async () => {
@@ -26,7 +28,7 @@ const App = () => {
     loadLogo();
   }, []);
 
-  const Layout = () => {
+  const MainLayout = () => {
     return (
       <div className="App">
         <Header />
@@ -35,10 +37,18 @@ const App = () => {
     );
   };
 
+  const AuthLayout = () => {
+    return (
+      <div className="App">
+        <Outlet />
+      </div>
+    );
+  };
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: <MainLayout />,
       children: [
         {
           index: true,
@@ -51,6 +61,16 @@ const App = () => {
         {
           path: "szkolne/:schoolTrips",
           element: <SchoolTripDetails />,
+        },
+      ],
+    },
+    {
+      path: "login",
+      element: <AuthLayout />,
+      children: [
+        {
+          index: true,
+          element: <Login />,
         },
       ],
     },
