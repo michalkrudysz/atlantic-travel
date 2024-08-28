@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { useEffect } from "react";
 import apiClient from "../api/client";
 import type { AxiosError } from "axios";
 import endpoints from "../api/endpoints";
@@ -21,15 +22,21 @@ const useLogin = (setError: (message: string) => void) => {
       );
       return response.data;
     },
-    onSuccess: (data) => {
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-      }
-    },
-    onError: (error) => {
-      setError(error.response?.data.message || "Unknown error occurred");
-    },
   });
+
+  useEffect(() => {
+    if (mutation.isSuccess && mutation.data.token) {
+      localStorage.setItem("token", mutation.data.token);
+    }
+  }, [mutation.isSuccess, mutation.data]);
+
+  useEffect(() => {
+    if (mutation.isError) {
+      setError(
+        mutation.error.response?.data.message || "Unknown error occurred"
+      );
+    }
+  }, [mutation.isError, mutation.error, setError]);
 
   return mutation;
 };

@@ -5,7 +5,8 @@ import Home from "./pages/Home";
 import TripDetails from "./pages/TripDetails";
 import SchoolTripDetails from "./pages/SchoolTripDetails";
 import Login from "./pages/Login";
-
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.scss";
 
 const saveLogoToLocalStorage = async () => {
@@ -45,6 +46,14 @@ const App = () => {
     );
   };
 
+  const DashboardLayout = () => {
+    return (
+      <div className="Dashboard">
+        <Outlet />
+      </div>
+    );
+  };
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -71,6 +80,21 @@ const App = () => {
         {
           index: true,
           element: <Login />,
+        },
+      ],
+    },
+    {
+      path: "dashboard",
+      element: <ProtectedRoute />,
+      children: [
+        {
+          element: <DashboardLayout />,
+          children: [
+            {
+              index: true,
+              element: <Dashboard />,
+            },
+          ],
         },
       ],
     },

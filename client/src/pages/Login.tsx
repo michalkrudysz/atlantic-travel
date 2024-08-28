@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
 import classes from "./Login.module.scss";
 
 const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   const { mutate, isPending } = useLogin(setError);
 
   const handleLogin = () => {
-    mutate(password);
+    mutate(password, {
+      onSuccess: () => {
+        navigate("/dashboard");
+      },
+    });
   };
 
   return (

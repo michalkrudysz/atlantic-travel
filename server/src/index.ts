@@ -1,11 +1,13 @@
 import express from "express";
 import "reflect-metadata";
-import { dbConnectionCheck } from "./middleware/dbConnectionCheck";
+import dbConnectionCheck from "./middleware/dbConnectionCheck";
 import tripsRouter from "./routes/trips";
 import schoolTripsRouter from "./routes/schoolTrips";
 import testimonialsRouter from "./routes/testimonials";
 import authRouter from "./routes/authRouter";
-import { corsMiddleware } from "./middleware/corsMiddleware";
+import dashboardRouter from "./routes/dashboardRouter";
+import corsMiddleware from "./middleware/corsMiddleware";
+import authMiddleware from "./middleware/authMiddleware";
 
 const app = express();
 const port = 3000;
@@ -13,16 +15,15 @@ const port = 3000;
 app.use(corsMiddleware);
 
 app.use(express.json());
-// Serwowanie plików statycznych z folderu 'public'
 app.use(express.static("public"));
-// Middleware sprawdzający połączenie z bazą danych
 app.use(dbConnectionCheck);
 
 app.use("/trips", tripsRouter);
 app.use("/school", schoolTripsRouter);
 app.use("/testimonials", testimonialsRouter);
 app.use("/auth", authRouter);
+app.use("/dashboard", authMiddleware, dashboardRouter);
 
 app.listen(port, () => {
-  console.log(`Serwer uruchomiony na porcie: ${port}`);
+  console.log(`Serwer włączony na porcie: ${port}`);
 });
