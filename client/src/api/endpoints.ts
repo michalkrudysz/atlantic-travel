@@ -9,6 +9,9 @@ export const endpoints = {
   testimonials: {
     getTestimonials: "/testimonials",
   },
+  auth: {
+    login: "/auth/login",
+  },
 };
 
 export default endpoints;
