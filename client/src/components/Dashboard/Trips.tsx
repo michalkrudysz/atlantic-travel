@@ -17,6 +17,7 @@ export default function Trips() {
           <div className={classes["description"]}>
             osoba + 100 zł obowiązkowa płatność na miejscu.
           </div>
+          <div className={classes["priority"]}>1</div>
         </div>
         <div className={classes["days"]}>
           <div className={classes["day"]}>
@@ -46,7 +47,7 @@ export default function Trips() {
         </div>
         <div className={classes["trip-contact"]}>
           <div className={classes.phone}>17 852 66 76</div>
-          <div className={classes.phone}>1510 991 590</div>
+          <div className={classes.phone}>510 991 590</div>
           <div className={classes.email}>info@atlantictravel.pl</div>
           <div className={classes["payment-instructions"]}>
             Zaliczki prosimy wpłacać na konto BUT” ATLANTIC” PKO BP Inteligo 50
@@ -60,7 +61,16 @@ export default function Trips() {
           <div className={classes["payment_reference"]}></div>
         </div>
       </div>
-      <div className={classes["trip-edit"]}></div>
+      <div className={classes["trip-edit"]}>
+        <div className={classes["trip-detail-edit"]}></div>
+        <div className={classes["trip-name-edit"]}>Paryż</div>
+        <div className={classes["trip-date-edit"]}>15.06. – 20.06.1299r.</div>
+        <div className={classes["edit-buttons"]}>
+          <button className={classes["edit-button"]}>Edytuj</button>
+          <button className={classes["delete-button"]}>Usuń</button>
+        </div>
+        <div className={classes["add-trip"]}>Dodaj wyjazd</div>
+      </div>
     </div>
   );
 }
