@@ -1,7 +1,139 @@
 .trips {
   display: flex;
-  background: white;
-  gap: 0.5rem;
-  border-radius: 2px;
-  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+
+  .trip {
+    padding: 1rem 0.5rem;
+    background-color: white;
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    width: 70%;
+    .title {
+      font-weight: 500;
+      padding-left: 1rem;
+    }
+    .main-info {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      background-color: whitesmoke;
+      padding: 0.4rem 1rem;
+      font-size: 0.95rem;
+      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+    .days {
+      .day {
+        .day-number {
+          font-weight: 500;
+          width: 15rem;
+          display: flex;
+          flex-direction: row;
+        }
+        gap: 1rem;
+        display: flex;
+        flex-direction: row;
+        background-color: whitesmoke;
+        padding: 0.4rem 1rem;
+        font-size: 0.95rem;
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+        margin-top: 0.5rem;
+      }
+    }
+    .included-excursions {
+      background-color: whitesmoke;
+      padding: 0.4rem 1rem;
+      font-size: 0.95rem;
+      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: row;
+      .name-of-excursion {
+        font-weight: 500;
+        width: 30rem;
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+  .trip-edit {
+    padding: 1rem 1.5rem;
+    width: 30%;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+    .trip-detail-edit {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      background-color: whitesmoke;
+      padding: 0.4rem 1rem;
+      font-size: 0.95rem;
+      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+      .trip-name-edit {
+        font-weight: 500;
+      }
+      .edit-buttons {
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: 1rem;
+        .edit-button {
+          all: unset;
+          cursor: pointer;
+          background-color: #e7f294;
+          width: 3.5rem;
+          height: 2rem;
+          line-height: 2rem;
+          text-align: center;
+          border-radius: 5px;
+          font-size: 0.85rem;
+          transition: background-color 0.3s ease;
+          &:hover {
+            background-color: #f0ff7f;
+          }
+        }
+        .delete-button {
+          all: unset;
+          cursor: pointer;
+          background-color: #f2c777;
+          width: 3.5rem;
+          height: 2rem;
+          line-height: 2rem;
+          text-align: center;
+          border-radius: 5px;
+          font-size: 0.85rem;
+          transition: background-color 0.3s ease;
+          &:hover {
+            background-color: #ffca67;
+          }
+        }
+      }
+    }
+    .add-trip {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+      justify-content: center;
+
+      button {
+        background-color: #f2e85c;
+        width: 9rem;
+        height: 2rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff23b;
+        }
+      }
+    }
+  }
 }

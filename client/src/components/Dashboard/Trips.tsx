@@ -7,7 +7,7 @@ export default function Trips() {
         <div className={classes.title}>Trip Title</div>
         <div className={classes["main-info"]}>
           <div className={classes.image}></div>
-          <div className={classes.title}>Paryż</div>
+          <div className={classes["title-info"]}>Paryż</div>
           <div className={classes["date-range"]}>
             <div>2024-05-10</div>
             <div>2024-08-11</div>
@@ -15,20 +15,25 @@ export default function Trips() {
           <div className={classes.price}>1450.50</div>
           <div className={classes["additional-costs"]}>200.00</div>
           <div className={classes["description"]}>
-            osoba + 100 zł obowiązkowa płatność na miejscu.
+            100 zł obowiązkowa płatność na miejscu.
           </div>
           <div className={classes["priority"]}>1</div>
         </div>
         <div className={classes["days"]}>
           <div className={classes["day"]}>
-            <div className={classes["day-number"]}>1</div>
+            <div className={classes["day-number"]}>Numer dnia: 1</div>
             <div className={classes["day-description"]}>
               Rozpoczęcie dnia od wizyty na najbardziej ikonicznym zabytku
-              Paryża. Wjazd na górę, aby podziwiać panoramę miasta.
+              Paryża. Wjazd na górę, aby podziwiać panoramę miasta.Rozpoczęcie
+              dnia od wizyty na najbardziej ikonicznym zabytku Paryża. Wjazd na
+              górę, aby podziwiać panoramę miasta.
             </div>
           </div>
         </div>
         <div className={classes["included-excursions"]}>
+          <div className={classes["name-of-excursion"]}>
+            Wycieczka wliczona:
+          </div>
           <div className={classes["excursion"]}>
             Wycieczka do Salonik – kulinarnej stolicy Grecji z bizantyjskimi
             zabytkami wpisanymi na listę UNESCO, zwiedzanie: Biała Wieża –
@@ -62,14 +67,17 @@ export default function Trips() {
         </div>
       </div>
       <div className={classes["trip-edit"]}>
-        <div className={classes["trip-detail-edit"]}></div>
-        <div className={classes["trip-name-edit"]}>Paryż</div>
-        <div className={classes["trip-date-edit"]}>15.06. – 20.06.1299r.</div>
-        <div className={classes["edit-buttons"]}>
-          <button className={classes["edit-button"]}>Edytuj</button>
-          <button className={classes["delete-button"]}>Usuń</button>
+        <div className={classes["trip-detail-edit"]}>
+          <div className={classes["trip-name-edit"]}>Paryż</div>
+          <div className={classes["trip-date-edit"]}>15.06. – 20.06.1299r.</div>
+          <div className={classes["edit-buttons"]}>
+            <button className={classes["edit-button"]}>Edytuj</button>
+            <button className={classes["delete-button"]}>Usuń</button>
+          </div>
         </div>
-        <div className={classes["add-trip"]}>Dodaj wyjazd</div>
+        <div className={classes["add-trip"]}>
+          <button> Dodaj wyjazd</button>
+        </div>
       </div>
     </div>
   );
