@@ -57,6 +57,9 @@ export default function Trips() {
             </div>
             <div className={classes["priority"]}>1</div>
           </div>
+          <div className={classes.actions}>
+            <button>Edytuj</button>
+          </div>
         </div>
         <div className={classes["days"]}>
           <div className={classes["day"]}>

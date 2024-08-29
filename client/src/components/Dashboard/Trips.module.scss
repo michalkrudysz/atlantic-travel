@@ -13,12 +13,14 @@
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
-    max-height: 40vh;
+    max-height: 45vh;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
+    position: relative;
 
     &.expanded {
-      max-height: 100vh;
+      max-height: 1000vh;
+      transition: max-height 0.5s ease-in-out;
     }
 
     .expand-button {
@@ -33,9 +35,9 @@
       transition: background-color 0.3s ease;
       margin-bottom: 0.3rem;
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20rem;
+      left: 100%;
+      transform: translate(-100%);
+      width: 10rem;
 
       &:hover {
         background-color: #fff23b;
@@ -57,6 +59,22 @@
       font-size: 0.95rem;
       box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
+
+      .actions {
+        position: relative;
+        left: 90%;
+        button {
+          background-color: #fda085;
+          width: 6rem;
+          height: 2rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          &:hover {
+            background-color: #f57957;
+          }
+        }
+      }
 
       .title-info {
         font-size: 1.1rem;
@@ -143,12 +161,13 @@
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
-    max-height: 40vh;
+    max-height: 45vh;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
 
     &.expanded {
-      max-height: 100vh;
+      max-height: 1000vh;
+      transition: max-height 0.5s ease-in-out;
     }
 
     .expand-button {
@@ -163,9 +182,9 @@
       transition: background-color 0.3s ease;
       margin-bottom: 0.3rem;
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20rem;
+      left: 100%;
+      transform: translate(-100%);
+      width: 10rem;
 
       &:hover {
         background-color: #fff23b;
