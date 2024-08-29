@@ -5,11 +5,11 @@
   gap: 1rem;
 
   .trip {
-    width: 70%;
+    width: 65%;
     padding: 1rem 0.5rem;
-    background-color: white;
     border: 2px solid whitesmoke;
     border-radius: 5px;
+    background-color: white;
     box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
 
     .title {
@@ -19,58 +19,96 @@
 
     .main-info {
       display: flex;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 0.5rem;
       margin-top: 0.5rem;
-      padding: 0.4rem 1rem;
+      padding: 1rem;
       background-color: whitesmoke;
       font-size: 0.95rem;
       box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+
+      .title-info {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .date-range,
+      .price-info,
+      .additional-costs-info,
+      .description-info,
+      .priority-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .date-label,
+      .price-label,
+      .additional-costs-label,
+      .description-label,
+      .priority-label {
+        margin-right: 0.5rem;
+        font-weight: bold;
+      }
     }
 
     .days {
       .day {
         display: flex;
-        flex-direction: row;
-        gap: 1rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
         margin-top: 0.5rem;
-        padding: 0.4rem 1rem;
+        padding: 0.6rem 1rem;
         background-color: whitesmoke;
         font-size: 0.95rem;
         box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+        text-align: center;
 
         .day-number {
           display: flex;
           flex-direction: row;
-          width: 15rem;
+          justify-content: center;
           font-weight: 500;
         }
       }
     }
 
-    .included-excursions {
+    .included-excursions,
+    .optional-excursions,
+    .services,
+    .trip-contact {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       margin-top: 0.5rem;
-      padding: 0.4rem 1rem;
+      padding: 0.6rem 1rem;
       background-color: whitesmoke;
       font-size: 0.95rem;
       box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+      gap: 0.5rem;
+      text-align: center;
 
-      .name-of-excursion {
+      .name-of-excursion,
+      .name-of-service,
+      .contact-info {
         display: flex;
         flex-direction: row;
-        width: 30rem;
+        justify-content: center;
         font-weight: 500;
       }
     }
   }
 
   .trip-edit {
-    width: 30%;
+    width: 35%;
     padding: 1rem 1.5rem;
-    background-color: white;
     border: 2px solid whitesmoke;
     border-radius: 5px;
+    background-color: white;
     box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
 
     .trip-detail-edit {
@@ -105,17 +143,21 @@
         grid-row: 1 / span 2;
         grid-column: 2;
 
-        .edit-button {
+        .edit-button,
+        .delete-button {
           all: unset;
-          width: 3.5rem;
+          width: 4.5rem;
           height: 2rem;
           line-height: 2rem;
           text-align: center;
-          background-color: #e7f294;
           border-radius: 5px;
           font-size: 0.85rem;
           cursor: pointer;
           transition: background-color 0.3s ease;
+        }
+
+        .edit-button {
+          background-color: #e7f294;
 
           &:hover {
             background-color: #f0ff7f;
@@ -123,16 +165,7 @@
         }
 
         .delete-button {
-          all: unset;
-          width: 3.5rem;
-          height: 2rem;
-          line-height: 2rem;
-          text-align: center;
           background-color: #f2c777;
-          border-radius: 5px;
-          font-size: 0.85rem;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
 
           &:hover {
             background-color: #ffca67;
