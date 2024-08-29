@@ -1,13 +1,29 @@
+import { useState } from "react";
 import classes from "./Trips.module.scss";
 import { useTrips } from "../../hooks/useTrips";
 import { formatTripDates } from "../../utils/formatTripDates";
 
 export default function Trips() {
   const { data: backendData } = useTrips();
+  const [expandedTrip, setExpandedTrip] = useState(false);
+  const [expandedTripEdit, setExpandedTripEdit] = useState(false);
+
+  const handleExpandTrip = () => {
+    setExpandedTrip(!expandedTrip);
+  };
+
+  const handleExpandTripEdit = () => {
+    setExpandedTripEdit(!expandedTripEdit);
+  };
 
   return (
     <div className={classes.trips}>
-      <div className={classes.trip}>
+      <div
+        className={`${classes.trip} ${expandedTrip ? classes.expanded : ""}`}
+      >
+        <button className={classes["expand-button"]} onClick={handleExpandTrip}>
+          {expandedTrip ? "Zwiń" : "Rozwiń"}
+        </button>
         <div className={classes.image}></div>
         <div className={classes["main-info"]}>
           <div className={classes["title-info"]}>Paryż</div>
@@ -96,7 +112,17 @@ export default function Trips() {
           <div className={classes["payment_reference"]}></div>
         </div>
       </div>
-      <div className={classes["trip-edit"]}>
+      <div
+        className={`${classes["trip-edit"]} ${
+          expandedTripEdit ? classes.expanded : ""
+        }`}
+      >
+        <button
+          className={classes["expand-button"]}
+          onClick={handleExpandTripEdit}
+        >
+          {expandedTripEdit ? "Zwiń" : "Rozwiń"}
+        </button>
         {backendData?.map((trip) => (
           <div key={trip.trip_id} className={classes["trip-detail-edit"]}>
             <div className={classes["trip-name-edit"]}>{trip.title}</div>
