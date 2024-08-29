@@ -1,7 +1,10 @@
+import classes from "./Dashboard.module.scss";
+import Trips from "../components/Dashboard/Trips";
+
 export default function Dashboard() {
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className={classes.dashboard}>
+      <Trips />
     </div>
   );
 }
