@@ -5,131 +5,157 @@
   gap: 1rem;
 
   .trip {
+    width: 70%;
     padding: 1rem 0.5rem;
     background-color: white;
-    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
     border: 2px solid whitesmoke;
     border-radius: 5px;
-    width: 70%;
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+
     .title {
-      font-weight: 500;
       padding-left: 1rem;
+      font-weight: 500;
     }
+
     .main-info {
       display: flex;
       gap: 1rem;
       margin-top: 0.5rem;
-      background-color: whitesmoke;
       padding: 0.4rem 1rem;
+      background-color: whitesmoke;
       font-size: 0.95rem;
       box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
     }
+
     .days {
       .day {
-        .day-number {
-          font-weight: 500;
-          width: 15rem;
-          display: flex;
-          flex-direction: row;
-        }
-        gap: 1rem;
         display: flex;
         flex-direction: row;
-        background-color: whitesmoke;
+        gap: 1rem;
+        margin-top: 0.5rem;
         padding: 0.4rem 1rem;
+        background-color: whitesmoke;
         font-size: 0.95rem;
         box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
-        margin-top: 0.5rem;
+
+        .day-number {
+          display: flex;
+          flex-direction: row;
+          width: 15rem;
+          font-weight: 500;
+        }
       }
     }
+
     .included-excursions {
-      background-color: whitesmoke;
-      padding: 0.4rem 1rem;
-      font-size: 0.95rem;
-      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
-      margin-top: 0.5rem;
       display: flex;
       flex-direction: row;
+      margin-top: 0.5rem;
+      padding: 0.4rem 1rem;
+      background-color: whitesmoke;
+      font-size: 0.95rem;
+      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+
       .name-of-excursion {
-        font-weight: 500;
-        width: 30rem;
         display: flex;
         flex-direction: row;
+        width: 30rem;
+        font-weight: 500;
       }
     }
   }
+
   .trip-edit {
-    padding: 1rem 1.5rem;
     width: 30%;
+    padding: 1rem 1.5rem;
+    background-color: white;
     border: 2px solid whitesmoke;
     border-radius: 5px;
-    background-color: white;
     box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+
     .trip-detail-edit {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 0.5rem;
       align-items: center;
-      gap: 1rem;
-      justify-content: center;
-      background-color: whitesmoke;
+      margin-top: 0.3rem;
       padding: 0.4rem 1rem;
+      background-color: whitesmoke;
       font-size: 0.95rem;
       box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+
       .trip-name-edit {
+        grid-row: 1;
+        grid-column: 1;
         font-weight: 500;
       }
+
+      .trip-date-edit {
+        grid-row: 2;
+        grid-column: 1;
+        font-size: 0.85rem;
+      }
+
       .edit-buttons {
         display: flex;
-        flex-direction: center;
+        flex-direction: row;
         align-items: center;
         gap: 0.5rem;
-        margin-left: 1rem;
+        grid-row: 1 / span 2;
+        grid-column: 2;
+
         .edit-button {
           all: unset;
-          cursor: pointer;
-          background-color: #e7f294;
           width: 3.5rem;
           height: 2rem;
           line-height: 2rem;
           text-align: center;
+          background-color: #e7f294;
           border-radius: 5px;
           font-size: 0.85rem;
+          cursor: pointer;
           transition: background-color 0.3s ease;
+
           &:hover {
             background-color: #f0ff7f;
           }
         }
+
         .delete-button {
           all: unset;
-          cursor: pointer;
-          background-color: #f2c777;
           width: 3.5rem;
           height: 2rem;
           line-height: 2rem;
           text-align: center;
+          background-color: #f2c777;
           border-radius: 5px;
           font-size: 0.85rem;
+          cursor: pointer;
           transition: background-color 0.3s ease;
+
           &:hover {
             background-color: #ffca67;
           }
         }
       }
     }
+
     .add-trip {
       display: flex;
       align-items: center;
-      font-size: 0.9rem;
-      margin-top: 0.8rem;
       justify-content: center;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
 
       button {
-        background-color: #f2e85c;
         width: 9rem;
         height: 2rem;
+        background-color: #f2e85c;
         border-radius: 5px;
-        transition: background-color 0.3s ease;
         cursor: pointer;
+        transition: background-color 0.3s ease;
+
         &:hover {
           background-color: #fff23b;
         }

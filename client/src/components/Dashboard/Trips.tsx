@@ -1,6 +1,10 @@
 import classes from "./Trips.module.scss";
+import { useTrips } from "../../hooks/useTrips";
+import { formatTripDates } from "../../utils/formatTripDates";
 
 export default function Trips() {
+  const { data: backendData } = useTrips();
+
   return (
     <div className={classes.trips}>
       <div className={classes.trip}>
@@ -55,7 +59,7 @@ export default function Trips() {
           <div className={classes.phone}>510 991 590</div>
           <div className={classes.email}>info@atlantictravel.pl</div>
           <div className={classes["payment-instructions"]}>
-            Zaliczki prosimy wpłacać na konto BUT” ATLANTIC” PKO BP Inteligo 50
+            Zaliczki prosimy wpłacać na konto BUT" ATLANTIC" PKO BP Inteligo 50
             1020 5558 1111 1275 4430 0087
           </div>
           <div className={classes["additional_description"]}>
@@ -67,16 +71,20 @@ export default function Trips() {
         </div>
       </div>
       <div className={classes["trip-edit"]}>
-        <div className={classes["trip-detail-edit"]}>
-          <div className={classes["trip-name-edit"]}>Paryż</div>
-          <div className={classes["trip-date-edit"]}>15.06. – 20.06.1299r.</div>
-          <div className={classes["edit-buttons"]}>
-            <button className={classes["edit-button"]}>Edytuj</button>
-            <button className={classes["delete-button"]}>Usuń</button>
+        {backendData?.map((trip) => (
+          <div key={trip.trip_id} className={classes["trip-detail-edit"]}>
+            <div className={classes["trip-name-edit"]}>{trip.title}</div>
+            <div className={classes["trip-date-edit"]}>
+              {formatTripDates(trip.start_date, trip.end_date)}
+            </div>
+            <div className={classes["edit-buttons"]}>
+              <button className={classes["edit-button"]}>Edytuj</button>
+              <button className={classes["delete-button"]}>Usuń</button>
+            </div>
           </div>
-        </div>
+        ))}
         <div className={classes["add-trip"]}>
-          <button> Dodaj wyjazd</button>
+          <button>Dodaj wyjazd</button>
         </div>
       </div>
     </div>
