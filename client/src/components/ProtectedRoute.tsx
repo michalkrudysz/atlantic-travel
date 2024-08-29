@@ -14,7 +14,7 @@ const ProtectedRoute = () => {
 
   useEffect(() => {
     if (data) {
-      console.log("Dashboard data received:", data);
+      console.log("Dane z dashbordu:", data);
     }
   }, [data]);
 
