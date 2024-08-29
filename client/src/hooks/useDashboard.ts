@@ -57,7 +57,6 @@ const useDashboard = () => {
 
   useEffect(() => {
     if (data) {
-      console.log("Dane z dashbordu:", data);
     }
   }, [data]);
 
