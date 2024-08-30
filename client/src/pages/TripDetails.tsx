@@ -41,20 +41,35 @@ export default function TripDetails() {
 
   return (
     <div className={classes.main}>
-      <Title
-        imageUrl={imageUrl}
-        imageDescription={imageDescription}
-        tripTitle={tripTitle}
-        startDate={start_date}
-        endDate={end_date}
-        price={price_per_person}
-        additionalCosts={additional_costs}
-        description={description}
-      />
-      <TripDays days={tripDays} included={includedExcursions} />
-      <Services services={services} />
-      <OptionalExcursions optionalExcursions={optionalExcursions} />
-      <TripContacts tripContacts={tripContacts} />
+      {imageUrl &&
+        imageDescription &&
+        tripTitle &&
+        start_date &&
+        end_date &&
+        price_per_person &&
+        additional_costs &&
+        description && (
+          <Title
+            imageUrl={imageUrl}
+            imageDescription={imageDescription}
+            tripTitle={tripTitle}
+            startDate={start_date}
+            endDate={end_date}
+            price={price_per_person}
+            additionalCosts={additional_costs}
+            description={description}
+          />
+        )}
+      {tripDays && includedExcursions && tripDays.length > 0 && (
+        <TripDays days={tripDays} included={includedExcursions} />
+      )}
+      {services && services.length > 0 && <Services services={services} />}
+      {optionalExcursions && optionalExcursions.length > 0 && (
+        <OptionalExcursions optionalExcursions={optionalExcursions} />
+      )}
+      {tripContacts && Object.keys(tripContacts).length > 0 && (
+        <TripContacts tripContacts={tripContacts} />
+      )}
       <Footer />
     </div>
   );
