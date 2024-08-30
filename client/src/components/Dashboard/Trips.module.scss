@@ -52,6 +52,8 @@
     .main-info {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+
       gap: 0.5rem;
       margin-top: 0.5rem;
       padding: 1rem;
@@ -61,8 +63,7 @@
       border-radius: 5px;
 
       .actions {
-        position: relative;
-        left: 90%;
+        align-self: flex-end;
         button {
           background-color: #fda085;
           width: 6rem;
@@ -123,6 +124,42 @@
           justify-content: center;
           font-weight: 500;
         }
+        .actions {
+          align-self: flex-end;
+          button {
+            background-color: #fda085;
+            width: 6rem;
+            height: 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            &:hover {
+              background-color: #f57957;
+            }
+          }
+        }
+      }
+      .add-day {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: #e7f294;
+        width: 8rem;
+        height: 2rem;
+        position: relative;
+        left: 50%;
+        margin-top: 0.5rem;
+        transform: translateX(-50%);
+        text-align: center;
+        border-radius: 5px;
+
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #f0ff7f;
+        }
       }
     }
 
@@ -144,12 +181,50 @@
       border-radius: 5px;
 
       .name-of-excursion,
-      .name-of-service,
-      .contact-info {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+      .service-title,
+      .name-of-service {
         font-weight: 500;
+      }
+
+      .actions {
+        align-self: flex-end;
+        button {
+          background-color: #fda085;
+          width: 6rem;
+          height: 2rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          &:hover {
+            background-color: #f57957;
+          }
+        }
+      }
+
+      .excursion-list,
+      .service-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+
+        li {
+          margin-top: 0.25rem;
+        }
+      }
+    }
+
+    .trip-contact {
+      .contact-info {
+        font-weight: 500;
+      }
+
+      .contact-details {
+        text-align: center;
+      }
+
+      .actions {
+        margin-top: 0.5rem;
       }
     }
   }

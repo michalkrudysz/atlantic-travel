@@ -70,49 +70,81 @@ export default function Trips() {
               dnia od wizyty na najbardziej ikonicznym zabytku Paryża. Wjazd na
               górę, aby podziwiać panoramę miasta.
             </div>
+            <div className={classes["actions"]}>
+              <button>Edytuj</button>
+            </div>
           </div>
+          <div className={classes["add-day"]}>Dodaj dzień</div>
         </div>
         <div className={classes["included-excursions"]}>
           <div className={classes["name-of-excursion"]}>
             Wycieczki wliczone:
           </div>
-          <div className={classes["excursion"]}>
-            Wycieczka do Salonik – kulinarnej stolicy Grecji z bizantyjskimi
-            zabytkami wpisanymi na listę UNESCO, zwiedzanie: Biała Wieża –
-            symbol miasta, pomnik Aleksandra Macedońskiego, Agia Sophia –
-            kościół z VIIIw. miniatura kościoła ze Stambułu, Cerkiew Św.
-            Dymitriusza z relikwiami, słynne Targowisko Kapani z regionalnymi
-            wyrobami.
+          <ul>
+            <li>
+              Wycieczka do Salonik – kulinarnej stolicy Grecji z bizantyjskimi
+              zabytkami wpisanymi na listę UNESCO, zwiedzanie: Biała Wieża –
+              symbol miasta, pomnik Aleksandra Macedońskiego, Agia Sophia –
+              kościół z VIIIw. miniatura kościoła ze Stambułu, Cerkiew Św.
+              Dymitriusza z relikwiami, słynne Targowisko Kapani z regionalnymi
+              wyrobami.
+            </li>
+            <li>
+              Wycieczka do Salonik – kulinarnej stolicy Grecji z bizantyjskimi
+              zabytkami wpisanymi na listę UNESCO, zwiedzanie: Biała Wieża –
+              symbol miasta, pomnik Aleksandra Macedońskiego, Agia Sophia –
+              kościół z VIIIw. miniatura kościoła ze Stambułu, Cerkiew Św.
+              Dymitriusza z relikwiami, słynne Targowisko Kapani z regionalnymi
+              wyrobami.
+            </li>
+          </ul>
+          <div className={classes["actions"]}>
+            <button>Edytuj</button>
           </div>
         </div>
         <div className={classes["optional-excursions"]}>
           <div className={classes["name-of-excursion"]}>
             Wycieczki fakultatywne
           </div>
-          <div className={classes["optional-excursion"]}>
-            Rejs statkiem na Skiathos – najpiękniejsza wyspa archipelagu Sporad,
-            42 euro/os
+          <ul>
+            <li>
+              Rejs statkiem na Skiathos – najpiękniejsza wyspa archipelagu
+              Sporad, 42 euro/os
+            </li>
+          </ul>
+          <div className={classes["actions"]}>
+            <button>Edytuj</button>
           </div>
         </div>
         <div className={classes["services"]}>
           <div className={classes["name-of-service"]}>Świadczenia</div>
-          <div className={classes["service"]}>7 noclegów w Grecji</div>
+          <ul>
+            <li>7 noclegów w Grecji</li>
+          </ul>
+          <div className={classes["actions"]}>
+            <button>Edytuj</button>
+          </div>
         </div>
         <div className={classes["trip-contact"]}>
           <div className={classes["contact-info"]}>Dane kontaktowe</div>
-          <div className={classes.phone}>17 852 66 76</div>
-          <div className={classes.phone}>510 991 590</div>
-          <div className={classes.email}>info@atlantictravel.pl</div>
+          <div className={classes["contact-details"]}>
+            <div className={classes.phone}>17 852 66 76</div>
+            <div className={classes.phone}>510 991 590</div>
+            <div className={classes.email}>info@atlantictravel.pl</div>
+          </div>
           <div className={classes["payment-instructions"]}>
             Zaliczki prosimy wpłacać na konto BUT" ATLANTIC" PKO BP Inteligo 50
             1020 5558 1111 1275 4430 0087
           </div>
           <div className={classes["additional_description"]}>
-            iejsca w autokarze są przydzielane zgodnie z kolejnością
+            Miejsca w autokarze są przydzielane zgodnie z kolejnością
             zgłoszeń.Wpłata zaliczki w kwocie 500 zł do dnia 15.01.2024r.
             gwarantuje niezmienność ceny.
           </div>
           <div className={classes["payment_reference"]}></div>
+          <div className={classes.actions}>
+            <button>Edytuj</button>
+          </div>
         </div>
       </div>
       <div
