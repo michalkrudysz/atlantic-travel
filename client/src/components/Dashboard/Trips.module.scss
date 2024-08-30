@@ -201,15 +201,15 @@
         }
       }
 
-      .excursion-list,
-      .service-list {
+      ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
         text-align: left;
 
         li {
-          margin-top: 0.25rem;
+          margin-top: 0.5rem;
+          text-align: center;
         }
       }
     }

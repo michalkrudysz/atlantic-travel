@@ -1,12 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./Trips.module.scss";
 import { useTrips } from "../../hooks/useTrips";
 import { formatTripDates } from "../../utils/formatTripDates";
+
+type Trip = {
+  trip_id: number;
+};
 
 export default function Trips() {
   const { data: backendData } = useTrips();
   const [expandedTrip, setExpandedTrip] = useState(false);
   const [expandedTripEdit, setExpandedTripEdit] = useState(false);
+  const sortedTrips = backendData
+    ? [...backendData].sort((a, b) => a.priority - b.priority)
+    : [];
+  const [activeTrip, setActiveTrip] = useState<Trip | null>(null);
+
+  useEffect(() => {
+    if (!activeTrip && sortedTrips.length > 0) {
+      setActiveTrip(sortedTrips[0]);
+    }
+  }, [activeTrip, sortedTrips]);
 
   const handleExpandTrip = () => {
     setExpandedTrip(!expandedTrip);
@@ -15,6 +29,12 @@ export default function Trips() {
   const handleExpandTripEdit = () => {
     setExpandedTripEdit(!expandedTripEdit);
   };
+
+  const handleEditTrip = (trip: Trip) => {
+    setActiveTrip(trip);
+  };
+
+  console.log(activeTrip?.trip_id);
 
   return (
     <div className={classes.trips}>
@@ -74,7 +94,7 @@ export default function Trips() {
               <button>Edytuj</button>
             </div>
           </div>
-          <div className={classes["add-day"]}>Dodaj dzień</div>
+          <div className={classes["add-day"]}>Dodaj dzień:</div>
         </div>
         <div className={classes["included-excursions"]}>
           <div className={classes["name-of-excursion"]}>
@@ -104,7 +124,7 @@ export default function Trips() {
         </div>
         <div className={classes["optional-excursions"]}>
           <div className={classes["name-of-excursion"]}>
-            Wycieczki fakultatywne
+            Wycieczki fakultatywne:
           </div>
           <ul>
             <li>
@@ -117,7 +137,7 @@ export default function Trips() {
           </div>
         </div>
         <div className={classes["services"]}>
-          <div className={classes["name-of-service"]}>Świadczenia</div>
+          <div className={classes["name-of-service"]}>Świadczenia:</div>
           <ul>
             <li>7 noclegów w Grecji</li>
           </ul>
@@ -126,7 +146,7 @@ export default function Trips() {
           </div>
         </div>
         <div className={classes["trip-contact"]}>
-          <div className={classes["contact-info"]}>Dane kontaktowe</div>
+          <div className={classes["contact-info"]}>Dane kontaktowe:</div>
           <div className={classes["contact-details"]}>
             <div className={classes.phone}>17 852 66 76</div>
             <div className={classes.phone}>510 991 590</div>
@@ -158,14 +178,24 @@ export default function Trips() {
         >
           {expandedTripEdit ? "Zwiń" : "Rozwiń"}
         </button>
-        {backendData?.map((trip) => (
-          <div key={trip.trip_id} className={classes["trip-detail-edit"]}>
+        {sortedTrips?.map((trip) => (
+          <div
+            key={trip.trip_id}
+            className={`${classes["trip-detail-edit"]} ${
+              activeTrip === trip ? classes.active : ""
+            }`}
+          >
             <div className={classes["trip-name-edit"]}>{trip.title}</div>
             <div className={classes["trip-date-edit"]}>
               {formatTripDates(trip.start_date, trip.end_date)}
             </div>
             <div className={classes["edit-buttons"]}>
-              <button className={classes["edit-button"]}>Edytuj</button>
+              <button
+                className={classes["edit-button"]}
+                onClick={() => handleEditTrip(trip)}
+              >
+                Edytuj
+              </button>
               <button className={classes["delete-button"]}>Usuń</button>
             </div>
           </div>
