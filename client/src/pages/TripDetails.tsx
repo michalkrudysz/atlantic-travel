@@ -6,7 +6,10 @@ import Services from "../components/TripDetails/Services";
 import OptionalExcursions from "../components/TripDetails/OptionalExcursions";
 import TripContacts from "../components/TripDetails/TripContacts";
 import Footer from "../components/Footer";
-import { useTripDetails } from "../hooks/useTripDetails";
+import {
+  useTripDetails,
+  TripDetails as TripDetailsType,
+} from "../hooks/useTripDetails";
 
 type LocationState = {
   tripId: number;

@@ -1,21 +1,21 @@
 import classes from "./TripContacts.module.scss";
 
-type ContactInfo = {
-  phone1: string;
-  phone2: string;
-  phone3: string;
-  email1: string;
-  email2: string;
-  payment_instructions: string;
-  additional_description: string;
-  payment_reference: string;
+type Contact = {
+  phone1?: string;
+  phone2?: string;
+  phone3?: string;
+  email1?: string;
+  email2?: string;
+  payment_instructions?: string;
+  additional_description?: string;
+  payment_reference?: string;
 };
 
 type TripContactsProps = {
-  tripContacts: ContactInfo | ContactInfo[];
+  tripContacts: Contact[];
 };
 
-const ContactDetails = ({ contact }: { contact: ContactInfo }) => (
+const ContactDetails = ({ contact }: { contact: Contact }) => (
   <div>
     <div className={classes.contacts}>
       <h2>Telefon:</h2>
@@ -50,18 +50,14 @@ export default function TripContacts({ tripContacts }: TripContactsProps) {
       <div className={classes.title}>
         <h1>Zgłoszenia prosimy kierować na:</h1>
       </div>
-      {Array.isArray(tripContacts) ? (
-        tripContacts.length > 0 ? (
-          tripContacts.map((contact, index) => (
-            <ContactDetails key={index} contact={contact} />
-          ))
-        ) : (
-          <div className={classes["no-data"]}>
-            Brak danych kontaktowych do wyświetlenia.
-          </div>
-        )
+      {tripContacts.length > 0 ? (
+        tripContacts.map((contact, index) => (
+          <ContactDetails key={index} contact={contact} />
+        ))
       ) : (
-        <ContactDetails contact={tripContacts} />
+        <div className={classes["no-data"]}>
+          Brak danych kontaktowych do wyświetlenia.
+        </div>
       )}
     </div>
   );
