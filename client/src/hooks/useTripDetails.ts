@@ -4,6 +4,17 @@ import apiClient from "../api/client";
 import endpoints from "../api/endpoints";
 import { activateLoading, deactivateLoading } from "../pages/LoadingPage";
 
+type Contact = {
+  phone1?: string;
+  phone2?: string;
+  phone3?: string;
+  email1?: string;
+  email2?: string;
+  payment_instructions?: string;
+  additional_description?: string;
+  payment_reference?: string;
+};
+
 export type TripDetails = {
   start_date: string;
   end_date: string;
@@ -15,16 +26,7 @@ export type TripDetails = {
   includedExcursions: Array<{ description: string }>;
   optionalExcursions: Array<{ description: string }>;
   services: Array<{ description: string }>;
-  tripContacts: {
-    phone1: string;
-    phone2: string;
-    phone3: string;
-    email1: string;
-    email2: string;
-    payment_instructions: string;
-    additional_description: string;
-    payment_reference: string;
-  };
+  tripContacts: Contact[];
 };
 
 const fetchTripDetails = async (tripId: number): Promise<TripDetails> => {

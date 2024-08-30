@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import classes from "./Trips.module.scss";
-import { useTrips } from "../../hooks/useTrips";
+import { useTrips, Trip } from "../../hooks/useTrips";
+import { useTripDetails } from "../../hooks/useTripDetails";
 import { formatTripDates } from "../../utils/formatTripDates";
-
-type Trip = {
-  trip_id: number;
-};
 
 export default function Trips() {
   const { data: backendData } = useTrips();
@@ -15,6 +12,7 @@ export default function Trips() {
     ? [...backendData].sort((a, b) => a.priority - b.priority)
     : [];
   const [activeTrip, setActiveTrip] = useState<Trip | null>(null);
+  const { data: tripDetails } = useTripDetails(activeTrip?.trip_id || 0);
 
   useEffect(() => {
     if (!activeTrip && sortedTrips.length > 0) {
@@ -34,8 +32,6 @@ export default function Trips() {
     setActiveTrip(trip);
   };
 
-  console.log(activeTrip?.trip_id);
-
   return (
     <div className={classes.trips}>
       <div
@@ -44,128 +40,156 @@ export default function Trips() {
         <button className={classes["expand-button"]} onClick={handleExpandTrip}>
           {expandedTrip ? "Zwiń" : "Rozwiń"}
         </button>
-        <div className={classes.image}></div>
-        <div className={classes["main-info"]}>
-          <div className={classes["title-info"]}>Paryż</div>
-          <div className={classes["date-range"]}>
-            <div className={classes["date-label"]}>Data:</div>
-            <div className={classes["date-values"]}>
-              <span>2024-05-10</span>
-              <span>-</span>
-              <span>2024-08-11</span>
+        {activeTrip && (
+          <>
+            <div className={classes.image}>
+              <img
+                src={activeTrip.image.image_url}
+                alt={activeTrip.image.description}
+              />
             </div>
-          </div>
-          <div className={classes["price-info"]}>
-            <div className={classes["price-label"]}>Cena podstawowa:</div>
-            <div className={classes.price}>1450.50</div>
-          </div>
-          <div className={classes["additional-costs-info"]}>
-            <div className={classes["additional-costs-label"]}>
-              Cena dodatkowa:
+            <div className={classes["main-info"]}>
+              <div className={classes["title-info"]}>{activeTrip.title}</div>
+              <div className={classes["date-range"]}>
+                <div className={classes["date-label"]}>Data:</div>
+                <div className={classes["date-values"]}>
+                  <span>{activeTrip.start_date}</span>
+                  <span>-</span>
+                  <span>{activeTrip.end_date}</span>
+                </div>
+              </div>
+              <div className={classes["price-info"]}>
+                <div className={classes["price-label"]}>Cena podstawowa:</div>
+                <div className={classes.price}>
+                  {tripDetails?.price_per_person}
+                </div>
+              </div>
+              <div className={classes["additional-costs-info"]}>
+                <div className={classes["additional-costs-label"]}>
+                  Cena dodatkowa:
+                </div>
+                <div className={classes["additional-costs"]}>
+                  {tripDetails?.additional_costs}
+                </div>
+              </div>
+              <div className={classes["description-info"]}>
+                <div className={classes["description-label"]}>
+                  Dodatkowy opis:
+                </div>
+                <div className={classes["description"]}>
+                  {tripDetails?.description}
+                </div>
+              </div>
+              <div className={classes["priority-info"]}>
+                <div className={classes["priority-label"]}>
+                  Priorytet wyświetlania:
+                </div>
+                <div className={classes["priority"]}>{activeTrip.priority}</div>
+              </div>
+              <div className={classes.actions}>
+                <button>Edytuj</button>
+              </div>
             </div>
-            <div className={classes["additional-costs"]}>200.00</div>
-          </div>
-          <div className={classes["description-info"]}>
-            <div className={classes["description-label"]}>Dodatkowy opis:</div>
-            <div className={classes["description"]}>
-              obowiązkowa płatność na miejscu.
-            </div>
-          </div>
-          <div className={classes["priority-info"]}>
-            <div className={classes["priority-label"]}>
-              Priorytet wyświetlania:
-            </div>
-            <div className={classes["priority"]}>1</div>
-          </div>
-          <div className={classes.actions}>
-            <button>Edytuj</button>
-          </div>
-        </div>
-        <div className={classes["days"]}>
-          <div className={classes["day"]}>
-            <div className={classes["day-number"]}>Dzień: 1</div>
-            <div className={classes["day-description"]}>
-              Rozpoczęcie dnia od wizyty na najbardziej ikonicznym zabytku
-              Paryża. Wjazd na górę, aby podziwiać panoramę miasta.Rozpoczęcie
-              dnia od wizyty na najbardziej ikonicznym zabytku Paryża. Wjazd na
-              górę, aby podziwiać panoramę miasta.
-            </div>
-            <div className={classes["actions"]}>
-              <button>Edytuj</button>
-            </div>
-          </div>
-          <div className={classes["add-day"]}>Dodaj dzień:</div>
-        </div>
-        <div className={classes["included-excursions"]}>
-          <div className={classes["name-of-excursion"]}>
-            Wycieczki wliczone:
-          </div>
-          <ul>
-            <li>
-              Wycieczka do Salonik – kulinarnej stolicy Grecji z bizantyjskimi
-              zabytkami wpisanymi na listę UNESCO, zwiedzanie: Biała Wieża –
-              symbol miasta, pomnik Aleksandra Macedońskiego, Agia Sophia –
-              kościół z VIIIw. miniatura kościoła ze Stambułu, Cerkiew Św.
-              Dymitriusza z relikwiami, słynne Targowisko Kapani z regionalnymi
-              wyrobami.
-            </li>
-            <li>
-              Wycieczka do Salonik – kulinarnej stolicy Grecji z bizantyjskimi
-              zabytkami wpisanymi na listę UNESCO, zwiedzanie: Biała Wieża –
-              symbol miasta, pomnik Aleksandra Macedońskiego, Agia Sophia –
-              kościół z VIIIw. miniatura kościoła ze Stambułu, Cerkiew Św.
-              Dymitriusza z relikwiami, słynne Targowisko Kapani z regionalnymi
-              wyrobami.
-            </li>
-          </ul>
-          <div className={classes["actions"]}>
-            <button>Edytuj</button>
-          </div>
-        </div>
-        <div className={classes["optional-excursions"]}>
-          <div className={classes["name-of-excursion"]}>
-            Wycieczki fakultatywne:
-          </div>
-          <ul>
-            <li>
-              Rejs statkiem na Skiathos – najpiękniejsza wyspa archipelagu
-              Sporad, 42 euro/os
-            </li>
-          </ul>
-          <div className={classes["actions"]}>
-            <button>Edytuj</button>
-          </div>
-        </div>
-        <div className={classes["services"]}>
-          <div className={classes["name-of-service"]}>Świadczenia:</div>
-          <ul>
-            <li>7 noclegów w Grecji</li>
-          </ul>
-          <div className={classes["actions"]}>
-            <button>Edytuj</button>
-          </div>
-        </div>
-        <div className={classes["trip-contact"]}>
-          <div className={classes["contact-info"]}>Dane kontaktowe:</div>
-          <div className={classes["contact-details"]}>
-            <div className={classes.phone}>17 852 66 76</div>
-            <div className={classes.phone}>510 991 590</div>
-            <div className={classes.email}>info@atlantictravel.pl</div>
-          </div>
-          <div className={classes["payment-instructions"]}>
-            Zaliczki prosimy wpłacać na konto BUT" ATLANTIC" PKO BP Inteligo 50
-            1020 5558 1111 1275 4430 0087
-          </div>
-          <div className={classes["additional_description"]}>
-            Miejsca w autokarze są przydzielane zgodnie z kolejnością
-            zgłoszeń.Wpłata zaliczki w kwocie 500 zł do dnia 15.01.2024r.
-            gwarantuje niezmienność ceny.
-          </div>
-          <div className={classes["payment_reference"]}></div>
-          <div className={classes.actions}>
-            <button>Edytuj</button>
-          </div>
-        </div>
+            {tripDetails && (
+              <>
+                <div className={classes["days"]}>
+                  {tripDetails.tripDays.map((day, index) => (
+                    <div key={index} className={classes["day"]}>
+                      <div className={classes["day-number"]}>
+                        Dzień: {day.day_number}
+                      </div>
+                      <div className={classes["day-description"]}>
+                        {day.description}
+                      </div>
+                      <div className={classes["actions"]}>
+                        <button>Edytuj</button>
+                      </div>
+                    </div>
+                  ))}
+                  <div className={classes["add-day"]}>Dodaj dzień:</div>
+                </div>
+                <div className={classes["included-excursions"]}>
+                  <div className={classes["name-of-excursion"]}>
+                    Wycieczki wliczone:
+                  </div>
+                  <ul>
+                    {tripDetails.includedExcursions.map((excursion, index) => (
+                      <li key={index}>{excursion.description}</li>
+                    ))}
+                  </ul>
+                  <div className={classes["actions"]}>
+                    <button>Edytuj</button>
+                  </div>
+                </div>
+                <div className={classes["optional-excursions"]}>
+                  <div className={classes["name-of-excursion"]}>
+                    Wycieczki fakultatywne:
+                  </div>
+                  <ul>
+                    {tripDetails.optionalExcursions.map((excursion, index) => (
+                      <li key={index}>{excursion.description}</li>
+                    ))}
+                  </ul>
+                  <div className={classes["actions"]}>
+                    <button>Edytuj</button>
+                  </div>
+                </div>
+                <div className={classes["services"]}>
+                  <div className={classes["name-of-service"]}>Świadczenia:</div>
+                  <ul>
+                    {tripDetails.services.map((service, index) => (
+                      <li key={index}>{service.description}</li>
+                    ))}
+                  </ul>
+                  <div className={classes["actions"]}>
+                    <button>Edytuj</button>
+                  </div>
+                </div>
+                <div className={classes["trip-contact"]}>
+                  <div className={classes["contact-info"]}>
+                    Dane kontaktowe:
+                  </div>
+                  <div className={classes["contact-details"]}>
+                    {tripDetails.tripContacts.map((contact, index) => (
+                      <div key={index}>
+                        {contact.phone1 && (
+                          <div className={classes.phone}>{contact.phone1}</div>
+                        )}
+                        {contact.phone2 && (
+                          <div className={classes.phone}>{contact.phone2}</div>
+                        )}
+                        {contact.phone3 && (
+                          <div className={classes.phone}>{contact.phone3}</div>
+                        )}
+                        {contact.email1 && (
+                          <div className={classes.email}>{contact.email1}</div>
+                        )}
+                        {contact.email2 && (
+                          <div className={classes.email}>{contact.email2}</div>
+                        )}
+                        {contact.payment_instructions && (
+                          <div className={classes["payment-instructions"]}>
+                            {contact.payment_instructions}
+                          </div>
+                        )}
+                        {contact.additional_description && (
+                          <div className={classes["additional_description"]}>
+                            {contact.additional_description}
+                          </div>
+                        )}
+                        {contact.payment_reference && (
+                          <div className={classes["payment_reference"]}>
+                            {contact.payment_reference}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+          </>
+        )}
       </div>
       <div
         className={`${classes["trip-edit"]} ${

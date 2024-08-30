@@ -278,7 +278,23 @@
       font-size: 0.95rem;
       box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
+      &.active {
+        background-color: whitesmoke;
+        border: 1px solid #fda085;
+        box-shadow: 0px 20px 30px 0px rgba(255, 202, 103, 0.4);
 
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border: 2px solid #fda085;
+          border-radius: 5px;
+          pointer-events: none;
+        }
+      }
       .trip-name-edit {
         grid-row: 1;
         grid-column: 1;
