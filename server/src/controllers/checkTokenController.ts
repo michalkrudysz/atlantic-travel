@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import jwt, { Secret } from "jsonwebtoken";
 
-export const getDashboardInfo = (req: Request, res: Response) => {
+export const checkToken = (req: Request, res: Response) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
     return res.status(401).json({ message: "Nie dostarczono tokenu" });
