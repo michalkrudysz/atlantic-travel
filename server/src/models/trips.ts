@@ -61,13 +61,6 @@ export class Trips extends Model<Trips> {
   })
   description!: string;
 
-  @Column({
-    type: DataType.INTEGER.UNSIGNED,
-    allowNull: false,
-    defaultValue: 0,
-  })
-  image_id!: number;
-
   @HasOne(() => TripImages)
   image!: TripImages;
 

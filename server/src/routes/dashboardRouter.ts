@@ -1,8 +1,7 @@
 import { Router } from "express";
+import { patchMainInfo } from "../controllers/updateMainInfoController";
 
 const dashboardRouter = Router();
-dashboardRouter.get("/", (req, res) => {
-  res.send("Jesteś w dashboardzie");
-});
+dashboardRouter.patch("/updateMainInfo", patchMainInfo);
 
 export default dashboardRouter;
