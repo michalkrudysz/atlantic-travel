@@ -1,66 +1,36 @@
-import { useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import apiClient from "../api/client";
 import endpoints from "../api/endpoints";
-import { activateLoading, deactivateLoading } from "../pages/LoadingPage";
-import type { AxiosError } from "axios";
-
-export type DashboardResponse = {
-  message: string;
-  data?: any;
-};
-
-type DashboardError = {
-  message: string;
-};
-
-const fetchDashboardData = async (): Promise<DashboardResponse> => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    throw new Error("Brak tokena.");
-  }
-
-  const response = await apiClient.get<DashboardResponse>(
-    endpoints.dashboard.getDashboardData,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-
-  return response.data;
-};
 
 const useDashboard = () => {
-  const { isLoading, error, data } = useQuery<
-    DashboardResponse,
-    AxiosError<DashboardError>
-  >({
-    queryKey: ["dashboard"],
-    queryFn: fetchDashboardData,
-  });
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (isLoading) {
-      activateLoading();
+    if (!token) {
+      navigate("/login", { replace: true });
     } else {
-      deactivateLoading();
-    }
-  }, [isLoading]);
+      const checkTokenValidity = async () => {
+        try {
+          await apiClient.get(endpoints.dashboard.getDashboardData, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+        } catch (error: unknown) {
+          const e = error as AxiosError;
+          if (e.response && e.response.status === 401) {
+            localStorage.removeItem("token");
+            navigate("/login", { replace: true });
+          }
+        }
+      };
 
-  useEffect(() => {
-    if (error) {
-      console.error("Błąd podczas pobierania danych z dashbordu:", error);
+      checkTokenValidity();
     }
-  }, [error]);
-
-  useEffect(() => {
-    if (data) {
-    }
-  }, [data]);
-
-  return { isLoading, error, data };
+  }, [navigate, token]);
 };
 
 export default useDashboard;
