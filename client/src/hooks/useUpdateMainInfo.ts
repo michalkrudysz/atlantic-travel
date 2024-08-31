@@ -1,10 +1,8 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import apiClient from "../api/client";
 import endpoints from "../api/endpoints";
-import { useEffect } from "react";
-import { activateLoading, deactivateLoading } from "../pages/LoadingPage";
 
-type updateMainInfo = {
+type UpdateMainInfo = {
   trip_id: number;
   start_date: string;
   end_date: string;
@@ -14,28 +12,32 @@ type updateMainInfo = {
   title: string;
 };
 
-export const useUpdateDashboardInfo = (): UseMutationResult<
-  updateMainInfo,
-  Error,
-  updateMainInfo
-> => {
-  const mutation = useMutation<updateMainInfo, Error, updateMainInfo>({
-    mutationFn: async (updateData: updateMainInfo) => {
+export const useUpdateMainInfo = () => {
+  const queryClient = useQueryClient();
+
+  const { mutate, status } = useMutation({
+    mutationKey: ["updateMainInfo"],
+    mutationFn: async (updateData: UpdateMainInfo) => {
+      const token = localStorage.getItem("token");
       const response = await apiClient.patch(
         endpoints.dashboard.updateMainInfo,
-        updateData
+        updateData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       return response.data;
     },
+    onSuccess: (data: UpdateMainInfo) => {
+      queryClient.invalidateQueries({ queryKey: ["trips"] });
+      queryClient.setQueryData(["trip", data.trip_id], data);
+    },
+    onError: () => {
+      console.error("Error updating the trip info");
+    },
   });
 
-  useEffect(() => {
-    if (mutation.status === "pending") {
-      activateLoading();
-    } else {
-      deactivateLoading();
-    }
-  }, [mutation.status]);
-
-  return mutation;
+  return { mutate, status };
 };
