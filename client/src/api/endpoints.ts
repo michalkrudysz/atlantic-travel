@@ -12,7 +12,10 @@ export const endpoints = {
   auth: {
     login: "/auth/login",
   },
-  dashboard: { getDashboardData: "/dashboard" },
+  dashboard: {
+    getDashboardData: "/dashboard",
+    updateMainInfo: "/dashboard/updateMainInfo", // Nowy endpoint dodany tutaj
+  },
 };
 
 export default endpoints;
