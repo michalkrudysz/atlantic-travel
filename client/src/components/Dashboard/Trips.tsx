@@ -4,6 +4,7 @@ import { useTrips, Trip } from "../../hooks/useTrips";
 import { useTripDetails } from "../../hooks/useTripDetails";
 import TripEdit from "./TripEdit";
 import MainInfo from "./MainInfo";
+import DaysTrip from "./DaysTrip"; // Import nowego komponentu
 
 export default function Trips() {
   const { data: backendData } = useTrips();
@@ -50,22 +51,7 @@ export default function Trips() {
             <MainInfo activeTrip={activeTrip} tripDetails={tripDetails} />
             {tripDetails && (
               <>
-                <div className={classes["days"]}>
-                  {tripDetails.tripDays.map((day, index) => (
-                    <div key={index} className={classes["day"]}>
-                      <div className={classes["day-number"]}>
-                        Dzień: {day.day_number}
-                      </div>
-                      <div className={classes["day-description"]}>
-                        {day.description}
-                      </div>
-                      <div className={classes["actions"]}>
-                        <button>Edytuj</button>
-                      </div>
-                    </div>
-                  ))}
-                  <div className={classes["add-day"]}>Dodaj dzień</div>
-                </div>
+                <DaysTrip tripDays={tripDetails.tripDays} />
                 <div className={classes["included-excursions"]}>
                   <div className={classes["name-of-excursion"]}>
                     Wycieczki wliczone:

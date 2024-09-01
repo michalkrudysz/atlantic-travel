@@ -1,0 +1,59 @@
+.days {
+  .day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    background-color: rgba(245, 245, 245, 0.6);
+    font-size: 0.95rem;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 5px;
+
+    .day-number {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      font-weight: 500;
+    }
+
+    .actions {
+      align-self: flex-end;
+      button {
+        background-color: #fda085;
+        width: 6rem;
+        height: 2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #f57957;
+        }
+      }
+    }
+  }
+
+  .add-day {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e7f294;
+    width: 8rem;
+    height: 2rem;
+    position: relative;
+    left: 50%;
+    margin-top: 0.5rem;
+    transform: translateX(-50%);
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #f0ff7f;
+    }
+  }
+}
