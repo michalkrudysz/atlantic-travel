@@ -14,7 +14,7 @@ export const endpoints = {
   },
   dashboard: {
     getDashboardData: "/dashboard",
-    updateMainInfo: "/dashboard/updateMainInfo", // Nowy endpoint dodany tutaj
+    updateMainInfo: "/dashboard/updateMainInfo",
   },
 };
 

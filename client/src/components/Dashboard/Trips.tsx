@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import classes from "./Trips.module.scss";
 import { useTrips, Trip } from "../../hooks/useTrips";
 import { useTripDetails } from "../../hooks/useTripDetails";
-import { formatTripDates } from "../../utils/formatTripDates";
 import { useUpdateMainInfo } from "../../hooks/useUpdateMainInfo";
+import TripEdit from "./TripEdit";
 
 export default function Trips() {
   const { data: backendData } = useTrips();
   const [expandedTrip, setExpandedTrip] = useState(false);
-  const [expandedTripEdit, setExpandedTripEdit] = useState(false);
   const sortedTrips = backendData
     ? [...backendData].sort((a, b) => a.priority - b.priority)
     : [];
@@ -23,10 +22,6 @@ export default function Trips() {
 
   const handleExpandTrip = () => {
     setExpandedTrip(!expandedTrip);
-  };
-
-  const handleExpandTripEdit = () => {
-    setExpandedTripEdit(!expandedTripEdit);
   };
 
   const handleEditTrip = (trip: Trip) => {
@@ -372,43 +367,7 @@ export default function Trips() {
           </>
         )}
       </div>
-      <div
-        className={`${classes["trip-edit"]} ${
-          expandedTripEdit ? classes.expanded : ""
-        }`}
-      >
-        <button
-          className={classes["expand-button"]}
-          onClick={handleExpandTripEdit}
-        >
-          {expandedTripEdit ? "Zwiń" : "Rozwiń"}
-        </button>
-        {sortedTrips?.map((trip) => (
-          <div
-            key={trip.trip_id}
-            className={`${classes["trip-detail-edit"]} ${
-              activeTrip === trip ? classes.active : ""
-            }`}
-          >
-            <div className={classes["trip-name-edit"]}>{trip.title}</div>
-            <div className={classes["trip-date-edit"]}>
-              {formatTripDates(trip.start_date, trip.end_date)}
-            </div>
-            <div className={classes["edit-buttons"]}>
-              <button
-                className={classes["edit-button"]}
-                onClick={() => handleEditTrip(trip)}
-              >
-                Edytuj
-              </button>
-              <button className={classes["delete-button"]}>Usuń</button>
-            </div>
-          </div>
-        ))}
-        <div className={classes["add-trip"]}>
-          <button>Dodaj wyjazd</button>
-        </div>
-      </div>
+      <TripEdit activeTrip={activeTrip} onEditTrip={handleEditTrip} />
     </div>
   );
 }
