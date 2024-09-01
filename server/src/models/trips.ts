@@ -60,6 +60,12 @@ export class Trips extends Model<Trips> {
     allowNull: false,
   })
   description!: string;
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  })
+  priority!: number;
 
   @HasOne(() => TripImages)
   image!: TripImages;

@@ -22,6 +22,7 @@ export const updateMainInfo = async (info: UpdateTripInfo): Promise<Trips> => {
     trip.additional_costs = info.additional_costs;
     trip.description = info.description;
     trip.title = info.title;
+    trip.priority = info.priority;
 
     await trip.save();
     return trip;
