@@ -8,6 +8,7 @@ interface UpdateTripInfo {
   description: string;
   priority: number;
   title: string;
+  price_per_person: number;
 }
 
 export const updateMainInfo = async (info: UpdateTripInfo): Promise<Trips> => {
@@ -23,6 +24,7 @@ export const updateMainInfo = async (info: UpdateTripInfo): Promise<Trips> => {
     trip.description = info.description;
     trip.title = info.title;
     trip.priority = info.priority;
+    trip.price_per_person = info.price_per_person;
 
     await trip.save();
     return trip;

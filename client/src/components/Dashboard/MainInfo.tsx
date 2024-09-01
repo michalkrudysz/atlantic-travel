@@ -11,7 +11,9 @@ type MainInfoProps = {
 
 export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
+  const updateMainInfo = useUpdateMainInfo();
+
+  const initialFormData = {
     trip_id: activeTrip?.trip_id || 0,
     start_date: activeTrip?.start_date || "",
     end_date: activeTrip?.end_date || "",
@@ -19,30 +21,39 @@ export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
     description: tripDetails?.description || "",
     priority: activeTrip?.priority || 0,
     title: activeTrip?.title || "",
-  });
+    price_per_person: tripDetails?.price_per_person || 0,
+  };
 
-  const updateMainInfoMutation = useUpdateMainInfo();
+  const [formData, setFormData] = useState(initialFormData);
 
   const toggleEdit = () => {
     setIsEditing(!isEditing);
     if (!isEditing) {
-      setFormData({
-        trip_id: activeTrip?.trip_id || 0,
-        start_date: activeTrip?.start_date || "",
-        end_date: activeTrip?.end_date || "",
-        additional_costs: tripDetails?.additional_costs || 0,
-        description: tripDetails?.description || "",
-        priority: activeTrip?.priority || 0,
-        title: activeTrip?.title || "",
-      });
+      setFormData(initialFormData);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]:
+        name === "additional_costs" ||
+        name === "priority" ||
+        name === "price_per_person"
+          ? parseInt(value)
+          : value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    updateMainInfoMutation.mutate(formData, {
-      onSuccess: (updatedFields) => {
+    updateMainInfo(formData, {
+      onSuccess: () => {
         setIsEditing(false);
+        setFormData({ ...formData });
       },
     });
   };
@@ -51,38 +62,39 @@ export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
     <div className={classes["main-info"]}>
       {!isEditing ? (
         <>
-          <div className={classes["title-info"]}>{activeTrip?.title}</div>
+          <div className={classes["title-info"]}>{formData.title}</div>
           <div className={classes["date-range"]}>
             <div className={classes["date-label"]}>Data:</div>
             <div className={classes["date-values"]}>
-              <span>{activeTrip?.start_date}</span>
+              <span>{formData.start_date}</span>
               <span>-</span>
-              <span>{activeTrip?.end_date}</span>
+              <span>{formData.end_date}</span>
             </div>
           </div>
           <div className={classes["price-info"]}>
             <div className={classes["price-label"]}>Cena podstawowa:</div>
-            <div className={classes.price}>{tripDetails?.price_per_person}</div>
+            <div className={classes.price}>{formData.price_per_person}</div>
           </div>
           <div className={classes["additional-costs-info"]}>
             <div className={classes["additional-costs-label"]}>
               Cena dodatkowa:
             </div>
             <div className={classes["additional-costs"]}>
-              {tripDetails?.additional_costs}
+              {formData.additional_costs}
             </div>
           </div>
           <div className={classes["description-info"]}>
             <div className={classes["description-label"]}>Dodatkowy opis:</div>
-            <div className={classes["description"]}>
-              {tripDetails?.description}
-            </div>
+            <div className={classes["description"]}>{formData.description}</div>
           </div>
           <div className={classes["priority-info"]}>
             <div className={classes["priority-label"]}>
               Priorytet wyświetlania:
             </div>
-            <div className={classes["priority"]}>{activeTrip?.priority}</div>
+            <div className={classes["priority"]}>{formData.priority}</div>
+          </div>
+          <div className={classes["actions"]}>
+            <button onClick={toggleEdit}>Edytuj</button>
           </div>
         </>
       ) : (
@@ -90,10 +102,9 @@ export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
           <div className={classes["title-info"]}>
             <input
               type="text"
+              name="title"
               value={formData.title}
-              onChange={(e) =>
-                setFormData({ ...formData, title: e.target.value })
-              }
+              onChange={handleChange}
             />
           </div>
           <div className={classes["date-range"]}>
@@ -101,77 +112,57 @@ export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
             <div className={classes["date-values"]}>
               <input
                 type="date"
+                name="start_date"
                 value={formData.start_date}
-                onChange={(e) =>
-                  setFormData({ ...formData, start_date: e.target.value })
-                }
+                onChange={handleChange}
               />
               <span>-</span>
               <input
                 type="date"
+                name="end_date"
                 value={formData.end_date}
-                onChange={(e) =>
-                  setFormData({ ...formData, end_date: e.target.value })
-                }
+                onChange={handleChange}
               />
             </div>
           </div>
           <div className={classes["price-info"]}>
             <div className={classes["price-label"]}>Cena podstawowa:</div>
-            <div className={classes.price}>
-              <input
-                type="number"
-                value={formData.additional_costs}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    additional_costs: Number(e.target.value),
-                  })
-                }
-              />
-            </div>
+            <input
+              type="number"
+              name="price_per_person"
+              value={formData.price_per_person}
+              onChange={handleChange}
+            />
           </div>
           <div className={classes["additional-costs-info"]}>
             <div className={classes["additional-costs-label"]}>
               Cena dodatkowa:
             </div>
-            <div className={classes["additional-costs"]}>
-              <input
-                type="number"
-                value={formData.additional_costs}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    additional_costs: Number(e.target.value),
-                  })
-                }
-              />
-            </div>
+            <input
+              type="number"
+              name="additional_costs"
+              value={formData.additional_costs}
+              onChange={handleChange}
+            />
           </div>
           <div className={classes["description-info"]}>
             <div className={classes["description-label"]}>Dodatkowy opis:</div>
-            <div className={classes["description"]}>
-              <textarea
-                value={formData.description}
-                onChange={(e) =>
-                  setFormData({ ...formData, description: e.target.value })
-                }
-              ></textarea>
-            </div>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            ></textarea>
           </div>
           <div className={classes["priority-info"]}>
             <div className={classes["priority-label"]}>
               Priorytet wyświetlania:
             </div>
-            <div className={classes["priority"]}>
-              <input
-                type="number"
-                value={formData.priority}
-                onChange={(e) =>
-                  setFormData({ ...formData, priority: Number(e.target.value) })
-                }
-              />
-            </div>
+            <input
+              type="number"
+              name="priority"
+              value={formData.priority}
+              onChange={handleChange}
+            />
           </div>
           <div className={classes["actions"]}>
             <button type="submit">Zapisz</button>
@@ -180,11 +171,6 @@ export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
             </button>
           </div>
         </form>
-      )}
-      {!isEditing && (
-        <div className={classes["actions"]}>
-          <button onClick={toggleEdit}>Edytuj</button>
-        </div>
       )}
     </div>
   );

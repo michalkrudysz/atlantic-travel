@@ -10,12 +10,13 @@ type UpdateMainInfo = {
   description: string;
   priority: number;
   title: string;
+  price_per_person: number;
 };
 
 export const useUpdateMainInfo = () => {
   const queryClient = useQueryClient();
 
-  const { mutate, status } = useMutation({
+  const { mutate } = useMutation({
     mutationKey: ["updateMainInfo"],
     mutationFn: async (updateData: UpdateMainInfo) => {
       const token = localStorage.getItem("token");
@@ -30,14 +31,14 @@ export const useUpdateMainInfo = () => {
       );
       return response.data;
     },
-    onSuccess: (data: UpdateMainInfo) => {
-      queryClient.invalidateQueries({ queryKey: ["trips"] });
+    onSuccess: (data) => {
       queryClient.setQueryData(["trip", data.trip_id], data);
+      queryClient.invalidateQueries({ queryKey: ["trips"] });
     },
-    onError: () => {
-      console.error("Error updating the trip info");
+    onError: (error) => {
+      console.error("Error updating the trip info", error);
     },
   });
 
-  return { mutate, status };
+  return mutate;
 };
