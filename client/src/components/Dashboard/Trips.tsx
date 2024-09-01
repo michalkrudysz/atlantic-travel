@@ -4,7 +4,8 @@ import { useTrips, Trip } from "../../hooks/useTrips";
 import { useTripDetails } from "../../hooks/useTripDetails";
 import TripEdit from "./TripEdit";
 import MainInfo from "./MainInfo";
-import DaysTrip from "./DaysTrip"; // Import nowego komponentu
+import DaysTrip from "./DaysTrip";
+import IncludedExcursionsTrip from "./IncludedExcursionsTrip";
 
 export default function Trips() {
   const { data: backendData } = useTrips();
@@ -29,6 +30,8 @@ export default function Trips() {
     setActiveTrip(trip);
   };
 
+  console.log(tripDetails);
+
   return (
     <div className={classes.trips}>
       <div
@@ -52,19 +55,9 @@ export default function Trips() {
             {tripDetails && (
               <>
                 <DaysTrip tripDays={tripDetails.tripDays} />
-                <div className={classes["included-excursions"]}>
-                  <div className={classes["name-of-excursion"]}>
-                    Wycieczki wliczone:
-                  </div>
-                  <ul>
-                    {tripDetails.includedExcursions.map((excursion, index) => (
-                      <li key={index}>{excursion.description}</li>
-                    ))}
-                  </ul>
-                  <div className={classes["actions"]}>
-                    <button>Edytuj</button>
-                  </div>
-                </div>
+                <IncludedExcursionsTrip
+                  excursions={tripDetails.includedExcursions}
+                />
                 <div className={classes["optional-excursions"]}>
                   <div className={classes["name-of-excursion"]}>
                     Wycieczki fakultatywne:
