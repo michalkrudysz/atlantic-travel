@@ -1,0 +1,49 @@
+.trip-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1rem;
+  background-color: rgba(245, 245, 245, 0.6);
+  font-size: 0.95rem;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+  gap: 0.5rem;
+  text-align: center;
+  border-radius: 5px;
+
+  .contact-info {
+    font-weight: 500;
+  }
+
+  .contact-details {
+    text-align: center;
+  }
+
+  .actions {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+
+    button {
+      all: unset;
+      background-color: #fda085;
+      width: 6rem;
+      height: 2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #f57957;
+      }
+    }
+  }
+}
+
+.phone,
+.email,
+.payment-instructions,
+.additional-description,
+.payment-reference {
+  margin-bottom: 0.5rem;
+}

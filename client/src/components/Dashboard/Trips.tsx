@@ -8,6 +8,7 @@ import DaysTrip from "./DaysTrip";
 import IncludedExcursionsTrip from "./IncludedExcursionsTrip";
 import OptionalExcursionsTrip from "./OptionalExcursionsTrip";
 import ServicesTrip from "./ServicesTrip";
+import ContactTrip from "./ContactTrip";
 
 export default function Trips() {
   const { data: backendData } = useTrips();
@@ -31,8 +32,6 @@ export default function Trips() {
   const handleEditTrip = (trip: Trip) => {
     setActiveTrip(trip);
   };
-
-  console.log(tripDetails);
 
   return (
     <div className={classes.trips}>
@@ -64,60 +63,7 @@ export default function Trips() {
                   excursions={tripDetails.optionalExcursions}
                 />
                 <ServicesTrip services={tripDetails.services} />
-                <div className={classes["trip-contact"]}>
-                  <div className={classes["contact-info"]}>
-                    Dane kontaktowe:
-                  </div>
-                  <div className={classes["contact-details"]}>
-                    {tripDetails.tripContacts.map((contact, index) => (
-                      <div key={index}>
-                        {contact.phone1 && (
-                          <div
-                            className={classes.phone}
-                          >{`Telefon: ${contact.phone1}`}</div>
-                        )}
-                        {contact.phone2 && (
-                          <div
-                            className={classes.phone}
-                          >{`Telefon: ${contact.phone2}`}</div>
-                        )}
-                        {contact.phone3 && (
-                          <div
-                            className={classes.phone}
-                          >{`Telefon: ${contact.phone3}`}</div>
-                        )}
-                        {contact.email1 && (
-                          <div
-                            className={classes.email}
-                          >{`Email: ${contact.email1}`}</div>
-                        )}
-                        {contact.email2 && (
-                          <div
-                            className={classes.email}
-                          >{`Email: ${contact.email2}`}</div>
-                        )}
-                        {contact.payment_instructions && (
-                          <div className={classes["payment-instructions"]}>
-                            {`Instrukcje płatności: ${contact.payment_instructions}`}
-                          </div>
-                        )}
-                        {contact.additional_description && (
-                          <div className={classes["additional_description"]}>
-                            {`Dodatkowe informacje: ${contact.additional_description}`}
-                          </div>
-                        )}
-                        {contact.payment_reference && (
-                          <div className={classes["payment_reference"]}>
-                            {`Referencje płatności: ${contact.payment_reference}`}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  <div className={classes["actions"]}>
-                    <button>Edytuj</button>
-                  </div>
-                </div>
+                <ContactTrip tripContacts={tripDetails.tripContacts} />
               </>
             )}
           </>
