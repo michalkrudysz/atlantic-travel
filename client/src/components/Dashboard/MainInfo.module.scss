@@ -1,0 +1,105 @@
+.main-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: rgba(245, 245, 245, 0.6);
+  font-size: 0.95rem;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    input,
+    textarea {
+      padding: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 4rem;
+    }
+
+    .date-values {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+
+      button {
+        background-color: #fda085;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #f57957;
+        }
+
+        &[type="button"] {
+          background-color: #f2c777;
+
+          &:hover {
+            background-color: #ffca67;
+          }
+        }
+      }
+    }
+  }
+
+  .actions {
+    align-self: flex-end;
+    button {
+      background-color: #fda085;
+      width: 6rem;
+      height: 2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #f57957;
+      }
+    }
+  }
+
+  .title-info {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .date-range,
+  .price-info,
+  .additional-costs-info,
+  .description-info,
+  .priority-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .date-label,
+  .price-label,
+  .additional-costs-label,
+  .description-label,
+  .priority-label {
+    margin-right: 0.5rem;
+    font-weight: bold;
+  }
+}
