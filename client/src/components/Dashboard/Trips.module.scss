@@ -78,8 +78,6 @@
       }
     }
 
-    .optional-excursions,
-    .services,
     .trip-contact {
       display: flex;
       flex-direction: column;
@@ -94,40 +92,6 @@
       text-align: center;
       border-radius: 5px;
 
-      .service-title,
-      .name-of-service {
-        font-weight: 500;
-      }
-
-      .actions {
-        align-self: flex-end;
-        button {
-          background-color: #fda085;
-          width: 6rem;
-          height: 2rem;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-          &:hover {
-            background-color: #f57957;
-          }
-        }
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        text-align: left;
-
-        li {
-          margin-top: 0.5rem;
-          text-align: center;
-        }
-      }
-    }
-
-    .trip-contact {
       .contact-info {
         font-weight: 500;
       }

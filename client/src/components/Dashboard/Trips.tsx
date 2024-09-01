@@ -6,6 +6,8 @@ import TripEdit from "./TripEdit";
 import MainInfo from "./MainInfo";
 import DaysTrip from "./DaysTrip";
 import IncludedExcursionsTrip from "./IncludedExcursionsTrip";
+import OptionalExcursionsTrip from "./OptionalExcursionsTrip";
+import ServicesTrip from "./ServicesTrip";
 
 export default function Trips() {
   const { data: backendData } = useTrips();
@@ -58,30 +60,10 @@ export default function Trips() {
                 <IncludedExcursionsTrip
                   excursions={tripDetails.includedExcursions}
                 />
-                <div className={classes["optional-excursions"]}>
-                  <div className={classes["name-of-excursion"]}>
-                    Wycieczki fakultatywne:
-                  </div>
-                  <ul>
-                    {tripDetails.optionalExcursions.map((excursion, index) => (
-                      <li key={index}>{excursion.description}</li>
-                    ))}
-                  </ul>
-                  <div className={classes["actions"]}>
-                    <button>Edytuj</button>
-                  </div>
-                </div>
-                <div className={classes["services"]}>
-                  <div className={classes["name-of-service"]}>Świadczenia:</div>
-                  <ul>
-                    {tripDetails.services.map((service, index) => (
-                      <li key={index}>{service.description}</li>
-                    ))}
-                  </ul>
-                  <div className={classes["actions"]}>
-                    <button>Edytuj</button>
-                  </div>
-                </div>
+                <OptionalExcursionsTrip
+                  excursions={tripDetails.optionalExcursions}
+                />
+                <ServicesTrip services={tripDetails.services} />
                 <div className={classes["trip-contact"]}>
                   <div className={classes["contact-info"]}>
                     Dane kontaktowe:
