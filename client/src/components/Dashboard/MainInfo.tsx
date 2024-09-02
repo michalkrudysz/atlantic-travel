@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./MainInfo.module.scss";
 import { Trip } from "../../hooks/useTrips";
 import { TripDetails } from "../../hooks/useTripDetails";
@@ -14,23 +14,35 @@ export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
   const updateMainInfo = useUpdateMainInfo();
 
   const initialFormData = {
-    trip_id: activeTrip?.trip_id || 0,
-    start_date: activeTrip?.start_date || "",
-    end_date: activeTrip?.end_date || "",
-    additional_costs: tripDetails?.additional_costs || 0,
-    description: tripDetails?.description || "",
-    priority: activeTrip?.priority || 0,
-    title: activeTrip?.title || "",
-    price_per_person: tripDetails?.price_per_person || 0,
+    trip_id: 0,
+    start_date: "",
+    end_date: "",
+    additional_costs: 0,
+    description: "",
+    priority: 0,
+    title: "",
+    price_per_person: 0,
   };
 
   const [formData, setFormData] = useState(initialFormData);
 
+  useEffect(() => {
+    if (activeTrip && tripDetails) {
+      setFormData({
+        trip_id: activeTrip.trip_id,
+        start_date: activeTrip.start_date,
+        end_date: activeTrip.end_date,
+        additional_costs: tripDetails.additional_costs,
+        description: tripDetails.description,
+        priority: activeTrip.priority,
+        title: activeTrip.title,
+        price_per_person: tripDetails.price_per_person,
+      });
+    }
+  }, [activeTrip, tripDetails]);
+
   const toggleEdit = () => {
     setIsEditing(!isEditing);
-    if (!isEditing) {
-      setFormData(initialFormData);
-    }
   };
 
   const handleChange = (
@@ -53,7 +65,6 @@ export default function MainInfo({ activeTrip, tripDetails }: MainInfoProps) {
     updateMainInfo(formData, {
       onSuccess: () => {
         setIsEditing(false);
-        setFormData({ ...formData });
       },
     });
   };
