@@ -16,6 +16,7 @@ export const endpoints = {
     getDashboardData: "/dashboard",
     updateMainInfo: "/dashboard/updateMainInfo",
     updateDay: "/dashboard/updateDay",
+    createDay: "/dashboard/createDay",
   },
 };
 
