@@ -15,6 +15,7 @@ export const endpoints = {
   dashboard: {
     getDashboardData: "/dashboard",
     updateMainInfo: "/dashboard/updateMainInfo",
+    updateDay: "/dashboard/updateDay",
   },
 };
 
