@@ -16,17 +16,48 @@
     font-weight: 500;
   }
 
-  .actions {
-    align-self: flex-end;
-    button {
-      background-color: #fda085;
-      width: 6rem;
-      height: 2rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      &:hover {
-        background-color: #f57957;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+
+    input {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      margin-left: 0.1rem;
+      width: 90%;
+      height: 3rem;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+
+      button {
+        background-color: #fda085;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #f57957;
+        }
+
+        &[type="button"] {
+          background-color: #f2c777;
+
+          &:hover {
+            background-color: #ffca67;
+          }
+        }
       }
     }
   }
@@ -40,6 +71,25 @@
     li {
       margin-top: 0.5rem;
       text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  .actions {
+    align-self: flex-end;
+
+    button {
+      background-color: #e7f294;
+      color: black;
+      width: 10rem;
+      height: 2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #f0ff7f;
+      }
     }
   }
 }
