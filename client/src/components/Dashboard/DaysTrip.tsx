@@ -2,6 +2,7 @@ import classes from "./DaysTrip.module.scss";
 
 type DaysTripProps = {
   tripDays: any[];
+  tripId: number;
 };
 
 export default function DaysTrip({ tripDays }: DaysTripProps) {

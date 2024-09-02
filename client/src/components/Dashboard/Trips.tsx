@@ -55,7 +55,10 @@ export default function Trips() {
             <MainInfo activeTrip={activeTrip} tripDetails={tripDetails} />
             {tripDetails && (
               <>
-                <DaysTrip tripDays={tripDetails.tripDays} />
+                <DaysTrip
+                  tripDays={tripDetails.tripDays}
+                  tripId={activeTrip.trip_id}
+                />
                 <IncludedExcursionsTrip
                   excursions={tripDetails.includedExcursions}
                 />
