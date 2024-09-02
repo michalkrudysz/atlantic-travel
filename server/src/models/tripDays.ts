@@ -23,19 +23,16 @@ export class TripDays extends Model<TripDays> {
   @ForeignKey(() => Trips)
   @Column({
     type: DataType.INTEGER,
-    allowNull: true,
   })
   trip_id!: number;
 
   @Column({
     type: DataType.STRING(255),
-    allowNull: true,
   })
   day_number!: string;
 
   @Column({
     type: DataType.TEXT,
-    allowNull: true,
   })
   description!: string;
 
