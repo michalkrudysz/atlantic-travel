@@ -61,6 +61,7 @@ export default function Trips() {
                 />
                 <IncludedExcursionsTrip
                   excursions={tripDetails.includedExcursions}
+                  tripId={activeTrip.trip_id}
                 />
                 <OptionalExcursionsTrip
                   excursions={tripDetails.optionalExcursions}

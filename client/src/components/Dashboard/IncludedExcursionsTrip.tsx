@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useModifyIncludedExcursions } from "../../hooks/usemodifyIncludedExcursionsTrip";
 import classes from "./IncludedExcursionsTrip.module.scss";
 
 type IncludedExcursionsTripProps = {
   excursions: Array<{ description: string }>;
+  tripId: number;
 };
 
 const IncludedExcursionsTrip: React.FC<IncludedExcursionsTripProps> = ({
   excursions,
+  tripId,
 }) => {
   const [isAddingExcursion, setIsAddingExcursion] = useState<boolean>(false);
   const [editedExcursions, setEditedExcursions] =
@@ -14,6 +17,7 @@ const IncludedExcursionsTrip: React.FC<IncludedExcursionsTripProps> = ({
   const [editingExcursionIndex, setEditingExcursionIndex] = useState<
     number | null
   >(null);
+  const modifyExcursions = useModifyIncludedExcursions();
 
   const handleAddExcursion = () => {
     setIsAddingExcursion(true);
@@ -38,7 +42,10 @@ const IncludedExcursionsTrip: React.FC<IncludedExcursionsTripProps> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Zapisano zmiany:", editedExcursions);
+    modifyExcursions({
+      trip_id: tripId,
+      excursions: editedExcursions,
+    });
     setIsAddingExcursion(false);
     setEditingExcursionIndex(null);
   };
