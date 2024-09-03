@@ -18,6 +18,7 @@ export const endpoints = {
     updateDay: "/dashboard/updateDay",
     createDay: "/dashboard/createDay",
     modifyIncludedExcursionsTrip: "/dashboard/modifyIncludedExcursionsTrip",
+    modifyServicesTrip: "/dashboard/modifyServicesTrip",
   },
 };
 

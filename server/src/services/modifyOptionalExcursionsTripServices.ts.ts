@@ -1,4 +1,3 @@
-// modifyOptionalExcursionsTripServices.ts
 import { OptionalExcursions } from "../models/optionalExcursions";
 
 type ModifyOptionalExcursionsInfo = {

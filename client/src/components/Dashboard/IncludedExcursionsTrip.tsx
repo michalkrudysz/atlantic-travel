@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useModifyIncludedExcursions } from "../../hooks/usemodifyIncludedExcursionsTrip";
+import { useModifyIncludedExcursions } from "../../hooks/useModifyIncludedExcursionsTrip";
 import classes from "./IncludedExcursionsTrip.module.scss";
 
 type IncludedExcursionsTripProps = {
