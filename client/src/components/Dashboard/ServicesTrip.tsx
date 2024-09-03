@@ -4,9 +4,10 @@ type ServicesTripProps = {
   services: {
     description: string;
   }[];
+  tripId: number;
 };
 
-export default function ServicesTrip({ services }: ServicesTripProps) {
+export default function ServicesTrip({ services, tripId }: ServicesTripProps) {
   return (
     <div className={classes["services"]}>
       <div className={classes["name-of-service"]}>Świadczenia:</div>
