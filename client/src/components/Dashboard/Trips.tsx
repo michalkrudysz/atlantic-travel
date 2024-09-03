@@ -66,7 +66,10 @@ export default function Trips() {
                 <OptionalExcursionsTrip
                   excursions={tripDetails.optionalExcursions}
                 />
-                <ServicesTrip services={tripDetails.services} />
+                <ServicesTrip
+                  services={tripDetails.services}
+                  tripId={activeTrip.trip_id}
+                />
                 <ContactTrip tripContacts={tripDetails.tripContacts} />
               </>
             )}

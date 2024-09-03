@@ -40,22 +40,26 @@
       margin-top: 0.5rem;
 
       button {
-        background-color: #fda085;
-        color: white;
         padding: 0.5rem 1rem;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
 
-        &:hover {
-          background-color: #f57957;
-        }
-
-        &[type="button"] {
+        &[type="submit"] {
           background-color: #f2c777;
+          color: black;
 
           &:hover {
             background-color: #ffca67;
+          }
+        }
+
+        &[type="button"] {
+          background-color: #fda085;
+          color: black;
+
+          &:hover {
+            background-color: #f57957;
           }
         }
       }
@@ -79,16 +83,19 @@
     align-self: flex-end;
 
     button {
-      background-color: #e7f294;
-      color: black;
       width: 10rem;
       height: 2rem;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
 
-      &:hover {
-        background-color: #f0ff7f;
+      &[type="button"] {
+        background-color: #e7f294;
+        color: black;
+
+        &:hover {
+          background-color: #f0ff7f;
+        }
       }
     }
   }
