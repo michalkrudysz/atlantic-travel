@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as modifyOptionalExcursionsTripService from "../services/modifyOptionalExcursionsTripServices.ts";
+import * as modifyOptionalExcursionsTripService from "../services/modifyOptionalExcursionsTripServices";
 
 export const modifyOptionalExcursionsTrip = async (
   req: Request,

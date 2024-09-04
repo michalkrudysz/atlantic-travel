@@ -5,7 +5,7 @@ import { patchDay } from "../controllers/updateDayController";
 import { createDay } from "../controllers/createDayController";
 import { modifyIncludedExcursionsTrip } from "../controllers/modifyIncludedExcursionsTripController";
 import { modifyServicesTrip } from "../controllers/modifyServicesTripController";
-import { modifyOptionalExcursionsTrip } from "../controllers/modifyOptionalExcursionsTripController.ts";
+import { modifyOptionalExcursionsTrip } from "../controllers/modifyOptionalExcursionsTripController";
 
 const dashboardRouter = Router();
 
