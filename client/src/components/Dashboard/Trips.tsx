@@ -71,7 +71,10 @@ export default function Trips() {
                   services={tripDetails.services}
                   tripId={activeTrip.trip_id}
                 />
-                <ContactTrip tripContacts={tripDetails.tripContacts} />
+                <ContactTrip
+                  tripContacts={tripDetails.tripContacts}
+                  tripId={activeTrip.trip_id}
+                />
               </>
             )}
           </>

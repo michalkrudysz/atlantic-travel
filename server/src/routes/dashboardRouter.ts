@@ -7,6 +7,7 @@ import { modifyIncludedExcursionsTrip } from "../controllers/modifyIncludedExcur
 import { modifyServicesTrip } from "../controllers/modifyServicesTripController";
 import { modifyOptionalExcursionsTrip } from "../controllers/modifyOptionalExcursionsTripController";
 import { modifyContactTrip } from "../controllers/modifyContactTripController";
+
 const dashboardRouter = Router();
 
 dashboardRouter.get("/", checkToken);
