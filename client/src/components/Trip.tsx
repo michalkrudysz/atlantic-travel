@@ -8,25 +8,31 @@ export default function TripComponent({ trip }: { trip: Trip }) {
 
   return (
     <div className={classes.trip}>
-      <div className={classes.image}>
-        <img src={trip.image.image_url} alt={trip.image.description} />
-        <Link
-          to={`/${encodeURIComponent(trip.title)}`}
-          state={{
-            tripId: trip.trip_id,
-            imageUrl: trip.image.image_url,
-            imageDescription: trip.image.description,
-            tripTitle: trip.title,
-          }}
-          className={classes.overlay}
-        >
-          <span className={classes["overlay-text"]}>ZOBACZ WIĘCEJ</span>
-        </Link>
-      </div>
-      <div className={classes["trip-title"]}>
-        <h2>{trip.title}</h2>
-        <p>Termin: {dates}</p>
-      </div>
+      {trip.image && trip.image.image_url && (
+        <div className={classes.image}>
+          <img src={trip.image.image_url} alt={trip.image.description} />
+          {trip.title && (
+            <Link
+              to={`/${encodeURIComponent(trip.title)}`}
+              state={{
+                tripId: trip.trip_id,
+                imageUrl: trip.image.image_url,
+                imageDescription: trip.image.description,
+                tripTitle: trip.title,
+              }}
+              className={classes.overlay}
+            >
+              <span className={classes["overlay-text"]}>ZOBACZ WIĘCEJ</span>
+            </Link>
+          )}
+        </div>
+      )}
+      {trip.title && (
+        <div className={classes["trip-title"]}>
+          <h2>{trip.title}</h2>
+          {dates && <p>Termin: {dates}</p>}
+        </div>
+      )}
     </div>
   );
 }
