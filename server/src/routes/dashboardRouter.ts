@@ -7,6 +7,8 @@ import { modifyIncludedExcursionsTrip } from "../controllers/modifyIncludedExcur
 import { modifyServicesTrip } from "../controllers/modifyServicesTripController";
 import { modifyOptionalExcursionsTrip } from "../controllers/modifyOptionalExcursionsTripController";
 import { modifyContactTrip } from "../controllers/modifyContactTripController";
+import { upload } from "../middleware/uploadMiddleware";
+import { updatePhotoTripController } from "../controllers/updatePhotoTripController";
 
 const dashboardRouter = Router();
 
@@ -24,5 +26,10 @@ dashboardRouter.post(
   modifyOptionalExcursionsTrip
 );
 dashboardRouter.post("/modifyContactTrip", modifyContactTrip);
+dashboardRouter.post(
+  "/updatePhotoTrip",
+  upload.single("photo"),
+  updatePhotoTripController
+);
 
 export default dashboardRouter;

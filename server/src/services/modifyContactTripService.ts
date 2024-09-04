@@ -1,5 +1,3 @@
-// File: services/modifyContactTripService.ts
-
 import { TripContacts } from "../models/tripContacts";
 
 type ContactInfo = {
