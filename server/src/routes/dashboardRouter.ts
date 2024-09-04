@@ -6,7 +6,7 @@ import { createDay } from "../controllers/createDayController";
 import { modifyIncludedExcursionsTrip } from "../controllers/modifyIncludedExcursionsTripController";
 import { modifyServicesTrip } from "../controllers/modifyServicesTripController";
 import { modifyOptionalExcursionsTrip } from "../controllers/modifyOptionalExcursionsTripController";
-
+import { modifyContactTrip } from "../controllers/modifyContactTripController";
 const dashboardRouter = Router();
 
 dashboardRouter.get("/", checkToken);
@@ -22,5 +22,6 @@ dashboardRouter.post(
   "/modifyOptionalExcursionsTrip",
   modifyOptionalExcursionsTrip
 );
+dashboardRouter.post("/modifyContactTrip", modifyContactTrip);
 
 export default dashboardRouter;
