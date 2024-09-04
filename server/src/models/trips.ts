@@ -5,7 +5,12 @@ import {
   DataType,
   HasOne,
   HasMany,
+  PrimaryKey,
+  AutoIncrement,
+  AllowNull,
+  Default,
 } from "sequelize-typescript";
+
 import { TripImages } from "./tripImages";
 import { TripDays } from "./tripDays";
 import { IncludedExcursions } from "./includedExcursions";
@@ -13,58 +18,66 @@ import { OptionalExcursions } from "./optionalExcursions";
 import { Services } from "./services";
 import { TripContacts } from "./tripContacts";
 
+type TripsAttributes = {
+  trip_id: number;
+  title: string;
+  start_date: Date;
+  end_date: Date;
+  price_per_person: number;
+  additional_costs: number;
+  description: string;
+  priority: number;
+};
+
+type TripsCreationAttributes = {
+  title: string;
+  start_date: Date;
+  end_date: Date;
+  price_per_person?: number;
+  additional_costs?: number;
+  description?: string;
+  priority?: number;
+};
+
 @Table({
   tableName: "trips",
   timestamps: false,
 })
-export class Trips extends Model<Trips> {
-  @Column({
-    type: DataType.INTEGER.UNSIGNED,
-    primaryKey: true,
-    autoIncrement: true,
-  })
+export class Trips extends Model<TripsAttributes, TripsCreationAttributes> {
+  @PrimaryKey
+  @AutoIncrement
+  @Column(DataType.INTEGER.UNSIGNED)
   trip_id!: number;
 
-  @Column({
-    type: DataType.STRING(255),
-    allowNull: false,
-  })
+  @AllowNull(false)
+  @Column(DataType.STRING(255))
   title!: string;
 
-  @Column({
-    type: DataType.DATE,
-    allowNull: false,
-  })
+  @AllowNull(false)
+  @Column(DataType.DATE)
   start_date!: Date;
 
-  @Column({
-    type: DataType.DATE,
-    allowNull: false,
-  })
+  @AllowNull(false)
+  @Column(DataType.DATE)
   end_date!: Date;
 
-  @Column({
-    type: DataType.DECIMAL(10, 2),
-    allowNull: false,
-  })
+  @AllowNull(false)
+  @Default(0)
+  @Column(DataType.DECIMAL(10, 2))
   price_per_person!: number;
 
-  @Column({
-    type: DataType.DECIMAL(10, 2),
-    allowNull: false,
-  })
+  @AllowNull(false)
+  @Default(0)
+  @Column(DataType.DECIMAL(10, 2))
   additional_costs!: number;
 
-  @Column({
-    type: DataType.TEXT,
-    allowNull: false,
-  })
+  @AllowNull(false)
+  @Column(DataType.TEXT)
   description!: string;
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
-    defaultValue: 0,
-  })
+
+  @AllowNull(false)
+  @Default(0)
+  @Column(DataType.INTEGER)
   priority!: number;
 
   @HasOne(() => TripImages)

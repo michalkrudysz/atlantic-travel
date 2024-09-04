@@ -5,38 +5,41 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
+  PrimaryKey,
+  AutoIncrement,
 } from "sequelize-typescript";
 import { Trips } from "./trips";
+
+type TripImagesAttributes = {
+  image_id: number;
+  trip_id: number;
+  image_url: string;
+  description: string;
+};
+
+type TripImagesCreationAttributes = Omit<TripImagesAttributes, "image_id">;
 
 @Table({
   tableName: "tripimages",
   timestamps: false,
 })
-export class TripImages extends Model<TripImages> {
-  @Column({
-    type: DataType.INTEGER.UNSIGNED,
-    primaryKey: true,
-    autoIncrement: true,
-  })
+export class TripImages extends Model<
+  TripImagesAttributes,
+  TripImagesCreationAttributes
+> {
+  @PrimaryKey
+  @AutoIncrement
+  @Column(DataType.INTEGER.UNSIGNED)
   image_id!: number;
 
   @ForeignKey(() => Trips)
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: true,
-  })
+  @Column(DataType.INTEGER)
   trip_id!: number;
 
-  @Column({
-    type: DataType.STRING(255),
-    allowNull: true,
-  })
+  @Column(DataType.STRING(255))
   image_url!: string;
 
-  @Column({
-    type: DataType.TEXT,
-    allowNull: true,
-  })
+  @Column(DataType.TEXT)
   description!: string;
 
   @BelongsTo(() => Trips)
