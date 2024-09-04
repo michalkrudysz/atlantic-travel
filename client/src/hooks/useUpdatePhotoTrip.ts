@@ -16,29 +16,31 @@ export const useUpdatePhotoTrip = () => {
     mutationFn: async ({ trip_id, file, description }: UpdatePhotoInfo) => {
       const formData = new FormData();
       formData.append("trip_id", String(trip_id));
-      formData.append("file", file);
+      formData.append("photo", file);
       formData.append("description", description);
 
       const token = localStorage.getItem("token");
-      const response = await apiClient.post(
-        endpoints.dashboard.updatePhotoTrip,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      return response.data;
+      try {
+        const response = await apiClient.post(
+          endpoints.dashboard.updatePhotoTrip,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        return response.data;
+      } catch (error) {
+        throw error;
+      }
     },
     onSuccess: (data) => {
       queryClient.setQueryData(["tripPhoto", data.trip_id], data);
       queryClient.invalidateQueries({ queryKey: ["tripPhotos"] });
     },
-    onError: (error) => {
-      console.error("Error updating the trip photo", error);
-    },
+    onError: (error) => {},
   });
 
   return mutate;
