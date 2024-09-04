@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import classes from "./TripEdit.module.scss";
 import { useTrips, Trip } from "../../hooks/useTrips";
 import { formatTripDates } from "../../utils/formatTripDates";
+import { useDeleteTrip } from "../../hooks/useDeleteTrip";
 
 type TripEditProps = {
   activeTrip: Trip | null;
@@ -10,6 +11,7 @@ type TripEditProps = {
 
 const TripEdit: React.FC<TripEditProps> = ({ activeTrip, onEditTrip }) => {
   const { data: backendData } = useTrips();
+  const deleteTrip = useDeleteTrip();
   const [expandedTripEdit, setExpandedTripEdit] = useState<boolean>(false);
 
   const sortedTrips = backendData
@@ -22,6 +24,10 @@ const TripEdit: React.FC<TripEditProps> = ({ activeTrip, onEditTrip }) => {
 
   const handleEditTrip = (trip: Trip): void => {
     onEditTrip(trip);
+  };
+
+  const handleDeleteTrip = (tripId: number): void => {
+    deleteTrip({ trip_id: tripId });
   };
 
   return (
@@ -54,7 +60,12 @@ const TripEdit: React.FC<TripEditProps> = ({ activeTrip, onEditTrip }) => {
             >
               Edytuj
             </button>
-            <button className={classes["delete-button"]}>Usuń</button>
+            <button
+              className={classes["delete-button"]}
+              onClick={() => handleDeleteTrip(trip.trip_id)}
+            >
+              Usuń
+            </button>
           </div>
         </div>
       ))}
