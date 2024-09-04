@@ -40,7 +40,6 @@ export const useUpdatePhotoTrip = () => {
       queryClient.setQueryData(["tripPhoto", data.trip_id], data);
       queryClient.invalidateQueries({ queryKey: ["tripPhotos"] });
     },
-    onError: (error) => {},
   });
 
   return mutate;

@@ -125,7 +125,12 @@ export default function Trips() {
                       onChange={(e) => setPhotoDescription(e.target.value)}
                     />
                     <button onClick={handleSavePhoto}>Zapisz</button>
-                    <button onClick={handleCancelPhoto}>Anuluj</button>
+                    <button
+                      className={classes.cancle}
+                      onClick={handleCancelPhoto}
+                    >
+                      Anuluj
+                    </button>
                   </>
                 )}
               </div>

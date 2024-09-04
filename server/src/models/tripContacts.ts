@@ -5,6 +5,8 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
+  PrimaryKey,
+  AutoIncrement,
 } from "sequelize-typescript";
 import { Trips } from "./trips";
 
@@ -12,11 +14,11 @@ import { Trips } from "./trips";
   tableName: "tripcontacts",
   timestamps: false,
 })
-export class TripContacts extends Model<TripContacts> {
+export class TripContacts extends Model {
+  @PrimaryKey
+  @AutoIncrement
   @Column({
     type: DataType.INTEGER.UNSIGNED,
-    primaryKey: true,
-    autoIncrement: true,
   })
   contact_id!: number;
 
@@ -31,49 +33,49 @@ export class TripContacts extends Model<TripContacts> {
     type: DataType.STRING(20),
     allowNull: true,
   })
-  phone1!: string;
+  phone1?: string;
 
   @Column({
     type: DataType.STRING(20),
     allowNull: true,
   })
-  phone2!: string;
+  phone2?: string;
 
   @Column({
     type: DataType.STRING(20),
     allowNull: true,
   })
-  phone3!: string;
+  phone3?: string;
 
   @Column({
     type: DataType.STRING(255),
     allowNull: true,
   })
-  email1!: string;
+  email1?: string;
 
   @Column({
     type: DataType.STRING(255),
     allowNull: true,
   })
-  email2!: string;
+  email2?: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: true,
   })
-  payment_instructions!: string;
+  payment_instructions?: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: true,
   })
-  additional_description!: string;
+  additional_description?: string;
 
   @Column({
     type: DataType.STRING(255),
     allowNull: true,
   })
-  payment_reference!: string;
+  payment_reference?: string;
 
   @BelongsTo(() => Trips)
   trip!: Trips;

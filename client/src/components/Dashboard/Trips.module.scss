@@ -63,6 +63,12 @@
         justify-content: flex-start;
         margin-top: 0.1rem;
         font-size: 0.9rem;
+        .cancle {
+          background-color: #fda085;
+          &:hover {
+            background-color: #ff805d;
+          }
+        }
         button {
           all: unset;
           text-align: center;

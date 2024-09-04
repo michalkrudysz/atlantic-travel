@@ -1,4 +1,5 @@
 import { TripContacts } from "../models/tripContacts";
+import { Optional } from "sequelize/types";
 
 type ContactInfo = {
   phone1?: string;
@@ -19,9 +20,12 @@ export const updateContactTrip = async (
     where: { trip_id },
   });
 
-  if (!existingContact) {
-    throw new Error("No contact found for this trip.");
+  if (existingContact) {
+    await existingContact.update(contactInfo);
+  } else {
+    await TripContacts.create({
+      trip_id,
+      ...(contactInfo as Optional<TripContacts, keyof TripContacts>),
+    });
   }
-
-  await existingContact.update(contactInfo);
 };
