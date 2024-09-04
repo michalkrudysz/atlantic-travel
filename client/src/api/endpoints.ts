@@ -22,6 +22,7 @@ export const endpoints = {
     modifyOptionalExcursionsTrip: "/dashboard/modifyOptionalExcursionsTrip",
     modifyContactTrip: "/dashboard/modifyContactTrip",
     updatePhotoTrip: "/dashboard/updatePhotoTrip",
+    deleteTrip: "/dashboard/deleteTrip",
   },
 };
 

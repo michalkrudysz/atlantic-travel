@@ -32,10 +32,6 @@ dashboardRouter.post(
   upload.single("photo"),
   updatePhotoTripController
 );
-dashboardRouter.delete(
-  "/deleteTrip",
-  upload.single("photo"),
-  deleteTripController
-);
+dashboardRouter.delete("/deleteTrip", deleteTripController);
 
 export default dashboardRouter;
