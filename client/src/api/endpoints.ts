@@ -21,6 +21,7 @@ export const endpoints = {
     modifyServicesTrip: "/dashboard/modifyServicesTrip",
     modifyOptionalExcursionsTrip: "/dashboard/modifyOptionalExcursionsTrip",
     modifyContactTrip: "/dashboard/modifyContactTrip",
+    updatePhotoTrip: "/dashboard/updatePhotoTrip",
   },
 };
 
