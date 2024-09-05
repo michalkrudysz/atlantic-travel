@@ -23,6 +23,7 @@ export const endpoints = {
     modifyContactTrip: "/dashboard/modifyContactTrip",
     updatePhotoTrip: "/dashboard/updatePhotoTrip",
     deleteTrip: "/dashboard/deleteTrip",
+    addTrip: "/dashboard/addTrip",
   },
 };
 
