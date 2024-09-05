@@ -3,6 +3,7 @@ import classes from "./TripEdit.module.scss";
 import { useTrips, Trip } from "../../hooks/useTrips";
 import { formatTripDates } from "../../utils/formatTripDates";
 import { useDeleteTrip } from "../../hooks/useDeleteTrip";
+import { useAddTrip } from "../../hooks/useAddTrip";
 
 type TripEditProps = {
   activeTrip: Trip | null;
@@ -12,7 +13,10 @@ type TripEditProps = {
 const TripEdit: React.FC<TripEditProps> = ({ activeTrip, onEditTrip }) => {
   const { data: backendData } = useTrips();
   const deleteTrip = useDeleteTrip();
+  const addTrip = useAddTrip();
   const [expandedTripEdit, setExpandedTripEdit] = useState<boolean>(false);
+  const [addingTrip, setAddingTrip] = useState<boolean>(false);
+  const [newTripName, setNewTripName] = useState<string>("");
 
   const sortedTrips = backendData
     ? [...backendData].sort((a, b) => a.priority - b.priority)
@@ -28,6 +32,27 @@ const TripEdit: React.FC<TripEditProps> = ({ activeTrip, onEditTrip }) => {
 
   const handleDeleteTrip = (tripId: number): void => {
     deleteTrip({ trip_id: tripId });
+  };
+
+  const handleAddTrip = (): void => {
+    if (addingTrip) {
+      addTrip(
+        { title: newTripName },
+        {
+          onSuccess: () => {
+            setAddingTrip(false);
+            setNewTripName("");
+          },
+        }
+      );
+    } else {
+      setAddingTrip(true);
+    }
+  };
+
+  const handleCancelAddTrip = (): void => {
+    setAddingTrip(false);
+    setNewTripName("");
   };
 
   return (
@@ -69,8 +94,25 @@ const TripEdit: React.FC<TripEditProps> = ({ activeTrip, onEditTrip }) => {
           </div>
         </div>
       ))}
+      {addingTrip && (
+        <div className={classes["add-trip-input"]}>
+          <label htmlFor="newTripName">Podaj nazwę wyjazdu</label>
+          <input
+            id="newTripName"
+            value={newTripName}
+            onChange={(e) => setNewTripName(e.target.value)}
+          />
+        </div>
+      )}
       <div className={classes["add-trip"]}>
-        <button>Dodaj wyjazd</button>
+        {addingTrip ? (
+          <>
+            <button onClick={handleAddTrip}>Zapisz</button>
+            <button onClick={handleCancelAddTrip}>Anuluj</button>
+          </>
+        ) : (
+          <button onClick={handleAddTrip}>Dodaj wyjazd</button>
+        )}
       </div>
     </div>
   );

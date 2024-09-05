@@ -25,7 +25,7 @@ export const useAddTrip = () => {
       return response.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["tripsList"] });
+      queryClient.invalidateQueries(["tripsList"]);
     },
     onError: (error) => {
       console.error("Error adding trip", error);
