@@ -1,4 +1,3 @@
-// TripEdit.tsx
 import { useState } from "react";
 import classes from "./TripEdit.module.scss";
 import { useTrips, Trip } from "../../hooks/useTrips";

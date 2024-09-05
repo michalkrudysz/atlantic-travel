@@ -11,11 +11,21 @@ export default function Home() {
   return (
     <div className={classes.home}>
       <WelcomeModule />
-      <Trips />
-      <SchoolTrips />
-      <Testimonials />
-      <About />
-      <Contact />
+      <div id="trips">
+        <Trips />
+      </div>
+      <div id="schoolTrips">
+        <SchoolTrips />
+      </div>
+      <div id="testimonials">
+        <Testimonials />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
       <Footer />
     </div>
   );

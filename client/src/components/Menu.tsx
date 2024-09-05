@@ -1,8 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import classes from "./Menu.module.scss";
 
-export default function Menu() {
+type SetMenuOpenType = (open: boolean) => void;
+
+type MenuProps = {
+  setMenuOpen: SetMenuOpenType;
+};
+
+export default function Menu({ setMenuOpen }: MenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const menu = menuRef.current;
@@ -29,13 +38,36 @@ export default function Menu() {
     }
   }, []);
 
+  const handleNavigation = (id: string) => {
+    if (location.pathname !== "/") {
+      navigate("/", { replace: true, state: { scrollToId: id } });
+    } else {
+      scrollToSection(id);
+    }
+    setMenuOpen(false);
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    if (location.state?.scrollToId) {
+      scrollToSection(location.state.scrollToId);
+      history.replaceState(null, "");
+    }
+  }, [location]);
+
   return (
     <div className={classes.menu} ref={menuRef}>
       <ul>
-        <li>Nasza oferta</li>
-        <li>Referencje</li>
-        <li>O firmie</li>
-        <li>Kontakt</li>
+        <li onClick={() => handleNavigation("trips")}>Nasza oferta</li>
+        <li onClick={() => handleNavigation("testimonials")}>Referencje</li>
+        <li onClick={() => handleNavigation("about")}>O firmie</li>
+        <li onClick={() => handleNavigation("contact")}>Kontakt</li>
       </ul>
     </div>
   );
