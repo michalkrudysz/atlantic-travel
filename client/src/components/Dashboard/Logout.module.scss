@@ -1,0 +1,10 @@
+.logout {
+  position: absolute;
+  top: 1.5rem;
+  right: 10rem;
+  .logout-button {
+    all: unset;
+    letter-spacing: 0.01rem;
+    cursor: pointer;
+  }
+}

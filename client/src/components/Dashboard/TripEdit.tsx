@@ -1,3 +1,4 @@
+// TripEdit.tsx
 import { useState } from "react";
 import classes from "./TripEdit.module.scss";
 import { useTrips, Trip } from "../../hooks/useTrips";
@@ -94,24 +95,37 @@ const TripEdit: React.FC<TripEditProps> = ({ activeTrip, onEditTrip }) => {
           </div>
         </div>
       ))}
-      {addingTrip && (
-        <div className={classes["add-trip-input"]}>
-          <label htmlFor="newTripName">Podaj nazwę wyjazdu</label>
-          <input
-            id="newTripName"
-            value={newTripName}
-            onChange={(e) => setNewTripName(e.target.value)}
-          />
-        </div>
-      )}
       <div className={classes["add-trip"]}>
         {addingTrip ? (
-          <>
-            <button onClick={handleAddTrip}>Zapisz</button>
-            <button onClick={handleCancelAddTrip}>Anuluj</button>
-          </>
+          <div className={classes["add-trip-form"]}>
+            <label htmlFor="newTripName">Podaj nazwę wyjazdu:</label>
+            <input
+              id="newTripName"
+              value={newTripName}
+              onChange={(e) => setNewTripName(e.target.value)}
+            />
+            <div className={classes["add-trip-buttons"]}>
+              <button
+                className={classes["save-button"]}
+                onClick={handleAddTrip}
+              >
+                Zapisz
+              </button>
+              <button
+                className={classes["cancel-button"]}
+                onClick={handleCancelAddTrip}
+              >
+                Anuluj
+              </button>
+            </div>
+          </div>
         ) : (
-          <button onClick={handleAddTrip}>Dodaj wyjazd</button>
+          <button
+            className={classes["add-trip-button"]}
+            onClick={handleAddTrip}
+          >
+            Dodaj wyjazd
+          </button>
         )}
       </div>
     </div>

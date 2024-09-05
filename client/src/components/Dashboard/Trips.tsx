@@ -10,6 +10,7 @@ import IncludedExcursionsTrip from "./IncludedExcursionsTrip";
 import OptionalExcursionsTrip from "./OptionalExcursionsTrip";
 import ServicesTrip from "./ServicesTrip";
 import ContactTrip from "./ContactTrip";
+import Logout from "./Logout";
 
 export default function Trips() {
   const { data: backendData } = useTrips();
@@ -89,6 +90,7 @@ export default function Trips() {
 
   return (
     <div className={classes.trips}>
+      <Logout />
       <div
         className={`${classes.trip} ${expandedTrip ? classes.expanded : ""}`}
       >
