@@ -7,10 +7,11 @@ import SchoolTripDetails from "./pages/SchoolTripDetails";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Logo from "../public/logo.svg";
 import "./App.scss";
 
 const saveLogoToLocalStorage = async () => {
-  const response = await fetch("../public/logo.svg");
+  const response = await fetch(Logo);
   const svgText = await response.text();
   localStorage.setItem("logoSVG", svgText);
 };
