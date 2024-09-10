@@ -5,7 +5,7 @@ import axios, {
   CreateAxiosDefaults,
 } from "axios";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://api.atlantictravel.pl";
 const TIMEOUT = 10000;
 
 const config: CreateAxiosDefaults = {
