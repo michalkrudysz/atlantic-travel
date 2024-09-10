@@ -51,7 +51,7 @@ export default function Header() {
       <div className={classes["burger-menu"]}>
         <img onClick={toggleMenu} src={burgerMenu} alt="burger menu" />
       </div>
-      {menuOpen && <Menu />}
+      {menuOpen && <Menu setMenuOpen={setMenuOpen} />}
     </header>
   );
 }

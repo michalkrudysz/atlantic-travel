@@ -25,6 +25,7 @@ export const useAddTrip = () => {
       return response.data;
     },
     onSuccess: () => {
+      // @ts-ignore
       queryClient.invalidateQueries(["tripsList"]);
     },
     onError: (error) => {
