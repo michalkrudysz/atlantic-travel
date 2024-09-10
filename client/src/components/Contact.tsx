@@ -29,10 +29,34 @@ export default function Contact() {
         <div className={classes["files-download"]}>
           <h2>Pliki do pobrania</h2>
           <div className={classes["file-download"]}>
-            <p>Karta kwalifikacyjna</p>
-            <p>Umowa agencyjna</p>
-            <p>Umowa o udział w imprezie</p>
-            <p>Zawarcie umowy</p>
+            <a
+              href="/karta_kwalifikacyjna.pdf"
+              download
+              className={classes["file-link"]}
+            >
+              Karta kwalifikacyjna
+            </a>
+            <a
+              href="/umowa_agencyjna.doc"
+              download
+              className={classes["file-link"]}
+            >
+              Umowa agencyjna
+            </a>
+            <a
+              href="/umowa_o_udzial_w_imprezie.doc"
+              download
+              className={classes["file-link"]}
+            >
+              Umowa o udział w imprezie
+            </a>
+            <a
+              href="/zawarcie_umowy.docx"
+              download
+              className={classes["file-link"]}
+            >
+              Zawarcie umowy
+            </a>
           </div>
         </div>
       </div>
