@@ -274,31 +274,31 @@ The `atlantictravel_database` includes the following tables:
 <table>
   <tr>
     <td>
-      <img src="docs/assets/8.png" alt="Mobile Home Page" width="300px">
+      <img src="docs/assets/8.png" alt="Mobile Home Page" width="350px">
       <br>
       Home Page
     </td>
     <td>
-      <img src="docs/assets/6.png" alt="Mobile Current Offers" width="300px">
+      <img src="docs/assets/6.png" alt="Mobile Current Offers" width="350px">
       <br>  
       Current Offers Section
     </td>
   </tr>
   <tr>
     <td>
-      <img src="docs/assets/9.png" alt="Mobile Trip Details" width="300px">
+      <img src="docs/assets/9.png" alt="Mobile Trip Details" width="350px">
       <br>
       Trip Details Page  
     </td>
     <td>
-      <img src="docs/assets/9.png" alt="Mobile Navigation Menu" width="300px"> 
+      <img src="docs/assets/7.png" alt="Mobile Navigation Menu" width="350px"> 
       <br>
       Navigation Menu
     </td>
   </tr>
   <tr>
     <td colspan="2" style="text-align:center;">
-      <img src="docs/assets/5.png" alt="Mobile Loading Screen" width="300px">
+      <img src="docs/assets/5.png" alt="Mobile Loading Screen" width="350px">
       <br>
       Loading Screen
     </td>
