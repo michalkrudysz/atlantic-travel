@@ -240,3 +240,87 @@ The `atlantictravel_database` includes the following tables:
 
   - **Description**: Retrieves details for a specific trip.
   - **Controller**: `getTripDetails`
+
+## Application Screenshots
+
+### Desktop Interface
+
+#### Home Page
+
+![Desktop Home Page](docs/assets/1.png "Desktop Home Page")
+
+#### Current Offers Section
+
+![Desktop Current Offers](docs/assets/2.png "Desktop Current Offers")
+
+#### Trip Details Page
+
+![Desktop Trip Details](docs/assets/3.png "Desktop Trip Details")
+
+#### Loading Screen
+
+![Desktop Loading Screen](docs/assets/4.png "Desktop Loading Screen")
+
+#### Admin Login Page
+
+![Desktop Admin Login](docs/assets/10.png "Desktop Admin Login")
+
+#### Admin Dashboard
+
+![Desktop Admin Dashboard](docs/assets/11.png "Desktop Admin Dashboard")
+
+### Mobile Interface
+
+#### Home Page
+
+![Mobile Home Page](docs/assets/8.png "Mobile Home Page")
+
+#### Current Offers Section
+
+![Mobile Current Offers](docs/assets/6.png "Mobile Current Offers")
+
+#### Trip Details Page
+
+![Mobile Trip Details](docs/assets/9.png "Mobile Trip Details")
+
+#### Navigation Menu
+
+![Mobile Navigation Menu](docs/assets/9.png "Mobile Navigation Menu")
+
+#### Loading Screen
+
+![Mobile Loading Screen](docs/assets/5.png "Mobile Loading Screen")
+
+## Pre-installation Requirements
+
+The application requires a Node.js environment to run locally. Follow the steps below to set up and run the project:
+
+### 1. Clone the Project Repository:
+
+- Clone the repository to your local machine.
+
+### 2. Client Setup:
+
+- Navigate to the `client` directory.
+- Run `npm install` to install client-side dependencies.
+- Configure the API base URL in `src/api/client.ts`:
+  ```javascript
+  const BASE_URL = "http://localhost:3000";
+  ```
+  Modify this value if you plan to deploy the application to a production server.
+- To start the frontend application in development mode, execute `npm run dev` in the terminal.
+
+### 3. Server Setup:
+
+- Navigate to the `server` directory.
+- Run `npm install` to install server-side dependencies.
+- To start the backend application in development mode, execute `npm run dev` in another terminal window.
+
+### 4. Database Setup:
+
+- Ensure that the MySQL database is set up as described in the `database` directory files.
+- The database can be created using tools like MySQL Workbench.
+
+### Note:
+
+- Both the client and the server must be running concurrently in separate terminal windows for the application to function properly.
