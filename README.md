@@ -271,25 +271,39 @@ The `atlantictravel_database` includes the following tables:
 
 ### Mobile Interface
 
-#### Home Page
-
-![Mobile Home Page](docs/assets/8.png "Mobile Home Page")
-
-#### Current Offers Section
-
-![Mobile Current Offers](docs/assets/6.png "Mobile Current Offers")
-
-#### Trip Details Page
-
-![Mobile Trip Details](docs/assets/9.png "Mobile Trip Details")
-
-#### Navigation Menu
-
-![Mobile Navigation Menu](docs/assets/9.png "Mobile Navigation Menu")
-
-#### Loading Screen
-
-![Mobile Loading Screen](docs/assets/5.png "Mobile Loading Screen")
+<table>
+  <tr>
+    <td>
+      <img src="docs/assets/8.png" alt="Mobile Home Page" width="300px">
+      <br>
+      Home Page
+    </td>
+    <td>
+      <img src="docs/assets/6.png" alt="Mobile Current Offers" width="300px">
+      <br>  
+      Current Offers Section
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="docs/assets/9.png" alt="Mobile Trip Details" width="300px">
+      <br>
+      Trip Details Page  
+    </td>
+    <td>
+      <img src="docs/assets/9.png" alt="Mobile Navigation Menu" width="300px"> 
+      <br>
+      Navigation Menu
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align:center;">
+      <img src="docs/assets/5.png" alt="Mobile Loading Screen" width="300px">
+      <br>
+      Loading Screen
+    </td>
+  </tr>  
+</table>
 
 ## Pre-installation Requirements
 
